@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -140,14 +149,77 @@
         "secondary_cta_link": ""
       }
     },
-    "purelane_reviews": {
-      "type": "purelane-reviews"
+    "purelane_reviews_7piJX4": {
+      "type": "purelane-reviews",
+      "blocks": {
+        "review_Y48cCx": {
+          "type": "review",
+          "settings": {
+            "title": "Works like a charm",
+            "content": "Finally an eco option that cleans as well as the chemical detergent I used for years, and it smells better.",
+            "author": "Anita",
+            "product": "Laundry detergent"
+          }
+        },
+        "review_UfyAzP": {
+          "type": "review",
+          "settings": {
+            "title": "Best dishwash ever",
+            "content": "Our old dishwash left my help with dry, cracked skin. That stopped completely after we switched.",
+            "author": "Priya",
+            "product": "Dishwash gel"
+          }
+        },
+        "review_cDc6RR": {
+          "type": "review",
+          "settings": {
+            "title": "Great product, great packaging",
+            "content": "Very soft on hands with a lovely fragrance, and it feels good to be using far less plastic.",
+            "author": "Sunita",
+            "product": "Liquid handwash"
+          }
+        },
+        "review_3zDQ3E": {
+          "type": "review",
+          "settings": {
+            "title": "Dog friendly",
+            "content": "We switched because chemical floor cleaners were setting off my dog's allergies. No reactions since.",
+            "author": "Rohit S.",
+            "product": "Floor cleaner"
+          }
+        },
+        "review_V98bCm": {
+          "type": "review",
+          "settings": {
+            "title": "Sparkling taps again",
+            "content": "Hard water had ruined our bathroom fittings. Two sprays and the scale wipes straight off, no scrubbing.",
+            "author": "Verified buyer",
+            "product": "Tap cleaner"
+          }
+        }
+      },
+      "block_order": [
+        "review_Y48cCx",
+        "review_UfyAzP",
+        "review_cDc6RR",
+        "review_3zDQ3E",
+        "review_V98bCm"
+      ],
+      "name": "Purelane Reviews",
+      "settings": {
+        "kicker": "That's what they said",
+        "rating": "4.8",
+        "rating_text": "from 8,000+ reviews",
+        "homes_text_1": "Loved by",
+        "homes_bold": "12 lakh+",
+        "homes_text_2": "homes"
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
     "purelane_hero_GJUahh",
-    "purelane_reviews"
+    "purelane_reviews_7piJX4"
   ]
 }
