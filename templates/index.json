@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "image_banner": {
@@ -106,8 +97,8 @@
           "type": "stage_slide",
           "settings": {
             "title": "Single bottle",
-            "price": "₹200",
-            "compare_price": "₹299",
+            "price": "\u20b9200",
+            "compare_price": "\u20b9299",
             "discount_badge": "33% off"
           }
         },
@@ -115,18 +106,18 @@
           "type": "stage_slide",
           "settings": {
             "title": "Any 2 products",
-            "price": "₹349",
-            "compare_price": "₹598",
-            "discount_badge": "Save ₹249"
+            "price": "\u20b9349",
+            "compare_price": "\u20b9598",
+            "discount_badge": "Save \u20b9249"
           }
         },
         "stage_slide_A4tTDx": {
           "type": "stage_slide",
           "settings": {
             "title": "Any 3 products",
-            "price": "₹499",
-            "compare_price": "₹897",
-            "discount_badge": "Save ₹398"
+            "price": "\u20b9499",
+            "compare_price": "\u20b9897",
+            "discount_badge": "Save \u20b9398"
           }
         }
       },
@@ -214,12 +205,17 @@
         "homes_bold": "12 lakh+",
         "homes_text_2": "homes"
       }
+    },
+    "purelane_ingredients_QEtB80": {
+      "type": "purelane-ingredients",
+      "settings": {}
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
     "purelane_hero_GJUahh",
-    "purelane_reviews_7piJX4"
+    "purelane_reviews_7piJX4",
+    "purelane_ingredients_QEtB80"
   ]
 }
