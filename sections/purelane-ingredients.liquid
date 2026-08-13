@@ -32,10 +32,10 @@
   #Purelane-{{ section.id }} .sec-pad { padding: clamp(26px, 3.4vw, 40px); }
   
   #Purelane-{{ section.id }} .panel-head { text-align: center; margin-bottom: 26px; }
-  #Purelane-{{ section.id }} .panel-head .d2 { margin-bottom: 12px; font-family: 'Outfit', sans-serif; font-size: clamp(34px, 4vw, 46px); font-weight: 800; letter-spacing: -.03em; color: var(--surface); line-height: .96; }
+  #Purelane-{{ section.id }} .panel-head .d2 { margin-bottom: 12px; font-family: 'Outfit', sans-serif; font-size: clamp(34px, 4vw, 46px); font-weight: 800; letter-spacing: -.03em; color: var(--surface); line-height: .96; text-transform: uppercase; }
   #Purelane-{{ section.id }} .panel-head .rule { margin: 0 auto; justify-content: center; max-width: 240px; display: flex; align-items: center; gap: 14px; opacity: .4; color: var(--surface); }
-  #Purelane-{{ section.id }} .panel-head .rule i { flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(236,230,247,.44)); }
-  #Purelane-{{ section.id }} .panel-head .rule i:first-child { background: linear-gradient(90deg, transparent, rgba(236,230,247,.44)); }
+  #Purelane-{{ section.id }} .panel-head .rule i { flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(75,58,143,.34)); }
+  #Purelane-{{ section.id }} .panel-head .rule i:first-child { background: linear-gradient(90deg, transparent, rgba(75,58,143,.34)); }
   #Purelane-{{ section.id }} .panel-head .rule svg { width: 22px; height: 22px; }
 
   /* Ingredients */
@@ -48,13 +48,20 @@
   #Purelane-{{ section.id }} .ing-i h4 { font-family: 'Outfit', sans-serif; font-size: 12.5px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: var(--surface); margin-bottom: 6px; }
   #Purelane-{{ section.id }} .ing-i p { font-size: 12.2px; color: var(--paper-2); line-height: 1.5; }
 
+  
+  /* Botanical Line Art SVG recoloring */
+  #Purelane-{{ section.id }} .ing-i .art svg { stroke: #0d5b52; }
+  #Purelane-{{ section.id }} .ing-i .art svg [stroke="#f0a03c"] { stroke: #b8701c; }
+  #Purelane-{{ section.id }} .ing-i .art svg [fill="#ece6f7"] { fill: #0d5b52; }
+  #Purelane-{{ section.id }} .ing-i .art svg [stroke="#f0a03c"][stroke-width="2.4"] { stroke: #b8701c; }
+
   /* Pillars */
   #Purelane-{{ section.id }} .pillars { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 16px; }
   @media(min-width:820px) { #Purelane-{{ section.id }} .pillars { grid-template-columns: repeat(3, 1fr); } }
   #Purelane-{{ section.id }} .pillar { padding: 26px 24px 24px; display: flex; flex-direction: column; }
-  #Purelane-{{ section.id }} .pillar .pi { width: 50px; height: 50px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 16px; background: linear-gradient(150deg, rgba(240,160,60,.22), rgba(75,58,143,.34)); border: 1px solid rgba(236,230,247,.2); color: var(--accent); }
+  #Purelane-{{ section.id }} .pillar .pi { width: 50px; height: 50px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 16px; background: linear-gradient(150deg, rgba(201,118,29,.18), rgba(75,58,143,.12)); border: 1px solid rgba(75,58,143,.16); color: #4f7d10; }
   #Purelane-{{ section.id }} .pillar .pi svg { width: 24px; height: 24px; }
-  #Purelane-{{ section.id }} .pillar .d3 { margin-bottom: 11px; font-family: 'Outfit', sans-serif; font-size: clamp(20px, 2.2vw, 24px); font-weight: 700; letter-spacing: -.01em; color: var(--surface); line-height: 1.1; }
+  #Purelane-{{ section.id }} .pillar .d3 { margin-bottom: 11px; font-family: 'Outfit', sans-serif; font-size: clamp(20px, 2.2vw, 24px); font-weight: 700; letter-spacing: -.01em; color: var(--surface); line-height: 1.1; text-transform: uppercase; }
   #Purelane-{{ section.id }} .pillar p { margin-bottom: 20px; flex: 1; font-size: 13.5px; color: var(--paper-2); line-height: 1.5; }
   #Purelane-{{ section.id }} .pillar .btn { align-self: flex-start; }
   
