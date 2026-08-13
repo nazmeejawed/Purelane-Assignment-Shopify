@@ -167,6 +167,16 @@
     text-transform: uppercase; transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease) !important; white-space: nowrap;
     text-decoration: none !important;
   }
+
+  #PurelaneHero-{{ section.id }} .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(0,80,74,.32), inset 0 1px 0 rgba(255,255,255,.3) !important;
+    filter: brightness(1.05);
+  }
+  #PurelaneHero-{{ section.id }} .btn-ghost:hover {
+    background: rgba(36,26,61,.08) !important;
+    transform: translateY(-2px);
+  }
   #PurelaneHero-{{ section.id }} .btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
   #PurelaneHero-{{ section.id }} .btn-primary {
     background: linear-gradient(135deg, #00706a, #004b46); color: #f4fdf6;
@@ -226,6 +236,14 @@
   #PurelaneHero-{{ section.id }} .hslide.on .hp.d1 { transition-delay: .06s; }
   #PurelaneHero-{{ section.id }} .hslide.on .hp.d2 { transition-delay: .30s; }
   #PurelaneHero-{{ section.id }} .hslide.on .hp.d3 { transition-delay: .54s; }
+
+  #PurelaneHero-{{ section.id }} .hp.a { height: 100%; }
+  #PurelaneHero-{{ section.id }} .hslide[data-n="2"] .hp { height: 94%; }
+  #PurelaneHero-{{ section.id }} .hslide[data-n="2"] .hp.b { height: 82%; margin-right: -2%; }
+  #PurelaneHero-{{ section.id }} .hslide[data-n="3"] .hp { height: 88%; }
+  #PurelaneHero-{{ section.id }} .hslide[data-n="3"] .hp.b { height: 80%; margin-right: -1%; }
+  #PurelaneHero-{{ section.id }} .hslide[data-n="3"] .hp.c { height: 76%; margin-right: -1.5%; }
+
 
   /* Pricing Tag V2 Override */
   #PurelaneHero-{{ section.id }} .ptag {
@@ -781,6 +799,23 @@
         },
         { passive: true }
       );
+    }
+
+
+    /* Mouse Hover Parallax for Hero Products (Bottles) */
+    if (window.matchMedia('(min-width: 1024px)').matches && stage && !reduce) {
+      window.addEventListener('mousemove', function(e) {
+        const mx = (e.clientX / window.innerWidth - 0.5) * 2;
+        const my = (e.clientY / window.innerHeight - 0.5) * 2;
+        
+        // Move the entire stage slightly
+        stage.style.transform = `translate3d(${ (mx * -16).toFixed(2) }px, ${ (my * -10).toFixed(2) }px, 0)`;
+      }, { passive: true });
+      
+      // Reset when mouse leaves
+      window.addEventListener('mouseleave', function() {
+        stage.style.transform = `translate3d(0, 0, 0)`;
+      });
     }
 
     /* Fix SVG filters and gradients in Shopify Theme Editor (<base> tag issues) */
