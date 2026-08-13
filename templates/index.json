@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -26,36 +35,37 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,13 +73,86 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "purelane_hero_GJUahh": {
+      "type": "purelane-hero",
+      "blocks": {
+        "trust_badge_8KHzDz": {
+          "type": "trust_badge",
+          "settings": {
+            "icon": "plant",
+            "text": "Plant\npowered"
+          }
+        },
+        "trust_badge_nqiWfN": {
+          "type": "trust_badge",
+          "settings": {
+            "icon": "shield",
+            "text": "Safe for\nkids & pets"
+          }
+        },
+        "trust_badge_QqRt3g": {
+          "type": "trust_badge",
+          "settings": {
+            "icon": "check",
+            "text": "Zero harsh\nchemicals"
+          }
+        },
+        "stage_slide_cADYKW": {
+          "type": "stage_slide",
+          "settings": {
+            "title": "Single bottle",
+            "price": "₹200",
+            "compare_price": "₹299",
+            "discount_badge": "33% off"
+          }
+        },
+        "stage_slide_i33AAJ": {
+          "type": "stage_slide",
+          "settings": {
+            "title": "Any 2 products",
+            "price": "₹349",
+            "compare_price": "₹598",
+            "discount_badge": "Save ₹249"
+          }
+        },
+        "stage_slide_A4tTDx": {
+          "type": "stage_slide",
+          "settings": {
+            "title": "Any 3 products",
+            "price": "₹499",
+            "compare_price": "₹897",
+            "discount_badge": "Save ₹398"
+          }
+        }
+      },
+      "block_order": [
+        "trust_badge_8KHzDz",
+        "trust_badge_nqiWfN",
+        "trust_badge_QqRt3g",
+        "stage_slide_cADYKW",
+        "stage_slide_i33AAJ",
+        "stage_slide_A4tTDx"
+      ],
+      "name": "Hero (Purelane Pixel)",
+      "settings": {
+        "heading": "Clean\nThat\nLasts",
+        "highlighted_word": "Lasts",
+        "paragraph": "Homecare that works on the toughest grime, made from plants. Kind to your home, your family and the world outside it.",
+        "primary_cta_label": "Shop now",
+        "primary_cta_link": "",
+        "secondary_cta_label": "How it works",
+        "secondary_cta_link": ""
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "purelane_hero_GJUahh"
   ]
 }
