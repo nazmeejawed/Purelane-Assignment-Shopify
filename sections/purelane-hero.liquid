@@ -28,20 +28,20 @@
 /* ---------- WATER CINEMATICS ---------- */
 .pl-scenes {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: transparent;
+  background: transparent !important;
 }
 .pl-scene {
   position: absolute;
-  inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   opacity: 0;
   transition: opacity 1.5s ease;
 }
 .pl-scene.pl-on { opacity: 1; }
-.pl-s1 { background: linear-gradient(178deg, #fbfffb 0%, #eafaec 24%, #d6f1dc 54%, #bfe8ca 100%); }
+.pl-s1 { background: linear-gradient(178deg, #fbfffb 0%, #eafaec 24%, #d6f1dc 54%, #bfe8ca 100%) !important; opacity: 1 !important; }
 
 .pl-water {
   position: absolute;
@@ -620,6 +620,21 @@ if (!customElements.get('purelane-hero')) {
     connectedCallback() {
       var container = this;
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------- fix SVG URLs for Shopify Theme Editor <base> tag ---------- */
+      var base = window.location.href.split('#')[0];
+      container.querySelectorAll('#pl-water path[stroke^="url(#"]').forEach(function(el) {
+        var match = el.getAttribute('stroke').match(/url\(['"]?#([^)'"]+)['"]?\)/);
+        if(match) el.setAttribute('stroke', 'url(' + base + '#' + match[1] + ')');
+      });
+      container.querySelectorAll('#pl-water g[filter^="url(#"]').forEach(function(el) {
+        var match = el.getAttribute('filter').match(/url\(['"]?#([^)'"]+)['"]?\)/);
+        if(match) el.setAttribute('filter', 'url(' + base + '#' + match[1] + ')');
+      });
+      container.querySelectorAll('#pl-water [fill^="url(#"]').forEach(function(el) {
+        var match = el.getAttribute('fill').match(/url\(['"]?#([^)'"]+)['"]?\)/);
+        if(match) el.setAttribute('fill', 'url(' + base + '#' + match[1] + ')');
+      });
 
       /* ---------- parallax on water & product drift ---------- */
       var prod = container.querySelector('#pl-heroProd');
