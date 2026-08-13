@@ -152,7 +152,8 @@
   #PurelaneHero-{{ section.id }} .btn {
     display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 22px;
     border-radius: 999px; font-size: 12.5px; font-weight: 700; letter-spacing: .13em;
-    text-transform: uppercase; transition: .35s var(--ease); white-space: nowrap;
+    text-transform: uppercase; transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease) !important; white-space: nowrap;
+    text-decoration: none !important;
   }
   #PurelaneHero-{{ section.id }} .btn svg { width: 15px; height: 15px; flex: 0 0 auto; }
   #PurelaneHero-{{ section.id }} .btn-primary {
@@ -160,14 +161,14 @@
     box-shadow: 0 12px 26px rgba(0,80,74,.26), inset 0 1px 0 rgba(255,255,255,.22);
   }
   #PurelaneHero-{{ section.id }} .btn-primary:hover {
-    box-shadow: 0 18px 36px rgba(0,80,74,.32), inset 0 1px 0 rgba(255,255,255,.28); transform: translateY(-2px);
+    box-shadow: 0 18px 36px rgba(0,80,74,.32), inset 0 1px 0 rgba(255,255,255,.28) !important; transform: translateY(-3px) !important;
   }
   #PurelaneHero-{{ section.id }} .btn-ghost {
     background: rgba(255,255,255,.66); border: 1px solid rgba(75,58,143,.22); color: #01423b;
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   }
   #PurelaneHero-{{ section.id }} .btn-ghost:hover {
-    background: rgba(255,255,255,.9); transform: translateY(-2px);
+    background: rgba(255,255,255,.9) !important; transform: translateY(-3px) !important;
   }
 
   /* Rule Element */
@@ -670,7 +671,7 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  (function() {
     /* Intersection Observer for reveal animations */
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var revs = document.querySelectorAll('#PurelaneHero-{{ section.id }} .rv');
@@ -704,26 +705,54 @@
       const slides = Array.from(stage.querySelectorAll('.hslide'));
       const dots = Array.from(dotsContainer.querySelectorAll('button'));
       let timer;
+      let currentIndex = 0;
 
       function setSlide(n) {
+        currentIndex = n;
         slides.forEach((s, i) => s.classList.toggle('on', i === n));
         dots.forEach((d, i) => d.classList.toggle('on', i === n));
       }
 
+      function play() {
+        if (!timer && !reduce && slides.length > 1) {
+          timer = setInterval(() => {
+            setSlide((currentIndex + 1) % slides.length);
+          }, 4500);
+        }
+      }
+      function stop() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }
+
       dots.forEach((dot, i) => {
         dot.addEventListener('click', () => {
-          clearInterval(timer);
+          stop();
           setSlide(i);
+          play();
         });
       });
+      
+      stage.addEventListener('mouseenter', stop);
+      stage.addEventListener('mouseleave', play);
+      
+      /* Initialize carousel */
+      play();
+    }
 
-      if (slides.length > 1) {
-        let idx = 0;
-        timer = setInterval(() => {
-          idx = (idx + 1) % slides.length;
-          setSlide(idx);
-        }, 4500);
-      }
+    /* Ambient Bottle Pulse */
+    if (!reduce && stage) {
+      const hps = stage.querySelectorAll('.hp');
+      hps.forEach(prod => {
+        prod.animate(
+          [{ filter: 'drop-shadow(0 14px 22px rgba(0,74,66,.15))' },
+           { filter: 'drop-shadow(0 22px 36px rgba(0,74,66,.25))' },
+           { filter: 'drop-shadow(0 14px 22px rgba(0,74,66,.15))' }],
+          { duration: 7000, iterations: Infinity, easing: 'ease-in-out' }
+        );
+      });
     }
 
     /* Scoped Parallax logic */
@@ -758,7 +787,7 @@
         });
       });
     }
-  });
+  })();
 </script>
 
 {% schema %}
