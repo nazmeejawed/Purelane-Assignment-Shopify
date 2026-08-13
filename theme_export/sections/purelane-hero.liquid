@@ -569,21 +569,20 @@
     <!-- Product Stage -->
     <div class="pl-hero-prod" id="pl-heroProd">
       <div class="pl-hstage" id="pl-hstage">
-        {%- assign slide_index = 0 -%}
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'stage_slide' -%}
-            {%- assign slide_index = slide_index | plus: 1 -%}
-            <div class="pl-hslide pl-hs{{ slide_index }} {% if slide_index == 1 %}pl-on{% endif %}" data-n="{{ slide_index }}">
+        {%- assign slide_blocks = section.blocks | where: 'type', 'stage_slide' -%}
+        {%- if slide_blocks.size > 0 -%}
+          {%- for block in slide_blocks -%}
+            {%- assign slide_index = forloop.index -%}
+            <div class="pl-hslide pl-hs{{ slide_index }} {% if slide_index == 1 %}pl-on{% endif %}" data-n="{{ slide_index }}" {{ block.shopify_attributes }}>
               {%- if block.settings.product_html != blank -%}
                 {{ block.settings.product_html }}
               {%- else -%}
-                {%- comment -%}Fallback to hardcoded layout from prototype if empty{%- endcomment -%}
                 {%- if slide_index == 1 -%}
                   <span class="pl-hp pl-p-kbtl pl-a pl-d1" role="img" aria-label="Kitchen cleaner"></span>
                 {%- elsif slide_index == 2 -%}
                   <span class="pl-hp pl-p-tbtl pl-a pl-d1" role="img" aria-label="Tap cleaner"></span>
                   <span class="pl-hp pl-p-kbtl pl-b pl-d2" role="img" aria-label="Kitchen cleaner"></span>
-                {%- elsif slide_index == 3 -%}
+                {%- else -%}
                   <span class="pl-hp pl-p-tbtl pl-a pl-d1" role="img" aria-label="Tap cleaner"></span>
                   <span class="pl-hp pl-p-mbtl pl-b pl-d2" role="img" aria-label="Metal cleaner"></span>
                   <span class="pl-hp pl-p-kbtl pl-c pl-d3" role="img" aria-label="Kitchen cleaner"></span>
@@ -595,17 +594,47 @@
                 <span class="pl-cut">{{ block.settings.discount_badge }}</span>
               </div>
             </div>
-          {%- endif -%}
-        {%- endfor -%}
+          {%- endfor -%}
+        {%- else -%}
+          <div class="pl-hslide pl-hs1 pl-on" data-n="1">
+            <span class="pl-hp pl-p-kbtl pl-a pl-d1" role="img" aria-label="Kitchen cleaner"></span>
+            <div class="pl-glass-2 pl-ptag">
+              <span class="pl-lbl">Single bottle</span>
+              <span class="pl-val"><strong>₹200</strong><s>₹299</s></span>
+              <span class="pl-cut">33% off</span>
+            </div>
+          </div>
+          <div class="pl-hslide pl-hs2" data-n="2">
+            <span class="pl-hp pl-p-tbtl pl-a pl-d1" role="img" aria-label="Tap cleaner"></span>
+            <span class="pl-hp pl-p-kbtl pl-b pl-d2" role="img" aria-label="Kitchen cleaner"></span>
+            <div class="pl-glass-2 pl-ptag">
+              <span class="pl-lbl">Any 2 products</span>
+              <span class="pl-val"><strong>₹349</strong><s>₹598</s></span>
+              <span class="pl-cut">Save ₹249</span>
+            </div>
+          </div>
+          <div class="pl-hslide pl-hs3" data-n="3">
+            <span class="pl-hp pl-p-tbtl pl-a pl-d1" role="img" aria-label="Tap cleaner"></span>
+            <span class="pl-hp pl-p-mbtl pl-b pl-d2" role="img" aria-label="Metal cleaner"></span>
+            <span class="pl-hp pl-p-kbtl pl-c pl-d3" role="img" aria-label="Kitchen cleaner"></span>
+            <div class="pl-glass-2 pl-ptag">
+              <span class="pl-lbl">Any 3 products</span>
+              <span class="pl-val"><strong>₹499</strong><s>₹897</s></span>
+              <span class="pl-cut">Save ₹398</span>
+            </div>
+          </div>
+        {%- endif -%}
       </div>
       <div class="pl-hdots" id="pl-hdots">
-        {%- assign slide_index = 0 -%}
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'stage_slide' -%}
-            {%- assign slide_index = slide_index | plus: 1 -%}
-            <button type="button" class="{% if slide_index == 1 %}pl-on{% endif %}" aria-label="Show {{ slide_index }} products"></button>
-          {%- endif -%}
-        {%- endfor -%}
+        {%- if slide_blocks.size > 0 -%}
+          {%- for block in slide_blocks -%}
+            <button class="{% if forloop.index == 1 %}pl-on{% endif %}" aria-label="View slide {{ forloop.index }}"></button>
+          {%- endfor -%}
+        {%- else -%}
+          <button class="pl-on" aria-label="View slide 1"></button>
+          <button aria-label="View slide 2"></button>
+          <button aria-label="View slide 3"></button>
+        {%- endif -%}
       </div>
     </div>
 
