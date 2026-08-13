@@ -1,0 +1,164 @@
+<section class="sec revband" id="reviews" data-scene="1">
+  <div class="wrap">
+    <div class="revhead rv">
+      <span class="kicker">{{ section.settings.kicker }}</span>
+      <span class="agg"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>{{ section.settings.rating }}</b> {{ section.settings.rating_text }}</span>
+      <span class="agg">{{ section.settings.homes_text_1 }} <b>{{ section.settings.homes_bold }}</b> {{ section.settings.homes_text_2 }}</span>
+    </div>
+  </div>
+  <div class="revrail rv" aria-label="Customer reviews">
+    <div class="revtrack">
+      {%- for block in section.blocks -%}
+        <article class="glass-2 rcard" {{ block.shopify_attributes }}>
+          <div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <h5>{{ block.settings.title }}</h5>
+          <p>{{ block.settings.content }}</p>
+          <div class="who">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <b>{{ block.settings.author }}</b>
+            <span>&middot; {{ block.settings.product }}</span>
+          </div>
+        </article>
+      {%- endfor -%}
+      {%- comment -%} Duplicate for seamless loop {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <article class="glass-2 rcard">
+          <div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <h5>{{ block.settings.title }}</h5>
+          <p>{{ block.settings.content }}</p>
+          <div class="who">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+            <b>{{ block.settings.author }}</b>
+            <span>&middot; {{ block.settings.product }}</span>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- REVIEWS ---------- */
+  .revband { padding: var(--sec-y, 60px) 0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 18px; }
+  .revhead { display: flex; align-items: center; justify-content: center; gap: 10px 18px; flex-wrap: wrap; margin-bottom: 14px; }
+  .kicker { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(1,66,59,.56); }
+  .revhead .agg { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(1,66,59,.78); }
+  .revhead .agg b { font-family: 'Outfit', sans-serif; font-size: 16px; color: #b8701c; letter-spacing: 0; }
+  .revhead .st { color: #b8701c; font-size: 12px; letter-spacing: .16em; }
+  
+  .revrail {
+    overflow: hidden; position: relative;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .revtrack { display: flex; gap: 12px; width: max-content; animation: marq 52s linear infinite; }
+  .revrail:hover .revtrack, .revrail:focus-within .revtrack { animation-play-state: paused; }
+  @keyframes marq { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+  
+  .glass-2 {
+    background: linear-gradient(158deg, rgba(255,255,255,.66), rgba(236,230,247,.44));
+    backdrop-filter: blur(12px) saturate(130%); -webkit-backdrop-filter: blur(12px) saturate(130%);
+    border: 1px solid rgba(75,58,143,.13);
+    border-radius: 20px;
+    box-shadow: 0 16px 38px rgba(58,44,112,.10), inset 0 1px 0 rgba(255,255,255,.86);
+    position: relative; overflow: hidden;
+  }
+  
+  .rcard { flex: 0 0 auto; width: 284px; padding: 15px 17px; border-radius: 18px; }
+  .rcard .st { color: #b8701c; font-size: 10.5px; letter-spacing: .2em; margin-bottom: 9px; }
+  .rcard h5 { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #01423b; margin-bottom: 7px; margin-top:0; }
+  .rcard p { font-size: 12.6px; color: rgba(1,66,59,.78); line-height: 1.52; margin-bottom: 11px; margin-top:0;}
+  .rcard .who { display: flex; align-items: center; gap: 7px; font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(1,66,59,.56); }
+  .rcard .who b { color: #01423b; font-weight: 700; }
+  .rcard .who svg { width: 12px; height: 12px; color: #4f7d10; flex: 0 0 auto; }
+</style>
+
+{% schema %}
+{
+  "name": "Purelane Reviews",
+  "class": "section-purelane-reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker text",
+      "default": "That's what they said"
+    },
+    {
+      "type": "text",
+      "id": "rating",
+      "label": "Rating",
+      "default": "4.8"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "from 8,000+ reviews"
+    },
+    {
+      "type": "text",
+      "id": "homes_text_1",
+      "label": "Homes Text 1",
+      "default": "Loved by"
+    },
+    {
+      "type": "text",
+      "id": "homes_bold",
+      "label": "Homes Bold Text",
+      "default": "12 lakh+"
+    },
+    {
+      "type": "text",
+      "id": "homes_text_2",
+      "label": "Homes Text 2",
+      "default": "homes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Works like a charm"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Review Text",
+          "default": "Finally an eco option that cleans as well as the chemical detergent I used for years, and it smells better."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author Name",
+          "default": "Anita"
+        },
+        {
+          "type": "text",
+          "id": "product",
+          "label": "Product",
+          "default": "Laundry detergent"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review", "settings": { "title": "Best dishwash ever", "content": "Our old dishwash left my help with dry, cracked skin. That stopped completely after we switched.", "author": "Priya", "product": "Dishwash gel" } },
+        { "type": "review", "settings": { "title": "Great product, great packaging", "content": "Very soft on hands with a lovely fragrance, and it feels good to be using far less plastic.", "author": "Sunita", "product": "Liquid handwash" } },
+        { "type": "review", "settings": { "title": "Dog friendly", "content": "We switched because chemical floor cleaners were setting off my dog's allergies. No reactions since.", "author": "Rohit S.", "product": "Floor cleaner" } },
+        { "type": "review", "settings": { "title": "Sparkling taps again", "content": "Hard water had ruined our bathroom fittings. Two sprays and the scale wipes straight off, no scrubbing.", "author": "Verified buyer", "product": "Tap cleaner" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
