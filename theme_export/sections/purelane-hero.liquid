@@ -1,0 +1,803 @@
+{%- style -%}
+.pl-hero-section {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 150px 0 var(--pl-sec-y);
+  background-color: var(--pl-ink);
+  overflow: hidden;
+}
+
+.pl-hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(102deg, rgba(255,255,255,.80) 0%, rgba(255,255,255,.50) 30%, rgba(255,255,255,.12) 54%, transparent 68%);
+}
+
+@media(max-width: 900px) {
+  .pl-hero-section::before {
+    background: linear-gradient(180deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.34) 36%, rgba(255,255,255,.66) 100%);
+  }
+}
+
+.pl-hero-grid {
+  max-width: var(--pl-maxw);
+  margin: 0 auto;
+  padding: 0 18px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.pl-hero-copy {
+  max-width: 600px;
+  position: relative;
+  z-index: 3;
+}
+
+.pl-hero-section h1 {
+  margin-bottom: 20px;
+  text-shadow: none;
+}
+
+.pl-rule {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 0 0 20px;
+  max-width: 270px;
+}
+.pl-rule i {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(75,58,143,.34), transparent);
+}
+.pl-rule svg {
+  width: 16px;
+  height: 16px;
+  color: var(--pl-accent);
+  flex: 0 0 auto;
+}
+
+.pl-hero-cta {
+  display: flex;
+  gap: 11px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.pl-hero-prod {
+  position: absolute;
+  right: 2%;
+  bottom: 28px;
+  width: min(50vw, 560px);
+  z-index: 2;
+  filter: drop-shadow(0 14px 22px rgba(0,74,66,.15));
+}
+
+@media(max-width: 1200px) {
+  .pl-hero-copy { max-width: 470px; }
+  .pl-hero-prod { width: min(44vw, 440px); right: 3%; }
+}
+@media(max-width: 900px) {
+  .pl-hero-section { align-items: flex-end; padding-top: 132px; }
+  .pl-hero-copy { max-width: none; }
+  .pl-hero-prod { position: relative; right: auto; bottom: auto; width: min(88vw, 420px); margin: 20px auto 0; }
+}
+@media(max-width: 760px) {
+  .pl-hero-section { padding: 118px 0 var(--pl-sec-y); }
+  .pl-hero-prod { width: min(92vw, 360px); }
+  .pl-hero-section h1 { font-size: clamp(44px, 13.5vw, 64px); }
+}
+
+/* Badges */
+.pl-badges {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 96px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 8px;
+  border-radius: 20px;
+}
+.pl-badge {
+  text-align: center;
+  padding: 11px 4px;
+}
+.pl-badge + .pl-badge {
+  border-top: 1px solid rgba(75,58,143,.12);
+}
+.pl-badge .pl-bi {
+  width: 38px;
+  height: 38px;
+  margin: 0 auto 8px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.62);
+  border: 1px solid rgba(75,58,143,.16);
+  color: #4f7d10;
+}
+.pl-badge .pl-bi svg { width: 19px; height: 19px; }
+.pl-badge span {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--pl-paper-2);
+  line-height: 1.34;
+}
+@media(max-width: 900px) { .pl-badges { display: none; } }
+
+.pl-badgestrip {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+.pl-badgestrip div {
+  flex: 1;
+  text-align: center;
+  padding: 11px 6px;
+  border-radius: 14px;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--pl-paper-2);
+  line-height: 1.3;
+}
+.pl-badgestrip svg {
+  width: 18px;
+  height: 18px;
+  margin: 0 auto 6px;
+  color: #4f7d10;
+}
+@media(min-width: 901px) { .pl-badgestrip { display: none; } }
+@media(max-width: 420px) {
+  .pl-badgestrip div { font-size: 8px; padding: 9px 4px; }
+  .pl-badgestrip svg { width: 16px; height: 16px; }
+}
+
+/* Product Stage */
+.pl-hstage {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 74svh, 680px);
+}
+.pl-hslide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-right: 2%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .85s var(--pl-ease);
+}
+.pl-hslide.pl-on { opacity: 1; pointer-events: auto; }
+
+.pl-hp {
+  position: relative;
+  width: auto;
+  flex: 0 0 auto;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+  opacity: 0;
+  transform: translateY(28px) scale(.94);
+  transition: opacity .8s var(--pl-ease), transform .8s var(--pl-ease);
+  filter: drop-shadow(0 14px 22px rgba(0,74,66,.15));
+}
+.pl-hslide.pl-on .pl-hp { opacity: 1; transform: none; }
+.pl-hslide.pl-on .pl-hp.pl-d1 { transition-delay: .06s; }
+.pl-hslide.pl-on .pl-hp.pl-d2 { transition-delay: .30s; }
+.pl-hslide.pl-on .pl-hp.pl-d3 { transition-delay: .54s; }
+
+.pl-hs1 .pl-a { height: 100%; z-index: 3; }
+.pl-hs2 .pl-a { height: 80%; margin-right: -8%; z-index: 1; }
+.pl-hs2 .pl-b { height: 97%; z-index: 3; }
+.pl-hs3 .pl-a { height: 75%; margin-right: -8%; z-index: 1; order: 1; }
+.pl-hs3 .pl-c { height: 97%; z-index: 3; order: 2; }
+.pl-hs3 .pl-b { height: 79%; margin-left: -8%; z-index: 2; order: 3; }
+
+/* Price Flag */
+.pl-ptag {
+  position: absolute;
+  left: 0;
+  bottom: 2%;
+  z-index: 6;
+  padding: 11px 14px 12px;
+  border-radius: 16px;
+  max-width: 52%;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .8s var(--pl-ease) .62s, transform .8s var(--pl-ease) .62s;
+}
+.pl-hslide.pl-on .pl-ptag { opacity: 1; transform: none; }
+.pl-ptag .pl-lbl {
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--pl-accent);
+}
+.pl-ptag .pl-val {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  margin-top: 5px;
+}
+.pl-ptag .pl-val strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--pl-surface);
+  line-height: 1;
+}
+.pl-ptag .pl-val s {
+  font-size: 12px;
+  color: var(--pl-paper-3);
+}
+.pl-ptag .pl-cut {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 8.4px;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(201,118,29,.16);
+  border: 1px solid rgba(201,118,29,.36);
+  color: #4f7d10;
+}
+
+/* Dots */
+.pl-hdots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+.pl-hdots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(75,58,143,.22);
+  transition: .4s var(--pl-ease);
+  cursor: pointer;
+}
+.pl-hdots button.pl-on {
+  background: #b8701c;
+  width: 20px;
+  border-radius: 999px;
+}
+.pl-hdots button:hover {
+  background: rgba(75,58,143,.4);
+}
+
+@media(max-width: 900px) {
+  .pl-hstage { height: clamp(300px, 44svh, 430px); }
+  .pl-ptag { padding: 9px 12px 10px; border-radius: 14px; max-width: 58%; }
+  .pl-ptag .pl-val strong { font-size: 20px; }
+}
+
+/* Scenes / Water Background */
+.pl-scenes {
+  background: #eee7fb;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.pl-scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s var(--pl-ease);
+}
+.pl-scene.pl-on { opacity: 1; }
+.pl-s1 { background: linear-gradient(178deg, #fbfffb 0%, #eafaec 24%, #d6f1dc 54%, #bfe8ca 100%); }
+
+.pl-water {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity 1.2s;
+}
+.pl-wl {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1800px;
+  height: 1100px;
+  margin: -550px 0 0 -900px;
+  transform: translate3d(var(--px, 0), var(--py, 0), 0);
+  pointer-events: none;
+}
+.pl-wl-a { mix-blend-mode: soft-light; opacity: 1; }
+.pl-wl-a .pl-sv { filter: contrast(1.25); }
+.pl-wl-b { mix-blend-mode: overlay; opacity: .66; }
+.pl-wl-c { mix-blend-mode: overlay; opacity: .6; }
+.pl-wl-s { mix-blend-mode: overlay; opacity: .72; }
+.pl-bub { position: absolute; inset: 0; pointer-events: none; }
+.pl-bub span {
+  position: absolute;
+  bottom: -20px;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  border: 1px solid rgba(75,58,143,.26);
+  background: radial-gradient(circle at 34% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 64%);
+  animation: pl-float var(--dur) linear var(--dly) infinite;
+}
+@keyframes pl-float {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate3d(var(--drift), -120vh, 0); opacity: 0; }
+}
+
+.pl-vig {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(126% 88% at 50% 26%, transparent 42%, rgba(75,58,143,.07) 80%, rgba(0,80,74,.16) 100%),
+              linear-gradient(180deg, rgba(255,255,255,.40) 0%, transparent 20%, transparent 70%, rgba(0,84,78,.10) 100%);
+}
+
+@media(max-width: 760px) {
+  .pl-wl-b, .pl-bub { display: none; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .pl-wl-a, .pl-wl-b, .pl-wl-c, .pl-wl-s, .pl-bub span { animation: none; transform: none !important; }
+}
+
+/* Base64 Product Images used in Hero */
+.pl-pimg {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+  flex: 0 0 auto;
+}
+.pl-p-kbtl { background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgMTE3NyIgd2lkdGg9IjM4MCIgaGVpZ2h0PSIxMTc3Ij4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzZiNTViOCIgc3RvcC1vcGFjaXR5PSIuOTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2YjU1YjgiIHN0b3Atb3BhY2l0eT0iLjYyIi8+CjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB4PSIxNDkuOSIgeT0iMCIgd2lkdGg9IjgwLjEiIGhlaWdodD0iMTE3LjciIHJ4PSIxNy42IiBmaWxsPSIjNmI1NWI4IiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjEwNS45IiB3aWR0aD0iNTcuNyIgaGVpZ2h0PSI4Mi40IiBmaWxsPSIjNmI1NWI4IiBvcGFjaXR5PSIuNyIvPgo8cmVjdCB4PSI3Mi4yIiB5PSIyMzUuNCIgd2lkdGg9IjIzNS42IiBoZWlnaHQ9Ijk0MS42IiByeD0iMzcuNyIgZmlsbD0idXJsKCNnKSIvPgo8cmVjdCB4PSIxMDAuNSIgeT0iNTE3LjkiIHdpZHRoPSIxNzkuMSIgaGVpZ2h0PSIzMjAuMSIgcng9IjExLjgiIGZpbGw9IiNmYWY3ZmQiIG9wYWNpdHk9Ii44OCIvPgo8cmVjdCB4PSIxMjguNyIgeT0iNjEyLjAiIHdpZHRoPSIxMjIuNSIgaGVpZ2h0PSI0Mi40IiByeD0iMiIgZmlsbD0iIzZiNTViOCIgb3BhY2l0eT0iLjU1Ii8+CjxyZWN0IHg9IjE0Mi45IiB5PSI2OTYuOCIgd2lkdGg9Ijk0LjIiIGhlaWdodD0iMzMuMCIgcng9IjIiIGZpbGw9IiM2YjU1YjgiIG9wYWNpdHk9Ii4zNSIvPgo8L3N2Zz4="); aspect-ratio: 0.3229; }
+.pl-p-tbtl { background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgMTE4MCIgd2lkdGg9IjM4MCIgaGVpZ2h0PSIxMTgwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzdhNjJjMiIgc3RvcC1vcGFjaXR5PSIuOTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM3YTYyYzIiIHN0b3Atb3BhY2l0eT0iLjYyIi8+CjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB4PSIxNDkuOSIgeT0iMCIgd2lkdGg9IjgwLjEiIGhlaWdodD0iMTE4LjAiIHJ4PSIxNy42IiBmaWxsPSIjN2E2MmMyIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjEwNi4yIiB3aWR0aD0iNTcuNyIgaGVpZ2h0PSI4Mi42IiBmaWxsPSIjN2E2MmMyIiBvcGFjaXR5PSIuNyIvPgo8cmVjdCB4PSI3Mi4yIiB5PSIyMzYuMCIgd2lkdGg9IjIzNS42IiBoZWlnaHQ9Ijk0NC4wIiByeD0iMzcuNyIgZmlsbD0idXJsKCNnKSIvPgo8cmVjdCB4PSIxMDAuNSIgeT0iNTE5LjIiIHdpZHRoPSIxNzkuMSIgaGVpZ2h0PSIzMjEuMCIgcng9IjExLjgiIGZpbGw9IiNmYWY3ZmQiIG9wYWNpdHk9Ii44OCIvPgo8cmVjdCB4PSIxMjguNyIgeT0iNjEzLjYiIHdpZHRoPSIxMjIuNSIgaGVpZ2h0PSI0Mi41IiByeD0iMiIgZmlsbD0iIzdhNjJjMiIgb3BhY2l0eT0iLjU1Ii8+CjxyZWN0IHg9IjE0Mi45IiB5PSI2OTguNiIgd2lkdGg9Ijk0LjIiIGhlaWdodD0iMzMuMCIgcng9IjIiIGZpbGw9IiM3YTYyYzIiIG9wYWNpdHk9Ii4zNSIvPgo8L3N2Zz4="); aspect-ratio: 0.322; }
+.pl-p-mbtl { background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgMTA1NCIgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxMDU0Ij4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzVhNDZhMyIgc3RvcC1vcGFjaXR5PSIuOTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1YTQ2YTMiIHN0b3Atb3BhY2l0eT0iLjYyIi8+CjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cmVjdCB4PSIxNDIuMSIgeT0iMCIgd2lkdGg9Ijc1LjkiIGhlaWdodD0iMTA1LjQiIHJ4PSIxNi43IiBmaWxsPSIjN নামকরণYTMiIG9wYWNpdHk9Ii44NSIvPgo8cmVjdCB4PSIxNTIuNyIgeT0iOTQuOSIgd2lkdGg9IjU0LjYiIGhlaWdodD0iNzMuOCIgZmlsbD0iIzVhNDZhMyIgb3BhY2l0eT0iLjciLz4KPHJlY3QgeD0iNjguNCIgeT0iMjEwLjgiIHdpZHRoPSIyMjMuMiIgaGVpZ2h0PSI4NDMuMiIgcng9IjM1LjciIGZpbGw9InVybCgjZykiLz4KPHJlY3QgeD0iOTUuMiIgeT0iNDYzLjgiIHdpZHRoPSIxNjkuNiIgaGVpZ2h0PSIyODYuNyIgcng9IjExLjIiIGZpbGw9IiNmYWY3ZmQiIG9wYWNpdHk9Ii44OCIvPgo8cmVjdCB4PSIxMjIuMCIgeT0iNTQ4LjEiIHdpZHRoPSIxMTYuMSIgaGVpZ2h0PSIzNy45IiByeD0iMiIgZmlsbD0iIzVhNDZhMyIgb3BhY2l0eT0iLjU1Ii8+CjxyZWN0IHg9IjEzNS40IiB5PSI2MjQuOCIgd2lkdGg9Ijg5LjMiIGhlaWdodD0iMjkuNSIgcng9IjIiIGZpbGw9IiM1YTQ2YTMiIG9wYWNpdHk9Ii4zNSIvPgo8L3N2Zz4="); aspect-ratio: 0.3416; }
+
+{%- endstyle -%}
+
+<section class="pl-hero-section">
+  <!-- Cinematic Background -->
+  <div class="pl-scenes" id="pl-scenes">
+    <div class="pl-scene pl-s1 pl-on"></div>
+    <div class="pl-water" id="pl-water">
+      <div class="pl-wl pl-wl-a">
+        <svg class="pl-sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="pl-cg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#eafff4" stop-opacity="0"/>
+              <stop offset=".18" stop-color="#f2fff8" stop-opacity=".95"/>
+              <stop offset=".5" stop-color="#ffffff" stop-opacity="1"/>
+              <stop offset=".82" stop-color="#e6fbef" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#eafff4" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="pl-wf" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.0022 0.019" numOctaves="3" seed="21" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="72" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
+          <g filter="url(#pl-wf)">
+            <!-- Sample curves to simulate the water effect -->
+            <path d="M262 230 Q372 261 482 238 Q592 247 702 250" stroke="url(#pl-cg)" stroke-width="1.7" fill="none" opacity="0.45" stroke-linecap="round"/>
+            <path d="M137 256 Q307 242 477 258 Q646 238 816 245" stroke="url(#pl-cg)" stroke-width="5.1" fill="none" opacity="0.23" stroke-linecap="round"/>
+            <path d="M-20 1118 Q114 1112 249 1129" stroke="url(#pl-cg)" stroke-width="3.5" fill="none" opacity="0.37" stroke-linecap="round"/>
+            <path d="M564 653 Q704 686 843 651" stroke="url(#pl-cg)" stroke-width="5.2" fill="none" opacity="0.23" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="pl-wl pl-wl-b">
+        <svg class="pl-sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="pl-cg2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#eafff4" stop-opacity="0"/>
+              <stop offset=".5" stop-color="#ffffff" stop-opacity="1"/>
+              <stop offset="1" stop-color="#eafff4" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="pl-wf2" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.005 0.031" numOctaves="2" seed="47" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="46" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
+          <g filter="url(#pl-wf2)">
+            <path d="M355 217 Q442 234 529 234" stroke="url(#pl-cg2)" stroke-width="3.4" fill="none" opacity="0.17" stroke-linecap="round"/>
+            <path d="M160 723 Q278 720 396 713" stroke="url(#pl-cg2)" stroke-width="1.1" fill="none" opacity="0.17" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="pl-wl pl-wl-c">
+        <svg class="pl-sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="pl-sg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f4fff9" stop-opacity=".85"/>
+              <stop offset=".38" stop-color="#dcf6e7" stop-opacity=".28"/>
+              <stop offset="1" stop-color="#d4f2e2" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g>
+            <polygon points="95,-80 152,-80 517,1180 439,1180" fill="url(#pl-sg)" opacity="0.26"/>
+            <polygon points="433,-80 491,-80 885,1180 807,1180" fill="url(#pl-sg)" opacity="0.41"/>
+            <polygon points="751,-80 919,-80 1180,1180 953,1180" fill="url(#pl-sg)" opacity="0.31"/>
+          </g>
+        </svg>
+      </div>
+      <div class="pl-wl pl-wl-s">
+        <svg class="pl-sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="pl-sf" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+              <stop offset=".55" stop-color="#e8fff2" stop-opacity=".16"/>
+              <stop offset="1" stop-color="#e8fff2" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g>
+            <rect x="-100" y="-40" width="2000" height="150" fill="url(#pl-sf)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="pl-bub">
+        <span style="--x:91.9%;--s:6.7px;--dur:21.5s;--dly:19.0s;--drift:-11px"></span>
+        <span style="--x:43.4%;--s:5.7px;--dur:26.8s;--dly:16.1s;--drift:-11px"></span>
+        <span style="--x:96.6%;--s:6.2px;--dur:13.7s;--dly:10.3s;--drift:38px"></span>
+        <span style="--x:6.0%;--s:3.6px;--dur:24.4s;--dly:10.6s;--drift:3px"></span>
+        <span style="--x:70.3%;--s:3.3px;--dur:20.9s;--dly:9.2s;--drift:-39px"></span>
+      </div>
+    </div>
+    <div class="pl-vig"></div>
+  </div>
+
+  <div class="pl-hero-grid">
+
+    <!-- Trust Badges (Right Desktop Rail) -->
+    <div class="pl-badges pl-glass-2" aria-label="Product promises">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'trust_badge' -%}
+          <div class="pl-badge">
+            <span class="pl-bi">
+              {%- if block.settings.icon == 'plant' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+              {%- elsif block.settings.icon == 'shield' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.5 7.5-8.8V6L12 3Z"/><path d="m9 12 2.2 2.2L15.4 10"/></svg>
+              {%- elsif block.settings.icon == 'check' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M6.4 17.6 17.6 6.4"/></svg>
+              {%- endif -%}
+            </span>
+            <span>{{ block.settings.text | newline_to_br }}</span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- Hero Copy -->
+    <div class="pl-hero-copy">
+      <h1 class="pl-d1 pl-rv pl-in">
+        {%- assign heading_parts = section.settings.heading | split: section.settings.highlighted_word -%}
+        {{ heading_parts[0] | newline_to_br }}<span class="pl-lime">{{ section.settings.highlighted_word }}</span>{{ heading_parts[1] | newline_to_br }}
+      </h1>
+      <div class="pl-rule pl-rv pl-rv-d1 pl-in">
+        <i></i>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+        <i></i>
+      </div>
+      <p class="pl-lede pl-rv pl-rv-d2 pl-in">{{ section.settings.paragraph }}</p>
+      
+      <div class="pl-hero-cta pl-rv pl-rv-d3 pl-in">
+        {%- if section.settings.primary_cta_link != blank -%}
+          <a class="pl-btn pl-btn-primary" href="{{ section.settings.primary_cta_link }}">
+            {{ section.settings.primary_cta_label }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.secondary_cta_link != blank -%}
+          <a class="pl-btn pl-btn-ghost" href="{{ section.settings.secondary_cta_link }}">{{ section.settings.secondary_cta_label }}</a>
+        {%- endif -%}
+      </div>
+
+      <!-- Trust Badges (Mobile Strip) -->
+      <div class="pl-badgestrip pl-rv pl-rv-d4 pl-in">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'trust_badge' -%}
+            <div class="pl-glass-2">
+              {%- if block.settings.icon == 'plant' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+              {%- elsif block.settings.icon == 'shield' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.5 7.5-8.8V6L12 3Z"/><path d="m9 12 2.2 2.2L15.4 10"/></svg>
+              {%- elsif block.settings.icon == 'check' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M6.4 17.6 17.6 6.4"/></svg>
+              {%- endif -%}
+              {{ block.settings.text | replace: "<br>", " " }}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Product Stage -->
+    <div class="pl-hero-prod" id="pl-heroProd">
+      <div class="pl-hstage" id="pl-hstage">
+        {%- assign slide_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stage_slide' -%}
+            {%- assign slide_index = slide_index | plus: 1 -%}
+            <div class="pl-hslide pl-hs{{ slide_index }} {% if slide_index == 1 %}pl-on{% endif %}" data-n="{{ slide_index }}">
+              {%- if block.settings.product_html != blank -%}
+                {{ block.settings.product_html }}
+              {%- else -%}
+                {%- comment -%}Fallback to hardcoded layout from prototype if empty{%- endcomment -%}
+                {%- if slide_index == 1 -%}
+                  <span class="pl-hp pl-p-kbtl pl-a pl-d1" role="img" aria-label="Kitchen cleaner"></span>
+                {%- elsif slide_index == 2 -%}
+                  <span class="pl-hp pl-p-tbtl pl-a pl-d1" role="img" aria-label="Tap cleaner"></span>
+                  <span class="pl-hp pl-p-kbtl pl-b pl-d2" role="img" aria-label="Kitchen cleaner"></span>
+                {%- elsif slide_index == 3 -%}
+                  <span class="pl-hp pl-p-tbtl pl-a pl-d1" role="img" aria-label="Tap cleaner"></span>
+                  <span class="pl-hp pl-p-mbtl pl-b pl-d2" role="img" aria-label="Metal cleaner"></span>
+                  <span class="pl-hp pl-p-kbtl pl-c pl-d3" role="img" aria-label="Kitchen cleaner"></span>
+                {%- endif -%}
+              {%- endif -%}
+              <div class="pl-glass-2 pl-ptag">
+                <span class="pl-lbl">{{ block.settings.title }}</span>
+                <span class="pl-val"><strong>{{ block.settings.price }}</strong><s>{{ block.settings.compare_price }}</s></span>
+                <span class="pl-cut">{{ block.settings.discount_badge }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="pl-hdots" id="pl-hdots">
+        {%- assign slide_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stage_slide' -%}
+            {%- assign slide_index = slide_index | plus: 1 -%}
+            <button type="button" class="{% if slide_index == 1 %}pl-on{% endif %}" aria-label="Show {{ slide_index }} products"></button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- parallax on water & product drift ---------- */
+  var prod = document.getElementById('pl-heroProd');
+  var raf = null, mx = 0, my = 0;
+
+  function frame() {
+    raf = null;
+    var y = window.scrollY || window.pageYOffset;
+    if (!reduce) {
+      var wl = document.querySelectorAll('#pl-water .pl-wl');
+      for (var i = 0; i < wl.length; i++) {
+        var d = [0.05, 0.09, 0.03, 0.02][i] || 0.05;
+        wl[i].style.setProperty('--px', (mx * d * 130).toFixed(1) + 'px');
+        wl[i].style.setProperty('--py', (-y * d + my * d * 90).toFixed(1) + 'px');
+      }
+      if (prod) {
+        var f = Math.min(y / 700, 1);
+        prod.style.transform = 'translate3d(' + (mx * -16).toFixed(2) + 'px,' + (-f * 54 + my * -10).toFixed(2) + 'px,0) scale(' + (1 - f * 0.06).toFixed(3) + ')';
+        prod.style.opacity = (1 - f * 0.55).toFixed(3);
+      }
+    }
+  }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(frame); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  
+  if (!reduce && window.matchMedia('(min-width: 1024px)').matches) {
+    window.addEventListener('mousemove', function (e) {
+      mx = (e.clientX / window.innerWidth - 0.5) * 2;
+      my = (e.clientY / window.innerHeight - 0.5) * 2;
+      onScroll();
+    }, { passive: true });
+  }
+
+  if (!reduce && prod) {
+    prod.animate(
+      [{ filter: 'drop-shadow(0 34px 54px rgba(2,20,19,.6))' },
+       { filter: 'drop-shadow(0 42px 68px rgba(2,20,19,.68))' },
+       { filter: 'drop-shadow(0 34px 54px rgba(2,20,19,.6))' }],
+      { duration: 7000, iterations: Infinity, easing: 'ease-in-out' }
+    );
+  }
+
+  /* ---------- hero stage: 1 -> 2 -> 3 products ---------- */
+  var hstage = document.getElementById('pl-hstage');
+  if (hstage) {
+    var hs = [].slice.call(hstage.querySelectorAll('.pl-hslide'));
+    var hd = [].slice.call(document.querySelectorAll('#pl-hdots button'));
+    var hi = 0, htimer = null;
+    function hgo(n) {
+      hi = (n + hs.length) % hs.length;
+      hs.forEach(function (s, i) { s.classList.toggle('pl-on', i === hi); });
+      hd.forEach(function (d, i) { d.classList.toggle('pl-on', i === hi); });
+    }
+    function hplay() { if (!htimer && !reduce && hs.length > 1) htimer = setInterval(function () { hgo(hi + 1); }, 3800); }
+    function hstop() { if (htimer) { clearInterval(htimer); htimer = null; } }
+    hd.forEach(function (d, i) {
+      d.addEventListener('click', function () { hstop(); hgo(i); hplay(); });
+    });
+    hstage.addEventListener('mouseenter', hstop);
+    hstage.addEventListener('mouseleave', hplay);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.isIntersecting ? hplay() : hstop(); });
+      }, { threshold: 0.2 }).observe(hstage);
+    } else { hplay(); }
+  }
+
+  frame();
+});
+</script>
+
+{% schema %}
+{
+  "name": "Hero (Purelane)",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Clean\nThat\nLasts"
+    },
+    {
+      "type": "text",
+      "id": "highlighted_word",
+      "label": "Highlighted Word",
+      "default": "Lasts"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph",
+      "default": "Homecare that works on the toughest grime, made from plants. Kind to your home, your family and the world outside it."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_label",
+      "label": "Primary CTA Label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_label",
+      "label": "Secondary CTA Label",
+      "default": "How it works"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary CTA Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "plant", "label": "Plant" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "check", "label": "Check" }
+          ],
+          "default": "plant"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Badge Text",
+          "default": "Plant\npowered"
+        }
+      ]
+    },
+    {
+      "type": "stage_slide",
+      "name": "Stage Slide",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Single bottle"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "₹200"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare Price",
+          "default": "₹299"
+        },
+        {
+          "type": "text",
+          "id": "discount_badge",
+          "label": "Discount Badge",
+          "default": "33% off"
+        },
+        {
+          "type": "html",
+          "id": "product_html",
+          "label": "Products HTML",
+          "info": "Overrides the default layout. E.g. <span class=\"pl-hp pl-p-kbtl pl-a pl-d1\"></span>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero (Purelane)",
+      "blocks": [
+        {
+          "type": "trust_badge",
+          "settings": { "icon": "plant", "text": "Plant\npowered" }
+        },
+        {
+          "type": "trust_badge",
+          "settings": { "icon": "shield", "text": "Safe for\nkids & pets" }
+        },
+        {
+          "type": "trust_badge",
+          "settings": { "icon": "check", "text": "Zero harsh\nchemicals" }
+        },
+        {
+          "type": "stage_slide",
+          "settings": { "title": "Single bottle", "price": "₹200", "compare_price": "₹299", "discount_badge": "33% off" }
+        },
+        {
+          "type": "stage_slide",
+          "settings": { "title": "Any 2 products", "price": "₹349", "compare_price": "₹598", "discount_badge": "Save ₹249" }
+        },
+        {
+          "type": "stage_slide",
+          "settings": { "title": "Any 3 products", "price": "₹499", "compare_price": "₹897", "discount_badge": "Save ₹398" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
