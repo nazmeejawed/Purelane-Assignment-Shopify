@@ -1,22 +1,22 @@
 <style>
 /* ═══════ PURELANE SCENES – fixed background layer ═══════ */
-.pl-scenes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(178deg,#fbfffb 0%,#eafaec 24%,#d6f1dc 54%,#bfe8ca 100%)}
+.pl-scenes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(178deg,#f2fbf4 0%,#e1f7e6 24%,#c9edd1 54%,#b0e4bc 100%)}
 .pl-scene{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}
 .pl-scene.on{opacity:1}
-.pl-s1{background:linear-gradient(178deg,#fbfffb 0%,#eafaec 24%,#d6f1dc 54%,#bfe8ca 100%)}
-.pl-s2{background:linear-gradient(178deg,#f6fdf7 0%,#e3f7e7 26%,#cbedd4 58%,#b2e2c2 100%)}
-.pl-s3{background:linear-gradient(178deg,#f0fbf2 0%,#d9f2df 28%,#bde6c8 60%,#a2d9b6 100%)}
-.pl-s4{background:linear-gradient(178deg,#e9f8ec 0%,#cdedd6 30%,#addcbe 62%,#8ecdaa 100%)}
+.pl-s1{background:linear-gradient(178deg,#f2fbf4 0%,#e1f7e6 24%,#c9edd1 54%,#b0e4bc 100%)}
+.pl-s2{background:linear-gradient(178deg,#edf9f0 0%,#dbf4e0 26%,#bfebc8 58%,#a4deb3 100%)}
+.pl-s3{background:linear-gradient(178deg,#e6f6ea 0%,#d0eed7 28%,#b3e5be 60%,#96d5a7 100%)}
+.pl-s4{background:linear-gradient(178deg,#def2e2 0%,#c4e7cb 30%,#a2dcb0 62%,#83c795 100%)}
 
 /* water cinematics */
 .pl-water{position:absolute;inset:-14% -10%;pointer-events:none;transition:opacity 1.2s ease}
 .pl-wl{position:absolute;inset:0;will-change:transform}
 .pl-wl .sv{width:100%;height:100%}
 .pl-wl-a{mix-blend-mode:soft-light;opacity:1;animation:pl-drift-a 34s linear infinite}
-.pl-wl-a .sv{filter:contrast(1.25)}
-.pl-wl-b{mix-blend-mode:overlay;opacity:.66;animation:pl-drift-b 23s linear infinite}
-.pl-wl-c{mix-blend-mode:overlay;opacity:.6;animation:pl-shaft 19s ease-in-out infinite}
-.pl-wl-s{mix-blend-mode:overlay;opacity:.72;animation:pl-surface 11s ease-in-out infinite;transform-origin:50% 0}
+.pl-wl-a .sv{filter:contrast(1.4) brightness(1.05)}
+.pl-wl-b{mix-blend-mode:overlay;opacity:.75;animation:pl-drift-b 23s linear infinite}
+.pl-wl-c{mix-blend-mode:overlay;opacity:.65;animation:pl-shaft 19s ease-in-out infinite}
+.pl-wl-s{mix-blend-mode:overlay;opacity:.8;animation:pl-surface 11s ease-in-out infinite;transform-origin:50% 0}
 
 @keyframes pl-drift-a{
   0%{transform:translate3d(-3%,0,0) scale(1.06)}
