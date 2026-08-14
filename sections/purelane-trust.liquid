@@ -1,0 +1,187 @@
+<style>
+#purelane-trust-{{ section.id }} {
+  /* VERSION 2 — LIGHT MODE (from prototype) */
+  --ink:#f4f0fb;
+  --deep:#e2daf3;
+  --brand:#4b3a8f;
+  --brand-lt:#6b55b8;
+  --paper:#241a3d;
+  --paper-2:rgba(36,26,61,.78);
+  --paper-3:rgba(36,26,61,.56);
+  --accent:#b8701c;
+  --accent-2:#c9761d;
+  --surface:#17102b;
+  --g-bg:linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line:rgba(75,58,143,.16);
+  --g-shadow:0 22px 54px rgba(58,44,112,.13);
+  --g-inset:inset 0 1px 0 rgba(255,255,255,.92);
+  --r:26px;
+  --r-sm:16px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 clamp(30px,4vw,60px);
+}
+
+#purelane-trust-{{ section.id }} .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 18px; }
+
+/* Glass Strip */
+#purelane-trust-{{ section.id }} .glass {
+  background: var(--g-bg);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--g-line);
+  border-radius: var(--r);
+  box-shadow: var(--g-shadow), var(--g-inset);
+  position: relative;
+  overflow: hidden;
+}
+#purelane-trust-{{ section.id }} .glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .55), transparent 32%, transparent 74%, rgba(201, 118, 29, .06));
+}
+
+#purelane-trust-{{ section.id }} .trust {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  padding: 6px;
+  position: relative;
+  z-index: 2;
+}
+@media(min-width: 820px) {
+  #purelane-trust-{{ section.id }} .trust {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#purelane-trust-{{ section.id }} .trust-i {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 14px;
+}
+#purelane-trust-{{ section.id }} .trust-i svg {
+  width: 26px;
+  height: 26px;
+  color: #4f7d10;
+  flex: 0 0 auto;
+}
+#purelane-trust-{{ section.id }} .trust-i span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--paper-2);
+  line-height: 1.32;
+}
+
+@media(max-width: 760px) {
+  #purelane-trust-{{ section.id }} .trust-i {
+    padding: 12px 10px;
+    gap: 9px;
+  }
+  #purelane-trust-{{ section.id }} .trust-i svg {
+    width: 22px;
+    height: 22px;
+  }
+  #purelane-trust-{{ section.id }} .trust-i span {
+    font-size: 10px;
+  }
+}
+</style>
+
+<section class="sec" id="purelane-trust-{{ section.id }}" data-scene="4">
+  <div class="wrap">
+    <div class="glass trust">
+      {%- for block in section.blocks -%}
+        <div class="trust-i" {{ block.shopify_attributes }}>
+          {%- case block.settings.icon -%}
+            {%- when 'leaf' or 'plant' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/>
+                <path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/>
+              </svg>
+            {%- when 'box' or 'package' or 'recycle' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/>
+                <path d="M4 8 6.5 3h11L20 8M9.5 12h5"/>
+              </svg>
+            {%- when 'heart' or 'safe' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7 2.6c0 5-7 9.4-7 9.4Z"/>
+              </svg>
+            {%- when 'globe' or 'india' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="8.6"/>
+                <path d="M3.4 12h17.2M12 3.4c2.4 2.4 3.6 5.4 3.6 8.6S14.4 18.2 12 20.6c-2.4-2.4-3.6-5.4-3.6-8.6S9.6 5.8 12 3.4Z"/>
+              </svg>
+            {%- when 'shield' -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            {%- else -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/>
+                <path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/>
+              </svg>
+          {%- endcase -%}
+          <span>{{ block.settings.text }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "leaf",
+          "options": [
+            { "value": "leaf", "label": "Leaf / Plant derived" },
+            { "value": "box", "label": "Box / Recyclable packaging" },
+            { "value": "heart", "label": "Heart / Safe for kids & pets" },
+            { "value": "globe", "label": "Globe / Made in India" },
+            { "value": "shield", "label": "Shield / Security" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text (use <br> for line break)",
+          "default": "Plant derived<br>formulas"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        { "type": "trust_item", "settings": { "icon": "leaf", "text": "Plant derived<br>formulas" } },
+        { "type": "trust_item", "settings": { "icon": "box", "text": "Recyclable<br>packaging" } },
+        { "type": "trust_item", "settings": { "icon": "heart", "text": "Safe for<br>kids & pets" } },
+        { "type": "trust_item", "settings": { "icon": "globe", "text": "Made in<br>India" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
