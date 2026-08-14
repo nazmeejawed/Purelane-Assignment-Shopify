@@ -417,7 +417,7 @@
       <a href="#combos" aria-label="Combos" title="Combos"></a>
       <a href="#bundles" aria-label="Bundles" title="Bundles"></a>
       <a href="#shop" aria-label="Shop" title="Shop"></a>
-      <a href="#reviews" aria-label="Reviews" title="Reviews"></a>
+      <a href="#signup" aria-label="Join" title="Join"></a>
     </nav>
 
     <main
@@ -514,23 +514,30 @@
       /* progress rail sync & smooth scroll */
       var railLinks = Array.prototype.slice.call(document.querySelectorAll('.pl-rail a'));
       if (railLinks.length) {
-        var targets = railLinks.map(function(a) {
-          var href = a.getAttribute('href');
-          return href ? document.querySelector(href) : null;
-        });
-
         function syncRail() {
-          var mid = window.scrollY + window.innerHeight * 0.42;
-          var idx = 0;
-          targets.forEach(function(t, i) {
-            if (t) {
-              var top = 0, el = t;
-              while (el) { top += el.offsetTop; el = el.offsetParent; }
-              if (top <= mid) idx = i;
+          var triggerPoint = window.innerHeight * 0.45;
+          var activeIdx = 0;
+          
+          for (var i = 0; i < railLinks.length; i++) {
+            var href = railLinks[i].getAttribute('href');
+            if (href) {
+              var targetEl = document.querySelector(href);
+              if (targetEl) {
+                var rect = targetEl.getBoundingClientRect();
+                if (rect.top <= triggerPoint) {
+                  activeIdx = i;
+                }
+              }
             }
-          });
+          }
+
+          // If scrolled to the very bottom of the page, highlight last dot
+          if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 80)) {
+            activeIdx = railLinks.length - 1;
+          }
+
           railLinks.forEach(function(a, i) {
-            a.classList.toggle('on', i === idx);
+            a.classList.toggle('on', i === activeIdx);
           });
         }
 
@@ -548,6 +555,7 @@
         });
 
         window.addEventListener('scroll', syncRail, { passive: true });
+        window.addEventListener('resize', syncRail, { passive: true });
         syncRail();
       }
     });
