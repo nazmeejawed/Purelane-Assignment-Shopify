@@ -23,11 +23,7 @@
         "email": "hello@purelane.com",
         "phone": "+91 9930 123 234",
         "company_name": "Purelane Eco Products Pvt Ltd",
-        "copyright": "© 2026 Purelane Eco Products Private Limited",
-        "show_sticky_bar": true,
-        "sticky_heading": "Pick any 3, pay ₹499",
-        "sticky_subtext": "Free shipping, always",
-        "sticky_button_label": "Build bundle"
+        "copyright": "© 2026 Purelane Eco Products Private Limited"
       }
     }
   },
