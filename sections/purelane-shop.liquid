@@ -24,6 +24,7 @@
   line-height:1.62;
   -webkit-font-smoothing:antialiased;
   padding:0 0 clamp(40px,6vw,80px);
+  position:relative;
 
   /* Product SVGs for crystal clear fallback illustrations */
   --p-tap:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNTk1IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjU5NSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM2MjUwYWQiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjI1MGFkIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjU5LjUiIHJ4PSIxNy42IiBmaWxsPSIjNjI1MGFkIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjUzLjYiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQxLjciIGZpbGw9IiM2MjUwYWQiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjExOS4wIiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDc2LjAiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjEuOCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2MS44IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMDkuNCIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjQiIHJ4PSIyIiBmaWxsPSIjNjI1MGFkIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Mi4yIiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi43IiByeD0iMiIgZmlsbD0iIzYyNTBhZCIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
@@ -278,6 +279,7 @@
 </style>
 
 <section class="sec" id="purelane-shop-{{ section.id }}" data-scene="3">
+  <span id="shop" style="position:absolute;top:-80px"></span>
   <div class="wrap">
     <div class="panel-head">
       {%- if section.settings.kicker != blank -%}

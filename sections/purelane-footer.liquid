@@ -140,7 +140,29 @@
 #purelane-footer-{{ section.id }} .fbot a:hover {
   color: var(--surface);
 }
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var footer = document.getElementById('purelane-footer-{{ section.id }}');
+  if (!footer) return;
+  footer.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
 
 <div id="purelane-footer-{{ section.id }}">
   <footer data-scene="4">
