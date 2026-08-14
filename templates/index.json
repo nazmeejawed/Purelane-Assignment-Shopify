@@ -216,17 +216,49 @@
         "prod_1": {
           "type": "product",
           "settings": {
-            "icon": "dish",
-            "title": "Dishwash gel",
-            "note": "Cuts grease, kind to hands"
+            "icon": "kitchen",
+            "title": "Kitchen cleaner",
+            "note": "Foam lifts grease, no scrubbing"
           }
         },
         "prod_2": {
           "type": "product",
           "settings": {
-            "icon": "kitchen",
-            "title": "Kitchen cleaner",
-            "note": "Foam lifts grease, no scrubbing"
+            "icon": "tap",
+            "title": "Tap & limescale",
+            "note": "Melts hard water stains"
+          }
+        },
+        "prod_3": {
+          "type": "product",
+          "settings": {
+            "icon": "laundry",
+            "title": "Laundry detergent",
+            "note": "Tough on odour, soft on fabric"
+          }
+        },
+        "prod_4": {
+          "type": "product",
+          "settings": {
+            "icon": "toilet",
+            "title": "Toilet cleaner",
+            "note": "Kills 99.9% of germs"
+          }
+        },
+        "prod_5": {
+          "type": "product",
+          "settings": {
+            "icon": "floor",
+            "title": "Floor cleaner",
+            "note": "Neem powered, pet safe"
+          }
+        },
+        "prod_6": {
+          "type": "product",
+          "settings": {
+            "icon": "dish",
+            "title": "Dishwash gel",
+            "note": "Cuts grease, kind to hands"
           }
         },
         "stat_1": {
@@ -265,6 +297,10 @@
       "block_order": [
         "prod_1",
         "prod_2",
+        "prod_3",
+        "prod_4",
+        "prod_5",
+        "prod_6",
         "stat_1",
         "stat_2",
         "stat_3",
