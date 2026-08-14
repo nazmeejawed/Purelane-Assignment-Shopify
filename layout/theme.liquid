@@ -336,6 +336,26 @@
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 
+    {%- if settings.custom_css != blank -%}
+      <style>
+        {{ settings.custom_css }}
+      </style>
+    {%- endif -%}
+
+    <style>
+      /* ---------- reveal on scroll ---------- */
+      .rv { opacity: 0; transform: translateY(30px); filter: blur(7px); transition: opacity .95s cubic-bezier(.2,.7,.2,1), transform .95s cubic-bezier(.2,.7,.2,1), filter .95s cubic-bezier(.2,.7,.2,1); }
+      .rv.in { opacity: 1; transform: none; filter: none; }
+      .rv-d1 { transition-delay: .09s; }
+      .rv-d2 { transition-delay: .18s; }
+      .rv-d3 { transition-delay: .27s; }
+      .rv-d4 { transition-delay: .36s; }
+      .rv-d5 { transition-delay: .45s; }
+      @media (prefers-reduced-motion: reduce) {
+        .rv { opacity: 1; transform: none; filter: none; transition: none; }
+      }
+    </style>
+
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
@@ -411,5 +431,25 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var revs = document.querySelectorAll('.rv');
+      if ('IntersectionObserver' in window && !reduce) {
+        var ro = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              ro.unobserve(e.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+        revs.forEach(function (el) { ro.observe(el); });
+      } else {
+        revs.forEach(function (el) { el.classList.add('in'); });
+      }
+    });
+    </script>
   </body>
 </html>

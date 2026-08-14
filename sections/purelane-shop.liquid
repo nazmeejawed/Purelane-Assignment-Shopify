@@ -343,7 +343,8 @@
         {%- comment -%} Product URL {%- endcomment -%}
         {%- assign product_url = card_product.url | default: "#" -%}
 
-        <article class="glass card" {{ block.shopify_attributes }}>
+        {% assign delay_mod = forloop.index0 | modulo: 4 %}
+        <article class="glass card rv {% if delay_mod > 0 %}rv-d{{ delay_mod }}{% endif %}" {{ block.shopify_attributes }}>
           <div class="shot">
             {%- if block.settings.badge != blank -%}
               <span class="pill">{{ block.settings.badge }}</span>

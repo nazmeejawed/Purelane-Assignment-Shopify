@@ -215,7 +215,8 @@
     
     <div class="comborail">
       {%- for block in section.blocks -%}
-      <article class="glass combo {% if block.settings.is_primary %}hero-combo{% endif %}" {{ block.shopify_attributes }}>
+      {% assign delay_mod = forloop.index0 | modulo: 4 %}
+      <article class="glass combo rv {% if delay_mod > 0 %}rv-d{{ delay_mod }}{% endif %} {% if block.settings.is_primary %}hero-combo{% endif %}" {{ block.shopify_attributes }}>
         <div class="tray">
           {%- if block.settings.saving_badge != blank -%}
           <span class="save">{{ block.settings.saving_badge }}</span>
