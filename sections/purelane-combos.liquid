@@ -1,25 +1,30 @@
 <style>
 #purelane-combos-{{ section.id }} {
 
-  --ink:#17102b;
-  --deep:#241a3d;
+  /* VERSION 2 — LIGHT MODE (from prototype) */
+  --ink:#f4f0fb;
+  --deep:#e2daf3;
   --brand:#4b3a8f;
   --brand-lt:#6b55b8;
-  --paper:#ece6f7;
-  --paper-2:rgba(236,230,247,.74);
-  --paper-3:rgba(236,230,247,.52);
-  --accent:#f0a03c;
+  --paper:#241a3d;
+  --paper-2:rgba(36,26,61,.78);
+  --paper-3:rgba(36,26,61,.56);
+  --accent:#b8701c;
   --accent-2:#c9761d;
-  --surface:#faf7fd;
-  --g-bg:linear-gradient(158deg,rgba(236,230,247,.15),rgba(75,58,143,.20) 58%,rgba(23,16,43,.28));
-  --g-line:rgba(236,230,247,.22);
-  --g-shadow:0 26px 74px rgba(18,12,34,.44);
-  --g-inset:inset 0 1px 0 rgba(255,255,255,.24);
+  --surface:#17102b;
+  --g-bg:linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line:rgba(75,58,143,.16);
+  --g-shadow:0 22px 54px rgba(58,44,112,.13);
+  --g-inset:inset 0 1px 0 rgba(255,255,255,.92);
   --r:26px;
   --r-sm:16px;
   --maxw:1180px;
-  --sec-y:34px;                 /* vertical rhythm between sections */
+  --sec-y:34px;
   --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
 
 
 --p-combo2:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgNDA5IiB3aWR0aD0iNDYwIiBoZWlnaHQ9IjQwOSI+PHJlY3QgeD0iMzQuMSIgeT0iMTM0LjYiIHdpZHRoPSI3OC45IiBoZWlnaHQ9IjI3NC40IiByeD0iMTIuNiIgZmlsbD0iIzZiNTViOCIgb3BhY2l0eT0iMC43MiIvPjxyZWN0IHg9IjQ1LjIiIHk9IjIyNy45IiB3aWR0aD0iNTYuOCIgaGVpZ2h0PSI4Mi4zIiByeD0iMyIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg1Ii8+PHJlY3QgeD0iMTUxLjgiIHk9IjU3LjMiIHdpZHRoPSIxMDEuMiIgaGVpZ2h0PSIzNTEuNyIgcng9IjE2LjIiIGZpbGw9IiM2YjU1YjgiIG9wYWNpdHk9IjAuOTUiLz48cmVjdCB4PSIxNjYuMCIgeT0iMTc2LjkiIHdpZHRoPSI3Mi45IiBoZWlnaHQ9IjEwNS41IiByeD0iMyIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg1Ii8+PHJlY3QgeD0iMjk0LjgiIHk9IjE1NS43IiB3aWR0aD0iNzIuOSIgaGVpZ2h0PSIyNTMuMyIgcng9IjExLjciIGZpbGw9IiM2YjU1YjgiIG9wYWNpdHk9IjAuNzIiLz48cmVjdCB4PSIzMDUuMCIgeT0iMjQxLjkiIHdpZHRoPSI1Mi41IiBoZWlnaHQ9Ijc2LjAiIHJ4PSIzIiBmaWxsPSIjZmFmN2ZkIiBvcGFjaXR5PSIuODUiLz48L3N2Zz4=");
@@ -38,13 +43,14 @@
 --p-wm:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgNDg4IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQ4OCI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0YjNhOGYiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNGIzYThmIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTE4LjQiIHk9IjAiIHdpZHRoPSI2My4yIiBoZWlnaHQ9IjQ4LjgiIHJ4PSIxMy45IiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTI3LjIiIHk9IjQzLjkiIHdpZHRoPSI0NS41IiBoZWlnaHQ9IjM0LjIiIGZpbGw9IiM0YjNhOGYiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjU3LjAiIHk9Ijk3LjYiIHdpZHRoPSIxODYuMCIgaGVpZ2h0PSIzOTAuNCIgcng9IjI5LjgiIGZpbGw9InVybCgjZykiLz4KPHJlY3QgeD0iNzkuMyIgeT0iMjE0LjciIHdpZHRoPSIxNDEuNCIgaGVpZ2h0PSIxMzIuNyIgcng9IjkuMyIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEwMS42IiB5PSIyNTMuOCIgd2lkdGg9Ijk2LjciIGhlaWdodD0iMTcuNiIgcng9IjIiIGZpbGw9IiM0YjNhOGYiIG9wYWNpdHk9Ii41NSIvPgo8cmVjdCB4PSIxMTIuOCIgeT0iMjg4LjkiIHdpZHRoPSI3NC40IiBoZWlnaHQ9IjEzLjciIHJ4PSIyIiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuMzUiLz4KPC9zdmc+");
 
 
-  /* LIGHT MODE VARS */
-  /* ERROR extracting light vars */
   padding: clamp(40px, 6vw, 80px) 0;
 }
 
 #purelane-combos-{{ section.id }} a { text-decoration: none; }
 #purelane-combos-{{ section.id }} p, #purelane-combos-{{ section.id }} h2, #purelane-combos-{{ section.id }} h3 { margin: 0; }
+#purelane-combos-{{ section.id }} .panel-head { text-align: center; margin-bottom: 32px; }
+#purelane-combos-{{ section.id }} .panel-head .rule { margin: 18px auto 0; justify-content: center; }
+#purelane-combos-{{ section.id }} .panel-head .lede { margin-left: auto; margin-right: auto; }
 
 /* TYPOGRAPHY */
 #purelane-combos-{{ section.id }} .d1,#purelane-combos-{{ section.id }} .d2,#purelane-combos-{{ section.id }} .d3,#purelane-combos-{{ section.id }} .d4{font-family:'Outfit',system-ui,sans-serif;text-transform:uppercase;letter-spacing:-.018em;font-weight:800;line-height:.87;color:var(--surface)}
