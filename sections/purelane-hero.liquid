@@ -252,11 +252,16 @@
     padding: 3px 8px; border-radius: 999px; background: rgba(201,118,29,.16); border: 1px solid rgba(201,118,29,.36); color: #4f7d10;
   }
 
-  /* Stage Controls */
-  #PurelaneHero-{{ section.id }} .hdots { display: flex; gap: 7px; justify-content: center; align-items: center; margin-top: 8px; }
-  #PurelaneHero-{{ section.id }} .hdots button { width: 6px; height: 6px; padding: 0; border-radius: 50%; background: rgba(75,58,143,.22); transition: .4s var(--ease); border: none; }
-  #PurelaneHero-{{ section.id }} .hdots button.on { background: #b8701c; width: 20px; border-radius: 999px; }
-  #PurelaneHero-{{ section.id }} .hdots button:hover { background: rgba(75,58,143,.4); }
+  /* Stage Controls & Hover Effects */
+  #PurelaneHero-{{ section.id }} .hstage { position: relative; width: 100%; height: clamp(380px, 74svh, 680px); cursor: pointer; }
+  #PurelaneHero-{{ section.id }} .hstage:hover .hp { transform: translateY(-6px) scale(1.02); }
+  #PurelaneHero-{{ section.id }} .hdots { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 14px; position: relative; z-index: 10; padding: 6px; }
+  #PurelaneHero-{{ section.id }} .hdots button {
+    width: 10px; height: 10px; padding: 0; border-radius: 50%; background: rgba(75,58,143,.25);
+    transition: all .35s var(--ease); border: none; cursor: pointer; outline: none;
+  }
+  #PurelaneHero-{{ section.id }} .hdots button.on { background: #b8701c; width: 24px; border-radius: 999px; box-shadow: 0 4px 12px rgba(184,112,28,.35); }
+  #PurelaneHero-{{ section.id }} .hdots button:hover { background: #c9761d; transform: scale(1.25); }
 
   /* Slide specific positioning */
   #PurelaneHero-{{ section.id }} .hs1 .a { height: 100%; z-index: 3; }
@@ -489,11 +494,13 @@
     const sectionId = '{{ section.id }}';
     const stage = document.getElementById('HStage-' + sectionId);
     const dotsContainer = document.getElementById('HDots-' + sectionId);
+    const heroProd = stage ? stage.closest('.hero-prod') : null;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (stage && dotsContainer) {
       const slides = Array.from(stage.querySelectorAll('.hslide'));
       const dots = Array.from(dotsContainer.querySelectorAll('button'));
-      let timer;
+      let timer = null;
       let currentIndex = 0;
 
       function setSlide(n) {
@@ -506,7 +513,7 @@
         if (!timer && !reduce && slides.length > 1) {
           timer = setInterval(() => {
             setSlide((currentIndex + 1) % slides.length);
-          }, 4500);
+          }, 3500);
         }
       }
       function stop() {
@@ -517,15 +524,24 @@
       }
 
       dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
           stop();
           setSlide(i);
           play();
         });
       });
       
-      stage.addEventListener('mouseenter', stop);
-      stage.addEventListener('mouseleave', play);
+      const hoverArea = heroProd || stage;
+      hoverArea.addEventListener('mouseenter', stop);
+      hoverArea.addEventListener('mouseleave', play);
+      
+      /* Click stage to flip */
+      stage.addEventListener('click', () => {
+        stop();
+        setSlide((currentIndex + 1) % slides.length);
+        play();
+      });
       
       /* Initialize carousel */
       play();
