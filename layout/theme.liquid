@@ -354,6 +354,14 @@
       @media (prefers-reduced-motion: reduce) {
         .rv { opacity: 1; transform: none; filter: none; transition: none; }
       }
+
+      /* ---------- scenes background layering ---------- */
+      #MainContent, .shopify-section-group-header-group, .shopify-section-group-footer-group {
+        position: relative;
+        z-index: 1;
+      }
+      /* The scenes section itself is fixed at z-index:0, so we keep its wrapper transparent */
+      .pl-scenes-section { position: static; }
     </style>
 
     {%- if settings.cart_type == 'drawer' -%}

@@ -764,9 +764,14 @@
         "placeholder": "your@email.com",
         "button_label": "Get my ₹100 off"
       }
+    },
+    "purelane_scenes_bg": {
+      "type": "purelane-scenes",
+      "settings": {}
     }
   },
   "order": [
+    "purelane_scenes_bg",
     "image_banner",
     "featured_collection",
     "purelane_hero_GJUahh",
