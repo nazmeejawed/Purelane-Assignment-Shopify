@@ -701,6 +701,69 @@
         "kicker": "The smarter way to shop",
         "title": "Why bundles beat buying single"
       }
+    },
+    "purelane_categories_new": {
+      "type": "purelane-categories",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "title": "Kitchen bundle",
+            "subtitle": "Grease, dishes & more",
+            "icon": "p-kitchen"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "title": "Bathroom bundle",
+            "subtitle": "Deep clean & disinfect",
+            "icon": "p-toilet"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "title": "Laundry bundle",
+            "subtitle": "Softer, fresher wash",
+            "icon": "p-laundry"
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "title": "Hard water bundle",
+            "subtitle": "Melt away limescale",
+            "icon": "p-tap"
+          }
+        }
+      },
+      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4"],
+      "settings": {
+        "kicker": "Bundle categories",
+        "title": "Find the right bundle for you"
+      }
+    },
+    "purelane_trust_new": {
+      "type": "purelane-trust",
+      "blocks": {
+        "t1": { "type": "trust_item", "settings": { "icon": "leaf", "text": "Plant derived<br>formulas" } },
+        "t2": { "type": "trust_item", "settings": { "icon": "box", "text": "Recyclable<br>packaging" } },
+        "t3": { "type": "trust_item", "settings": { "icon": "heart", "text": "Safe for<br>kids & pets" } },
+        "t4": { "type": "trust_item", "settings": { "icon": "globe", "text": "Made in<br>India" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {}
+    },
+    "purelane_signup_new": {
+      "type": "purelane-signup",
+      "settings": {
+        "kicker": "Join the Purelane Club",
+        "title": "Get ₹100 off your first bundle",
+        "description": "Plus first access to new launches and restocks.",
+        "placeholder": "your@email.com",
+        "button_label": "Get my ₹100 off"
+      }
     }
   },
   "order": [
@@ -714,6 +777,9 @@
     "purelane_bundles_new",
     "purelane_shop_new",
     "purelane_range_new",
-    "purelane_whybundles_new"
+    "purelane_whybundles_new",
+    "purelane_categories_new",
+    "purelane_trust_new",
+    "purelane_signup_new"
   ]
 }
