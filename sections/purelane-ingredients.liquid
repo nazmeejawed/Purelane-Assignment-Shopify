@@ -71,12 +71,6 @@
   #Purelane-{{ section.id }} .btn-sm { height: 38px; padding: 0 18px; font-size: 11px; letter-spacing: .14em; }
   #Purelane-{{ section.id }} .btn-ghost { background: rgba(255,255,255,.66); border: 1px solid rgba(75,58,143,.22); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: #01423b; }
   #Purelane-{{ section.id }} .btn-ghost:hover { background: rgba(255,255,255,.9) !important; transform: translateY(-2px); }
-
-  /* Reveal Animations */
-  #Purelane-{{ section.id }} .rv { opacity: 0; transform: translateY(30px); filter: blur(7px); transition: opacity .95s var(--ease), transform .95s var(--ease), filter .95s var(--ease); }
-  #Purelane-{{ section.id }} .rv.in { opacity: 1; transform: none; filter: none; }
-  #Purelane-{{ section.id }} .rv-d2 { transition-delay: .18s; }
-  #Purelane-{{ section.id }} .rv-d3 { transition-delay: .27s; }
 </style>
 
 <div id="Purelane-{{ section.id }}">
@@ -201,33 +195,6 @@
   </div>
 </section>
 </div>
-
-<script>
-  (function() {
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var revs = document.querySelectorAll('#Purelane-{{ section.id }} .rv');
-    if ('IntersectionObserver' in window && !reduce && !document.body.classList.contains('shopify-design-mode')) {
-      var ro = new IntersectionObserver(
-        function (es) {
-          es.forEach(function (e) {
-            if (e.isIntersecting) {
-              e.target.classList.add('in');
-              ro.unobserve(e.target);
-            }
-          });
-        },
-        { rootMargin: '0px 0px -12% 0px', threshold: 0.12 }
-      );
-      revs.forEach(function (el) {
-        ro.observe(el);
-      });
-    } else {
-      revs.forEach(function (el) {
-        el.classList.add('in');
-      });
-    }
-  })();
-</script>
 
 {% schema %}
 {

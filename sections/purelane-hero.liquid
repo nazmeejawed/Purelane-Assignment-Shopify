@@ -281,16 +281,6 @@
   @media(max-width:760px){
     #PurelaneHero-{{ section.id }} .d1 { font-size: clamp(44px, 13.5vw, 64px); }
   }
-
-  /* Reveal Animations */
-  #PurelaneHero-{{ section.id }} .rv { opacity: 0; transform: translateY(30px); filter: blur(7px); transition: opacity .95s var(--ease), transform .95s var(--ease), filter .95s var(--ease); }
-  #PurelaneHero-{{ section.id }} .rv.in { opacity: 1; transform: none; filter: none; }
-  #PurelaneHero-{{ section.id }} .rv-d1 { transition-delay: .09s; }
-  #PurelaneHero-{{ section.id }} .rv-d2 { transition-delay: .18s; }
-  #PurelaneHero-{{ section.id }} .rv-d3 { transition-delay: .27s; }
-  #PurelaneHero-{{ section.id }} .rv-d4 { transition-delay: .36s; }
-  /* Fallback for Shopify Editor */
-  .shopify-design-mode #PurelaneHero-{{ section.id }} .rv { opacity: 1; transform: none; filter: none; }
 </style>
 
 <div id="PurelaneHero-{{ section.id }}">
@@ -492,30 +482,6 @@
 
 <script>
   (function() {
-    /* Intersection Observer for reveal animations */
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var revs = document.querySelectorAll('#PurelaneHero-{{ section.id }} .rv');
-    if ('IntersectionObserver' in window && !reduce && !document.body.classList.contains('shopify-design-mode')) {
-      var ro = new IntersectionObserver(
-        function (es) {
-          es.forEach(function (e) {
-            if (e.isIntersecting) {
-              e.target.classList.add('in');
-              ro.unobserve(e.target);
-            }
-          });
-        },
-        { rootMargin: '0px 0px -12% 0px', threshold: 0.12 }
-      );
-      revs.forEach(function (el) {
-        ro.observe(el);
-      });
-    } else {
-      revs.forEach(function (el) {
-        el.classList.add('in');
-      });
-    }
-
     /* Scoped Carousel Logic */
     const sectionId = '{{ section.id }}';
     const stage = document.getElementById('HStage-' + sectionId);
