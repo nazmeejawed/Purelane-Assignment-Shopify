@@ -44,11 +44,12 @@
 <style>
   /* ---------- NAV ---------- */
   .purelane-header {
-    position: fixed; top: 38px; left: 0; right: 0; z-index: 50; padding: 0 14px;
+    position: fixed; top: 48px; left: 0; right: 0; z-index: 50; padding: 0 14px;
     transition: top .4s cubic-bezier(.2,.7,.2,1);
+    pointer-events: none;
   }
-  .purelane-header.up { top: 10px; }
   .purelane-header .navpill {
+    pointer-events: auto;
     max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 18px; padding: 10px 14px;
     border-radius: 999px;
     background: linear-gradient(158deg, rgba(255,255,255,.90), rgba(255,255,255,.75) 58%, rgba(255,255,255,.60));
@@ -56,6 +57,7 @@
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(75,58,143,.12);
   }
+  .purelane-header.up { top: 12px; }
   .purelane-header .brand { display: flex; align-items: center; gap: 11px; flex: 0 0 auto; text-decoration: none; }
   .purelane-header .brand .mark {
     width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; flex: 0 0 auto;
@@ -112,10 +114,12 @@
   (function() {
     const hdr = document.getElementById('PurelaneHeader');
     if(hdr) {
-      window.addEventListener('scroll', () => {
-        var y = window.scrollY || window.pageYOffset;
-        hdr.classList.toggle('up', y > 90);
-      }, { passive: true });
+      function syncHdr() {
+        var y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+        hdr.classList.toggle('up', y > 60);
+      }
+      window.addEventListener('scroll', syncHdr, { passive: true });
+      syncHdr();
     }
   })();
 </script>

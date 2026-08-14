@@ -23,11 +23,13 @@
     display: block !important;
     width: 100% !important;
     position: relative !important;
-    z-index: 60 !important;
+    z-index: 40 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   #PurelaneTicker-{{ section.id }} {
     position: relative;
-    z-index: 60;
+    z-index: 40;
     overflow: hidden;
     white-space: nowrap;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -35,11 +37,11 @@
     font-weight: 600;
     letter-spacing: .1em;
     text-transform: uppercase;
-    background: rgba(255, 255, 255, .94);
+    background: rgba(255, 255, 255, .74);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(75, 58, 143, .14);
-    color: rgba(36, 26, 61, .88);
+    border-bottom: 1px solid rgba(75, 58, 143, .12);
+    color: rgba(36, 26, 61, .78);
     height: 38px;
     min-height: 38px;
     display: flex;
@@ -53,7 +55,7 @@
     display: inline-flex;
     align-items: center;
     gap: 40px;
-    padding-left: 20px;
+    padding: 9px 20px;
     will-change: transform;
     animation: pl-tick-{{ section.id }} 28s linear infinite;
     flex-shrink: 0;
@@ -66,7 +68,7 @@
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
-    color: rgba(36, 26, 61, .88);
+    color: rgba(36, 26, 61, .78);
     font-size: 11.5px;
   }
   #PurelaneTicker-{{ section.id }} b,
