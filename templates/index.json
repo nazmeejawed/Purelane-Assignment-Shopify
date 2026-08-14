@@ -432,6 +432,79 @@
         "combo_5"
       ],
       "settings": {}
+    },
+    "purelane_bundles_new": {
+      "type": "purelane-bundles",
+      "blocks": {
+        "tier_1": {
+          "type": "tier",
+          "settings": {
+            "tag_label": "Starter",
+            "is_featured": false,
+            "product_count": "2",
+            "price": "\u20b9349",
+            "compare_price": "\u20b9598",
+            "per_product_text": "Flat \u20b9174 per product",
+            "feature_1": "Pick any two products",
+            "feature_2": "Free shipping across India",
+            "button_label": "Build this box",
+            "tp1_class": "p-combo2",
+            "tp1_label": "Combo pack"
+          }
+        },
+        "tier_2": {
+          "type": "tier",
+          "settings": {
+            "tag_label": "Most popular",
+            "is_featured": true,
+            "product_count": "3",
+            "price": "\u20b9499",
+            "compare_price": "\u20b9897",
+            "per_product_text": "Flat \u20b9166 per product",
+            "feature_1": "Pick any three products",
+            "feature_2": "Covers kitchen and laundry",
+            "feature_3": "Free shipping across India",
+            "button_label": "Build this box",
+            "tp1_class": "p-kitchen",
+            "tp1_label": "Kitchen cleaner",
+            "tp2_class": "p-tap",
+            "tp2_label": "Tap cleaner",
+            "tp3_class": "p-dish",
+            "tp3_label": "Dishwash"
+          }
+        },
+        "tier_3": {
+          "type": "tier",
+          "settings": {
+            "tag_label": "Whole home",
+            "is_featured": false,
+            "product_count": "5",
+            "price": "\u20b9799",
+            "compare_price": "\u20b91495",
+            "per_product_text": "Flat \u20b9160 per product",
+            "feature_1": "Pick any five products",
+            "feature_2": "Every room in one order",
+            "feature_3": "Free shipping across India",
+            "button_label": "Build this box",
+            "tp1_class": "p-kitchen",
+            "tp1_label": "Kitchen cleaner",
+            "tp2_class": "p-tap",
+            "tp2_label": "Tap cleaner",
+            "tp3_class": "p-floor",
+            "tp3_label": "Floor cleaner",
+            "tp4_class": "p-toilet",
+            "tp4_label": "Toilet cleaner",
+            "tp5_class": "p-laundry",
+            "tp5_label": "Laundry detergent"
+          }
+        }
+      },
+      "block_order": [
+        "tier_1",
+        "tier_2",
+        "tier_3"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -441,6 +514,7 @@
     "purelane_reviews_7piJX4",
     "purelane_ingredients_QEtB80",
     "purelane_proof_new",
-    "purelane_combos_new"
+    "purelane_combos_new",
+    "purelane_bundles_new"
   ]
 }
