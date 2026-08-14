@@ -505,6 +505,138 @@
         "tier_3"
       ],
       "settings": {}
+    },
+    "purelane_shop_new": {
+      "type": "purelane-shop",
+      "blocks": {
+        "prod_1": {
+          "type": "product_card",
+          "settings": {
+            "badge": "Best seller",
+            "title_override": "Tap cleaner & limescale remover",
+            "fallback_icon": "p-tap",
+            "rating": "4.8",
+            "reviews_count": "237 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        },
+        "prod_2": {
+          "type": "product_card",
+          "settings": {
+            "badge": "Best seller",
+            "title_override": "Kitchen cleaner, foaming",
+            "fallback_icon": "p-kitchen",
+            "rating": "4.8",
+            "reviews_count": "254 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        },
+        "prod_3": {
+          "type": "product_card",
+          "settings": {
+            "badge": "Top rated",
+            "title_override": "Copper, bronze & brass cleaner",
+            "fallback_icon": "p-metal",
+            "rating": "4.8",
+            "reviews_count": "231 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        },
+        "prod_4": {
+          "type": "product_card",
+          "settings": {
+            "badge": "New",
+            "title_override": "Washing machine cleaner & descaler",
+            "fallback_icon": "p-wm",
+            "rating": "4.8",
+            "reviews_count": "183 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        },
+        "prod_5": {
+          "type": "product_card",
+          "settings": {
+            "badge": "Best seller",
+            "title_override": "Tap cleaner & limescale remover",
+            "fallback_icon": "p-tap",
+            "rating": "4.8",
+            "reviews_count": "237 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        },
+        "prod_6": {
+          "type": "product_card",
+          "settings": {
+            "badge": "Best seller",
+            "title_override": "Kitchen cleaner, foaming",
+            "fallback_icon": "p-kitchen",
+            "rating": "4.8",
+            "reviews_count": "254 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        },
+        "prod_7": {
+          "type": "product_card",
+          "settings": {
+            "badge": "Top rated",
+            "title_override": "Copper, bronze & brass cleaner",
+            "fallback_icon": "p-metal",
+            "rating": "4.8",
+            "reviews_count": "231 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        },
+        "prod_8": {
+          "type": "product_card",
+          "settings": {
+            "badge": "New",
+            "title_override": "Washing machine cleaner & descaler",
+            "fallback_icon": "p-wm",
+            "rating": "4.8",
+            "reviews_count": "183 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off",
+            "button_label": "Add to cart"
+          }
+        }
+      },
+      "block_order": [
+        "prod_1",
+        "prod_2",
+        "prod_3",
+        "prod_4",
+        "prod_5",
+        "prod_6",
+        "prod_7",
+        "prod_8"
+      ],
+      "settings": {
+        "kicker": "Bestsellers",
+        "title": "Loved by 30,000 homes",
+        "show_rule": true
+      }
     }
   },
   "order": [
@@ -515,6 +647,7 @@
     "purelane_ingredients_QEtB80",
     "purelane_proof_new",
     "purelane_combos_new",
-    "purelane_bundles_new"
+    "purelane_bundles_new",
+    "purelane_shop_new"
   ]
 }

@@ -1,0 +1,653 @@
+<style>
+#purelane-shop-{{ section.id }} {
+  /* VERSION 2 — LIGHT MODE (from prototype) */
+  --ink:#f4f0fb;
+  --deep:#e2daf3;
+  --brand:#4b3a8f;
+  --brand-lt:#6b55b8;
+  --paper:#241a3d;
+  --paper-2:rgba(36,26,61,.78);
+  --paper-3:rgba(36,26,61,.56);
+  --accent:#b8701c;
+  --accent-2:#c9761d;
+  --surface:#17102b;
+  --g-bg:linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line:rgba(75,58,143,.16);
+  --g-shadow:0 22px 54px rgba(58,44,112,.13);
+  --g-inset:inset 0 1px 0 rgba(255,255,255,.92);
+  --r:26px;
+  --r-sm:16px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 clamp(40px,6vw,80px);
+
+  /* Product SVGs for crystal clear fallback illustrations */
+  --p-tap:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNTk1IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjU5NSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM2MjUwYWQiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjI1MGFkIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjU5LjUiIHJ4PSIxNy42IiBmaWxsPSIjNjI1MGFkIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjUzLjYiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQxLjciIGZpbGw9IiM2MjUwYWQiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjExOS4wIiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDc2LjAiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjEuOCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2MS44IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMDkuNCIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjQiIHJ4PSIyIiBmaWxsPSIjNjI1MGFkIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Mi4yIiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi43IiByeD0iMiIgZmlsbD0iIzYyNTBhZCIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-kitchen:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNTk1IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjU5NSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM2YjU1YjgiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNmI1NWI4IiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjU5LjUiIHJ4PSIxNy42IiBmaWxsPSIjNmI1NWI4IiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjUzLjYiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQxLjciIGZpbGw9IiM2YjU1YjgiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjExOS4wIiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDc2LjAiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjEuOCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2MS44IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMDkuNCIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjQiIHJ4PSIyIiBmaWxsPSIjNmI1NWI4IiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Mi4yIiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi43IiByeD0iMiIgZmlsbD0iIzZiNTViOCIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-metal:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgNDI5IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQyOSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM1NTQyOWIiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNTU0MjliIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTE4LjQiIHk9IjAiIHdpZHRoPSI2My4yIiBoZWlnaHQ9IjQyLjkiIHJ4PSIxMy45IiBmaWxsPSIjNTU0MjliIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTI3LjIiIHk9IjM4LjYiIHdpZHRoPSI0NS41IiBoZWlnaHQ9IjMwLjAiIGZpbGw9IiM1NTQyOWIiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjU3LjAiIHk9Ijg1LjgiIHdpZHRoPSIxODYuMCIgaGVpZ2h0PSIzNDMuMiIgcng9IjI5LjgiIGZpbGw9InVybCgjZykiLz4KPHJlY3QgeD0iNzkuMyIgeT0iMTg4LjgiIHdpZHRoPSIxNDEuNCIgaGVpZ2h0PSIxMTYuNyIgcng9IjkuMyIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEwMS42IiB5PSIyMjMuMSIgd2lkdGg9Ijk2LjciIGhlaWdodD0iMTUuNCIgcng9IjIiIGZpbGw9IiM1NTQyOWIiIG9wYWNpdHk9Ii41NSIvPgo8cmVjdCB4PSIxMTIuOCIgeT0iMjU0LjAiIHdpZHRoPSI3NC40IiBoZWlnaHQ9IjEyLjAiIHJ4PSIyIiBmaWxsPSIjNTU0MjliIiBvcGFjaXR5PSIuMzUiLz4KPC9zdmc+");
+  --p-wm:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgNDg4IiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQ4OCI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0YjNhOGYiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNGIzYThmIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTE4LjQiIHk9IjAiIHdpZHRoPSI2My4yIiBoZWlnaHQ9IjQ4LjgiIHJ4PSIxMy45IiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTI3LjIiIHk9IjQzLjkiIHdpZHRoPSI0NS41IiBoZWlnaHQ9IjM0LjIiIGZpbGw9IiM0YjNhOGYiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjU3LjAiIHk9Ijk3LjYiIHdpZHRoPSIxODYuMCIgaGVpZ2h0PSIzOTAuNCIgcng9IjI5LjgiIGZpbGw9InVybCgjZykiLz4KPHJlY3QgeD0iNzkuMyIgeT0iMjE0LjciIHdpZHRoPSIxNDEuNCIgaGVpZ2h0PSIxMzIuNyIgcng9IjkuMyIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEwMS42IiB5PSIyNTMuOCIgd2lkdGg9Ijk2LjciIGhlaWdodD0iMTcuNiIgcng9IjIiIGZpbGw9IiM0YjNhOGYiIG9wYWNpdHk9Ii41NSIvPgo8cmVjdCB4PSIxMTIuOCIgeT0iMjg4LjkiIHdpZHRoPSI3NC40IiBoZWlnaHQ9IjEzLjciIHJ4PSIyIiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuMzUiLz4KPC9zdmc+");
+  --p-dish:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjA5IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYwOSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0YjNhOGYiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNGIzYThmIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYwLjkiIHJ4PSIxNy42IiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU0LjgiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQyLjYiIGZpbGw9IiM0YjNhOGYiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMS44IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDg3LjIiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjguMCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2NS42IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMTYuNyIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjkiIHJ4PSIyIiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM2MC41IiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNy4xIiByeD0iMiIgZmlsbD0iIzRiM2E4ZiIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-floor:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjAyIiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYwMiI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM4MTY4YzkiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODE2OGM5IiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYwLjIiIHJ4PSIxNy42IiBmaWxsPSIjODE2OGM5IiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU0LjIiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQyLjEiIGZpbGw9IiM4MTY4YzkiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMC40IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDgxLjYiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjQuOSIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2My43IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMTMuMCIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjciIHJ4PSIyIiBmaWxsPSIjODE2OGM5IiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Ni40IiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi45IiByeD0iMiIgZmlsbD0iIzgxNjhjOSIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-toilet:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjE5IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYxOSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3YTYyYzIiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN2E2MmMyIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYxLjkiIHJ4PSIxNy42IiBmaWxsPSIjN2E2MmMyIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU1LjciIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQzLjMiIGZpbGw9IiM3YTYyYzIiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMy44IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDk1LjIiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNzIuNCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2OC40IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMjEuOSIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIyLjMiIHJ4PSIyIiBmaWxsPSIjN2E2MmMyIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM2Ni40IiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNy4zIiByeD0iMiIgZmlsbD0iIzdhNjJjMiIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-laundry:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjAzIiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYwMyI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM1YTQ2YTMiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNWE0NmEzIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYwLjMiIHJ4PSIxNy42IiBmaWxsPSIjNWE0NmEzIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU0LjMiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQyLjIiIGZpbGw9IiM1YTQ2YTMiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMC42IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDgyLjQiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjUuMyIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2NC4wIiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMTMuNiIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjciIHJ4PSIyIiBmaWxsPSIjNWE0NmEzIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Ny4wIiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi45IiByeD0iMiIgZmlsbD0iIzVhNDZhMyIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+}
+
+#purelane-shop-{{ section.id }} a { text-decoration: none; color: inherit; }
+#purelane-shop-{{ section.id }} p, #purelane-shop-{{ section.id }} h2, #purelane-shop-{{ section.id }} h4 { margin: 0; }
+#purelane-shop-{{ section.id }} .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 18px; }
+
+/* Header */
+#purelane-shop-{{ section.id }} .panel-head { text-align: center; margin-bottom: 32px; }
+#purelane-shop-{{ section.id }} .kicker { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--paper-3); }
+#purelane-shop-{{ section.id }} .d2 { font-family: 'Outfit', system-ui, sans-serif; text-transform: uppercase; letter-spacing: -.018em; font-weight: 800; line-height: .94; color: var(--surface); font-size: clamp(30px, 4.6vw, 54px); }
+#purelane-shop-{{ section.id }} .rule { display: flex; align-items: center; gap: 13px; margin: 18px auto 0; max-width: 270px; justify-content: center; }
+#purelane-shop-{{ section.id }} .rule i { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(75, 58, 143, .34), transparent); }
+#purelane-shop-{{ section.id }} .rule i:first-child { background: linear-gradient(90deg, transparent, rgba(75, 58, 143, .34)); }
+#purelane-shop-{{ section.id }} .rule svg { width: 16px; height: 16px; color: var(--accent); flex: 0 0 auto; }
+
+/* Glass Card */
+#purelane-shop-{{ section.id }} .glass {
+  background: var(--g-bg);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--g-line);
+  border-radius: var(--r);
+  box-shadow: var(--g-shadow), var(--g-inset);
+  position: relative;
+  overflow: hidden;
+}
+#purelane-shop-{{ section.id }} .glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .55), transparent 32%, transparent 74%, rgba(201, 118, 29, .06));
+}
+
+/* Shelf Grid */
+#purelane-shop-{{ section.id }} .shelf {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media(min-width: 860px) {
+  #purelane-shop-{{ section.id }} .shelf {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Card */
+#purelane-shop-{{ section.id }} .card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: .4s var(--ease);
+}
+#purelane-shop-{{ section.id }} .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image container */
+#purelane-shop-{{ section.id }} .card .shot {
+  height: 150px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .60), rgba(236, 230, 247, .42));
+  border: 1px solid rgba(75, 58, 143, .10);
+}
+#purelane-shop-{{ section.id }} .card .shot img.card-prod-img {
+  max-height: 122px;
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 13px rgba(0, 74, 66, .13));
+  display: block;
+  margin: 0 auto;
+  transition: transform .35s var(--ease);
+}
+#purelane-shop-{{ section.id }} .card:hover .shot img.card-prod-img {
+  transform: scale(1.04);
+}
+#purelane-shop-{{ section.id }} .card .shot .pimg {
+  height: 122px;
+  width: 90px;
+  filter: drop-shadow(0 8px 13px rgba(0, 74, 66, .13));
+  transition: transform .35s var(--ease);
+}
+#purelane-shop-{{ section.id }} .card:hover .shot .pimg {
+  transform: scale(1.04);
+}
+#purelane-shop-{{ section.id }} .pimg {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: contain;
+  flex: 0 0 auto;
+}
+#purelane-shop-{{ section.id }} .p-tap { background-image: var(--p-tap); aspect-ratio: 0.6387; }
+#purelane-shop-{{ section.id }} .p-kitchen { background-image: var(--p-kitchen); aspect-ratio: 0.6387; }
+#purelane-shop-{{ section.id }} .p-metal { background-image: var(--p-metal); aspect-ratio: 0.6993; }
+#purelane-shop-{{ section.id }} .p-wm { background-image: var(--p-wm); aspect-ratio: 0.6148; }
+#purelane-shop-{{ section.id }} .p-dish { background-image: var(--p-dish); aspect-ratio: 0.624; }
+#purelane-shop-{{ section.id }} .p-floor { background-image: var(--p-floor); aspect-ratio: 0.6312; }
+#purelane-shop-{{ section.id }} .p-toilet { background-image: var(--p-toilet); aspect-ratio: 0.6139; }
+#purelane-shop-{{ section.id }} .p-laundry { background-image: var(--p-laundry); aspect-ratio: 0.6302; }
+
+/* Badge */
+#purelane-shop-{{ section.id }} .card .pill {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .86);
+  border: 1px solid rgba(201, 118, 29, .34);
+  color: #4f7d10;
+  z-index: 2;
+}
+
+/* Card details */
+#purelane-shop-{{ section.id }} .card h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--surface);
+  line-height: 1.25;
+  margin-bottom: 7px;
+  min-height: 34px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#purelane-shop-{{ section.id }} .card h4 a:hover {
+  color: var(--accent);
+}
+#purelane-shop-{{ section.id }} .card .rate {
+  font-size: 11.5px;
+  color: var(--paper-2);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#purelane-shop-{{ section.id }} .card .rate b {
+  color: var(--accent);
+  font-weight: 700;
+}
+#purelane-shop-{{ section.id }} .card .pr {
+  margin-top: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+#purelane-shop-{{ section.id }} .card .pr strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: var(--surface);
+  font-weight: 700;
+}
+#purelane-shop-{{ section.id }} .card .pr s {
+  font-size: 12px;
+  color: var(--paper-3);
+}
+#purelane-shop-{{ section.id }} .card .pr em {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--accent);
+}
+
+/* Add to Cart Button */
+#purelane-shop-{{ section.id }} .card .btn {
+  width: 100%;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 38px;
+  padding: 0 18px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: .35s var(--ease);
+  white-space: nowrap;
+  cursor: pointer;
+  background: rgba(255, 255, 255, .66);
+  border: 1px solid rgba(75, 58, 143, .22);
+  color: #01423b;
+}
+#purelane-shop-{{ section.id }} .card .btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, .95);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 80, 74, .12);
+}
+#purelane-shop-{{ section.id }} .card .btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media(max-width: 600px) {
+  #purelane-shop-{{ section.id }} .shelf {
+    gap: 10px;
+  }
+  #purelane-shop-{{ section.id }} .card {
+    padding: 12px;
+  }
+  #purelane-shop-{{ section.id }} .card .shot {
+    height: 130px;
+  }
+  #purelane-shop-{{ section.id }} .card .shot img.card-prod-img,
+  #purelane-shop-{{ section.id }} .card .shot .pimg {
+    max-height: 100px;
+    height: 100px;
+  }
+  #purelane-shop-{{ section.id }} .card h4 {
+    font-size: 12px;
+    min-height: 30px;
+  }
+  #purelane-shop-{{ section.id }} .card .pr strong {
+    font-size: 16px;
+  }
+  #purelane-shop-{{ section.id }} .card .btn {
+    height: 34px;
+    font-size: 10px;
+    padding: 0 10px;
+  }
+}
+</style>
+
+<section class="sec" id="purelane-shop-{{ section.id }}" data-scene="3">
+  <div class="wrap">
+    <div class="panel-head">
+      {%- if section.settings.kicker != blank -%}
+        <span class="kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="d2" style="margin-top:12px">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.show_rule -%}
+        <div class="rule">
+          <i></i>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/>
+            <path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/>
+          </svg>
+          <i></i>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="shelf">
+      {%- for block in section.blocks -%}
+        {%- assign card_product = block.settings.product -%}
+        {%- assign variant = card_product.selected_or_first_available_variant -%}
+        
+        {%- comment -%} Determine title {%- endcomment -%}
+        {%- assign product_title = block.settings.title_override -%}
+        {%- if product_title == blank and card_product != blank -%}
+          {%- assign product_title = card_product.title -%}
+        {%- endif -%}
+        {%- if product_title == blank -%}
+          {%- assign product_title = "Product item" -%}
+        {%- endif -%}
+
+        {%- comment -%} Determine prices {%- endcomment -%}
+        {%- assign display_price = block.settings.price_override -%}
+        {%- assign display_compare = block.settings.compare_price_override -%}
+        {%- assign discount_text = block.settings.discount_override -%}
+
+        {%- if card_product != blank -%}
+          {%- if display_price == blank -%}
+            {%- assign display_price = card_product.price | money -%}
+          {%- endif -%}
+          {%- if display_compare == blank and card_product.compare_at_price > card_product.price -%}
+            {%- assign display_compare = card_product.compare_at_price | money -%}
+          {%- endif -%}
+          {%- if discount_text == blank and card_product.compare_at_price > card_product.price -%}
+            {%- assign diff = card_product.compare_at_price | minus: card_product.price -%}
+            {%- assign pct = diff | times: 100.0 | divided_by: card_product.compare_at_price | round -%}
+            {%- assign discount_text = pct | append: '% off' -%}
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- if display_price == blank -%}
+          {%- assign display_price = "₹200" -%}
+        {%- endif -%}
+        {%- if display_compare == blank and discount_text != blank -%}
+          {%- assign display_compare = "₹299" -%}
+        {%- endif -%}
+
+        {%- comment -%} Product URL {%- endcomment -%}
+        {%- assign product_url = card_product.url | default: "#" -%}
+
+        <article class="glass card" {{ block.shopify_attributes }}>
+          <div class="shot">
+            {%- if block.settings.badge != blank -%}
+              <span class="pill">{{ block.settings.badge }}</span>
+            {%- endif -%}
+
+            {%- if block.settings.custom_image != blank -%}
+              <img 
+                src="{{ block.settings.custom_image | image_url: width: 400 }}" 
+                alt="{{ product_title | escape }}" 
+                class="card-prod-img" 
+                loading="lazy" 
+                width="200" 
+                height="200"
+              >
+            {%- elsif card_product != blank and card_product.featured_image != blank -%}
+              <img 
+                src="{{ card_product.featured_image | image_url: width: 400 }}" 
+                alt="{{ product_title | escape }}" 
+                class="card-prod-img" 
+                loading="lazy" 
+                width="200" 
+                height="200"
+              >
+            {%- elsif block.settings.fallback_icon != blank and block.settings.fallback_icon != 'none' -%}
+              <span class="pimg {{ block.settings.fallback_icon }}" role="img" aria-label="{{ product_title | escape }}"></span>
+            {%- else -%}
+              <span class="pimg p-tap" role="img" aria-label="{{ product_title | escape }}"></span>
+            {%- endif -%}
+          </div>
+
+          <h4><a href="{{ product_url }}">{{ product_title }}</a></h4>
+          
+          <div class="rate">
+            <b>★ {{ block.settings.rating | default: "4.8" }}</b> · {{ block.settings.reviews_count | default: "200+ reviews" }}
+          </div>
+
+          <div class="pr">
+            <strong>{{ display_price }}</strong>
+            {%- if display_compare != blank -%}
+              <s>{{ display_compare }}</s>
+            {%- endif -%}
+            {%- if discount_text != blank -%}
+              <em>{{ discount_text }}</em>
+            {%- endif -%}
+          </div>
+
+          <form method="post" action="/cart/add" class="purelane-atc-form" onsubmit="handlePurelaneATC(event, this)">
+            <input type="hidden" name="id" value="{{ variant.id | default: card_product.variants.first.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button 
+              type="submit" 
+              class="btn btn-ghost btn-sm" 
+              {% if card_product != blank and card_product.available == false %}disabled{% endif %}
+            >
+              {%- if card_product != blank and card_product.available == false -%}
+                Sold out
+              {%- else -%}
+                {{ block.settings.button_label | default: 'Add to cart' }}
+              {%- endif -%}
+            </button>
+          </form>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+if (typeof handlePurelaneATC === 'undefined') {
+  async function handlePurelaneATC(e, form) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    if (!btn || btn.disabled) return;
+
+    const variantId = form.querySelector('input[name="id"]')?.value;
+    if (!variantId) {
+      form.submit();
+      return;
+    }
+
+    const prevHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = 'Adding...';
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch('/cart/add.js', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        btn.innerHTML = 'Added! ✓';
+
+        // Update cart bubbles if present
+        try {
+          const cartRes = await fetch('/cart.js');
+          const cartData = await cartRes.json();
+          document.querySelectorAll('.cart-count-bubble span, [data-cart-count], .cart-count').forEach(el => {
+            el.textContent = cartData.item_count;
+          });
+          document.querySelectorAll('.cart-count-bubble').forEach(el => el.classList.remove('hidden'));
+        } catch (_) {}
+
+        // Open cart drawer if theme has one
+        const drawer = document.querySelector('cart-drawer');
+        if (drawer && typeof drawer.open === 'function') {
+          drawer.open();
+        } else if (drawer && drawer.classList) {
+          drawer.classList.add('active', 'animate');
+        }
+
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = prevHtml;
+        }, 1500);
+      } else {
+        const err = await res.json();
+        alert(err.description || 'Could not add product to cart');
+        btn.disabled = false;
+        btn.innerHTML = prevHtml;
+      }
+    } catch (err) {
+      form.submit();
+    }
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Bestsellers Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Eyebrow Text",
+      "default": "Bestsellers"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Loved by 30,000 homes"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rule",
+      "label": "Show Decorative Floral Rule",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Shopify Product"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "header",
+          "content": "Image Options"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Product Image (Overrides Product Image)"
+        },
+        {
+          "type": "select",
+          "id": "fallback_icon",
+          "label": "Fallback Illustration Icon",
+          "default": "p-tap",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "p-tap", "label": "Tap Cleaner Bottle" },
+            { "value": "p-kitchen", "label": "Kitchen Cleaner Bottle" },
+            { "value": "p-metal", "label": "Metal / Brass Cleaner Bottle" },
+            { "value": "p-wm", "label": "Washing Machine Tablets Box" },
+            { "value": "p-dish", "label": "Dishwash Gel Bottle" },
+            { "value": "p-floor", "label": "Floor Cleaner Bottle" },
+            { "value": "p-toilet", "label": "Toilet Cleaner Bottle" },
+            { "value": "p-laundry", "label": "Laundry Detergent Bottle" }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Badge & Content"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "Best seller"
+        },
+        {
+          "type": "text",
+          "id": "title_override",
+          "label": "Custom Title Override (optional)"
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating Score",
+          "default": "4.8"
+        },
+        {
+          "type": "text",
+          "id": "reviews_count",
+          "label": "Reviews Count",
+          "default": "237 reviews"
+        },
+        {
+          "type": "header",
+          "content": "Pricing & CTA Overrides"
+        },
+        {
+          "type": "text",
+          "id": "price_override",
+          "label": "Custom Price Override (e.g. ₹200)"
+        },
+        {
+          "type": "text",
+          "id": "compare_price_override",
+          "label": "Custom Compare-at Price Override (e.g. ₹299)"
+        },
+        {
+          "type": "text",
+          "id": "discount_override",
+          "label": "Custom Discount Text (e.g. 33% off)"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Add to cart"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bestsellers Grid",
+      "blocks": [
+        {
+          "type": "product_card",
+          "settings": {
+            "badge": "Best seller",
+            "title_override": "Tap cleaner & limescale remover",
+            "fallback_icon": "p-tap",
+            "rating": "4.8",
+            "reviews_count": "237 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "badge": "Best seller",
+            "title_override": "Kitchen cleaner, foaming",
+            "fallback_icon": "p-kitchen",
+            "rating": "4.8",
+            "reviews_count": "254 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "badge": "Top rated",
+            "title_override": "Copper, bronze & brass cleaner",
+            "fallback_icon": "p-metal",
+            "rating": "4.8",
+            "reviews_count": "231 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "badge": "New",
+            "title_override": "Washing machine cleaner & descaler",
+            "fallback_icon": "p-wm",
+            "rating": "4.8",
+            "reviews_count": "183 reviews",
+            "price_override": "₹200",
+            "compare_price_override": "₹299",
+            "discount_override": "33% off"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
