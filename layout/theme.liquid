@@ -362,6 +362,45 @@
       }
       /* The scenes section itself is fixed at z-index:0, so we keep its wrapper transparent */
       .pl-scenes-section { position: static; }
+
+      /* ---------- PROGRESS RAIL (DOTS) ---------- */
+      .pl-rail {
+        position: fixed;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 90;
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 8px 4px;
+        pointer-events: auto;
+      }
+      @media (min-width: 1024px) {
+        .pl-rail { display: flex; }
+      }
+      .pl-rail a {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(75, 58, 143, .25);
+        transition: all .35s cubic-bezier(.2, .7, .2, 1);
+        position: relative;
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .pl-rail a:hover {
+        background: rgba(75, 58, 143, .6);
+        transform: scale(1.25);
+      }
+      .pl-rail a.on {
+        background: #b8701c;
+        box-shadow: 0 0 0 5px rgba(201, 118, 29, .18);
+        height: 24px;
+        border-radius: 999px;
+        transform: none;
+      }
     </style>
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -370,6 +409,17 @@
 
     {% sections 'header-group' %}
 
+    <nav class="pl-rail" id="PurelaneRail" aria-label="Section progress">
+      <a href="#top" class="on" aria-label="Hero" title="Hero"></a>
+      <a href="#ingredients" aria-label="Ingredients" title="Ingredients"></a>
+      <a href="#how" aria-label="How it works" title="How it works"></a>
+      <a href="#proof" aria-label="Proof" title="Proof"></a>
+      <a href="#combos" aria-label="Combos" title="Combos"></a>
+      <a href="#bundles" aria-label="Bundles" title="Bundles"></a>
+      <a href="#shop" aria-label="Shop" title="Shop"></a>
+      <a href="#reviews" aria-label="Reviews" title="Reviews"></a>
+    </nav>
+
     <main
       id="MainContent"
       class="content-for-layout focus-none"
@@ -377,6 +427,7 @@
       tabindex="-1"
       data-template="{{ template.name }}"
     >
+      <span id="top" style="position:absolute;top:0;left:0;visibility:hidden;pointer-events:none;"></span>
       {{ content_for_layout }}
     </main>
 
@@ -443,6 +494,8 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      /* reveal on scroll */
       var revs = document.querySelectorAll('.rv');
       if ('IntersectionObserver' in window && !reduce) {
         var ro = new IntersectionObserver(function (es) {
@@ -456,6 +509,46 @@
         revs.forEach(function (el) { ro.observe(el); });
       } else {
         revs.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      /* progress rail sync & smooth scroll */
+      var railLinks = Array.prototype.slice.call(document.querySelectorAll('.pl-rail a'));
+      if (railLinks.length) {
+        var targets = railLinks.map(function(a) {
+          var href = a.getAttribute('href');
+          return href ? document.querySelector(href) : null;
+        });
+
+        function syncRail() {
+          var mid = window.scrollY + window.innerHeight * 0.42;
+          var idx = 0;
+          targets.forEach(function(t, i) {
+            if (t) {
+              var top = 0, el = t;
+              while (el) { top += el.offsetTop; el = el.offsetParent; }
+              if (top <= mid) idx = i;
+            }
+          });
+          railLinks.forEach(function(a, i) {
+            a.classList.toggle('on', i === idx);
+          });
+        }
+
+        railLinks.forEach(function(a) {
+          a.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              var target = document.querySelector(href);
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }
+          });
+        });
+
+        window.addEventListener('scroll', syncRail, { passive: true });
+        syncRail();
       }
     });
     </script>
