@@ -500,6 +500,14 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Ensure fresh page load starts at top hero section
+      if (!window.location.hash && !window.ShopifyDesignMode) {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+      }
+
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       
       /* eager reveal on scroll - 300px pre-trigger for instant rendering */
