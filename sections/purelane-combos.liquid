@@ -1,14 +1,19 @@
 <style>
 #purelane-combos-{{ section.id }} {
-  --paper-2: rgba(236,230,247,.74);
-  --paper-3: rgba(236,230,247,.52);
-  --accent: #f0a03c;
+  --ink: #f4f0fb;
+  --deep: #e2daf3;
+  --brand: #4b3a8f;
+  --brand-lt: #6b55b8;
+  --paper: #241a3d;
+  --paper-2: rgba(36,26,61,.78);
+  --paper-3: rgba(36,26,61,.56);
+  --accent: #b8701c;
   --accent-2: #c9761d;
-  --surface: #faf7fd;
-  --g-bg: linear-gradient(158deg,rgba(236,230,247,.15),rgba(75,58,143,.20) 58%,rgba(23,16,43,.28));
-  --g-line: rgba(236,230,247,.22);
-  --g-shadow: 0 26px 74px rgba(18,12,34,.44);
-  --g-inset: inset 0 1px 0 rgba(255,255,255,.24);
+  --surface: #17102b;
+  --g-bg: linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line: rgba(75,58,143,.16);
+  --g-shadow: 0 22px 54px rgba(58,44,112,.13);
+  --g-inset: inset 0 1px 0 rgba(255,255,255,.92);
   --r: 26px;
   --ease: cubic-bezier(.2,.7,.2,1);
 
@@ -96,7 +101,7 @@
 #purelane-combos-{{ section.id }} .rule i {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(236,230,247,.44), transparent);
+  background: linear-gradient(90deg, rgba(75,58,143,.34), transparent);
 }
 
 #purelane-combos-{{ section.id }} .panel-head .rule i:first-child {
@@ -137,22 +142,27 @@
 }
 
 #purelane-combos-{{ section.id }} .btn-primary {
-  background: linear-gradient(135deg, var(--accent-2), #5d8d1c);
-  color: #08211a;
-  box-shadow: 0 12px 30px rgba(201,118,29,.34), inset 0 1px 0 rgba(255,255,255,.34);
+  background: linear-gradient(135deg, #00706a, #004b46);
+  color: #f4fdf6;
+  box-shadow: 0 12px 26px rgba(0,80,74,.26), inset 0 1px 0 rgba(255,255,255,.22);
 }
 
 #purelane-combos-{{ section.id }} .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(201,118,29,.44), inset 0 1px 0 rgba(255,255,255,.4);
+  box-shadow: 0 18px 36px rgba(0,80,74,.32), inset 0 1px 0 rgba(255,255,255,.28);
 }
 
 #purelane-combos-{{ section.id }} .btn-ghost {
-  background: rgba(236,230,247,.10);
-  border: 1px solid rgba(236,230,247,.30);
+  background: rgba(255,255,255,.66);
+  border: 1px solid rgba(75,58,143,.22);
+  color: #01423b;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: var(--surface);
+}
+
+#purelane-combos-{{ section.id }} .btn-ghost:hover {
+  background: rgba(255,255,255,.9);
+  transform: translateY(-2px);
 }
 
 #purelane-combos-{{ section.id }} .glass {
@@ -173,6 +183,7 @@
   pointer-events: none;
   border-radius: inherit;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.07);
+  background: linear-gradient(115deg, rgba(255,255,255,.55), transparent 32%, transparent 74%, rgba(201,118,29,.06));
 }
 
 @media (max-width: 767px) {
@@ -214,20 +225,20 @@
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo {
-  border-color: rgba(240,160,60,.42);
-  box-shadow: 0 26px 74px rgba(18,12,34,.44), 0 0 0 1px rgba(240,160,60,.2), var(--g-inset);
+  border-color: rgba(201,118,29,.46);
+  box-shadow: 0 22px 54px rgba(58,44,112,.14), 0 0 0 1px rgba(201,118,29,.24), var(--g-inset);
 }
 
 #purelane-combos-{{ section.id }} .combo .tray {
   padding: 14px 14px 13px;
-  border-bottom: 1px solid rgba(236,230,247,.13);
+  border-bottom: 1px solid rgba(75,58,143,.12);
   position: relative;
-  background: linear-gradient(162deg, rgba(236,230,247,.13), rgba(75,58,143,.10));
+  background: linear-gradient(162deg, rgba(255,255,255,.56), rgba(236,230,247,.34));
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .tray {
   background: linear-gradient(162deg, rgba(255,255,255,.56), rgba(236,230,247,.34));
-  border-bottom: 1px solid rgba(255,255,255,.62);
+  border-bottom: 1px solid rgba(75,58,143,.12);
 }
 
 #purelane-combos-{{ section.id }} .combo .save {
@@ -238,9 +249,9 @@
   text-transform: uppercase;
   padding: 5px 11px;
   border-radius: 999px;
-  background: rgba(3,30,28,.72);
-  border: 1px solid rgba(240,160,60,.34);
-  color: var(--accent);
+  background: rgba(255,255,255,.84);
+  border: 1px solid rgba(201,118,29,.34);
+  color: #4f7d10;
   margin-bottom: 13px;
 }
 
@@ -260,8 +271,8 @@
   text-transform: uppercase;
   padding: 5px 10px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent-2), #5d8d1c);
-  color: #08211a;
+  background: linear-gradient(135deg, #00706a, #004b46);
+  color: #f4fdf6;
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .flag {
@@ -285,14 +296,14 @@
   display: block;
   height: 66px;
   margin: 0 auto 8px;
-  filter: drop-shadow(0 8px 13px rgba(1,24,22,.5));
+  filter: drop-shadow(0 5px 8px rgba(0,74,66,.13));
   background-size: contain;
   background-position: center bottom;
   background-repeat: no-repeat;
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .stack .it .pimg {
-  filter: drop-shadow(0 8px 13px rgba(0,74,66,.13));
+  filter: drop-shadow(0 5px 8px rgba(0,74,66,.13));
 }
 
 #purelane-combos-{{ section.id }} .stack .it .tile {
@@ -302,9 +313,9 @@
   display: grid;
   place-items: center;
   border-radius: 9px;
-  background: rgba(236,230,247,.08);
-  border: 1px dashed rgba(236,230,247,.26);
-  color: var(--accent);
+  background: rgba(255,255,255,.5);
+  border: 1px dashed rgba(75,58,143,.26);
+  color: #4f7d10;
 }
 
 #purelane-combos-{{ section.id }} .stack .it .tile svg {
@@ -316,12 +327,12 @@
   display: block;
   font-size: 8.6px;
   line-height: 1.32;
-  color: var(--paper-2);
   font-weight: 600;
+  color: var(--surface);
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .stack .it span:not(.pimg):not(.tile) {
-  color: #08211a;
+  color: var(--surface);
 }
 
 #purelane-combos-{{ section.id }} .stack .plus {
@@ -352,7 +363,7 @@
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .body h3 {
-  color: #08211a;
+  color: var(--surface);
 }
 
 #purelane-combos-{{ section.id }} .combo .cnt {
@@ -366,7 +377,7 @@
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .cnt {
-  color: rgba(8,33,26,.6);
+  color: var(--paper-3);
 }
 
 #purelane-combos-{{ section.id }} .combo .inc {
@@ -378,7 +389,7 @@
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .inc {
-  color: rgba(8,33,26,.74);
+  color: var(--paper-2);
 }
 
 #purelane-combos-{{ section.id }} .combo .prow {
@@ -398,7 +409,7 @@
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .prow strong {
-  color: #08211a;
+  color: var(--surface);
 }
 
 #purelane-combos-{{ section.id }} .combo .prow s {
@@ -408,7 +419,7 @@
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .prow s {
-  color: rgba(8,33,26,.5);
+  color: var(--paper-3);
 }
 
 #purelane-combos-{{ section.id }} .combo .prow em {
@@ -419,9 +430,9 @@
   text-transform: uppercase;
   padding: 4px 9px;
   border-radius: 999px;
-  background: rgba(240,160,60,.18);
-  border: 1px solid rgba(240,160,60,.36);
-  color: var(--accent);
+  background: rgba(201,118,29,.14);
+  border: 1px solid rgba(201,118,29,.34);
+  color: #4f7d10;
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .prow em {
@@ -437,7 +448,7 @@
 }
 
 #purelane-combos-{{ section.id }} .combo.hero-combo .fine {
-  color: rgba(8,33,26,.5);
+  color: var(--paper-3);
 }
 
 #purelane-combos-{{ section.id }} .combo .btn {
@@ -474,7 +485,6 @@
 #purelane-combos-{{ section.id }} .p-toilet { background-image: url('https://cdn.shopify.com/s/files/1/0887/8918/8855/files/p-toilet.webp?v=1719229871'); }
 #purelane-combos-{{ section.id }} .p-eraser { background-image: url('https://cdn.shopify.com/s/files/1/0887/8918/8855/files/p-eraser.webp?v=1719229871'); }
 </style>
-
 <section class="sec" id="purelane-combos-{{ section.id }}" data-scene="3">
 
   <div class="wrap">
