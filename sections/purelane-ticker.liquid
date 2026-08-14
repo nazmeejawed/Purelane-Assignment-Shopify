@@ -1,21 +1,14 @@
-<div class="purelane-ticker" aria-hidden="true">
+<div class="purelane-ticker" aria-label="Announcements">
   <div class="track">
-    {%- for block in section.blocks -%}
-      <span>{{ block.settings.text }}</span>
-    {%- else -%}
-      <span>Free shipping <b>on every bundle across India</b></span>
-      <span>100% plant-based <b>and non-toxic</b></span>
-      <span>Loved by <b>30,000+ happy homes</b></span>
-      <span>Buy 3 <b>at flat ₹499</b></span>
-    {%- endfor -%}
-    {%- comment -%} Duplicate for seamless loop {%- endcomment -%}
-    {%- for block in section.blocks -%}
-      <span>{{ block.settings.text }}</span>
-    {%- else -%}
-      <span>Free shipping <b>on every bundle across India</b></span>
-      <span>100% plant-based <b>and non-toxic</b></span>
-      <span>Loved by <b>30,000+ happy homes</b></span>
-      <span>Buy 3 <b>at flat ₹499</b></span>
+    {%- for i in (1..4) -%}
+      {%- for block in section.blocks -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+      {%- else -%}
+        <span>Free shipping <b>on every bundle across India</b></span>
+        <span>100% plant-based <b>and non-toxic</b></span>
+        <span>Loved by <b>30,000+ happy homes</b></span>
+        <span>Buy 3 <b>at flat ₹499</b></span>
+      {%- endfor -%}
     {%- endfor -%}
   </div>
 </div>
@@ -23,13 +16,55 @@
 <style>
   /* ---------- TICKER ---------- */
   .purelane-ticker {
-    position: relative; z-index: 40; overflow: hidden; white-space: nowrap; 
-    font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
-    background: rgba(255,255,255,.94); border-bottom: 1px solid rgba(75,58,143,.12); color: rgba(1,66,59,.78);
+    position: relative;
+    z-index: 60;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, .88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(75, 58, 143, .12);
+    color: rgba(36, 26, 61, .78);
+    height: 38px;
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
-  .purelane-ticker .track { display: inline-flex; gap: 40px; padding: 9px 20px; animation: tick 30s linear infinite; }
-  .purelane-ticker b { color: #4f7d10; font-weight: 700; }
-  @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .purelane-ticker .track {
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+    padding-left: 20px;
+    will-change: transform;
+    animation: pl-tick 32s linear infinite;
+    flex-shrink: 0;
+  }
+  .purelane-ticker:hover .track {
+    animation-play-state: paused;
+  }
+  .purelane-ticker span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .purelane-ticker b,
+  .purelane-ticker strong {
+    color: #4f7d10;
+    font-weight: 700;
+  }
+  @keyframes pl-tick {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .purelane-ticker .track { animation: none; }
+  }
 </style>
 
 {% schema %}
@@ -54,10 +89,10 @@
     {
       "name": "Purelane Ticker",
       "blocks": [
-        { "type": "announcement" },
-        { "type": "announcement" },
-        { "type": "announcement" },
-        { "type": "announcement" }
+        { "type": "announcement", "settings": { "text": "Free shipping <b>on every bundle across India</b>" } },
+        { "type": "announcement", "settings": { "text": "100% plant-based <b>and non-toxic</b>" } },
+        { "type": "announcement", "settings": { "text": "Loved by <b>30,000+ happy homes</b>" } },
+        { "type": "announcement", "settings": { "text": "Buy 3 <b>at flat ₹499</b>" } }
       ]
     }
   ]

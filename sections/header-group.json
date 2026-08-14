@@ -67,19 +67,19 @@
         "announcement_dAHwdy": {
           "type": "announcement",
           "settings": {
-            "text": "<strong>100% plant-based and non-toxic</strong>"
+            "text": "100% plant-based <b>and non-toxic</b>"
           }
         },
         "announcement_7DT8Uc": {
           "type": "announcement",
           "settings": {
-            "text": "<strong>Buy 3 at flat ₹499</strong>"
+            "text": "Buy 3 <b>at flat ₹499</b>"
           }
         },
         "announcement_kr8aE4": {
           "type": "announcement",
           "settings": {
-            "text": "<strong>Loved by 30,000+ happy homes</strong>"
+            "text": "Loved by <b>30,000+ happy homes</b>"
           }
         }
       },
