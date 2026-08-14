@@ -1,0 +1,179 @@
+<style>
+/* ═══════ PURELANE SCENES – fixed background layer ═══════ */
+.pl-scenes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(178deg,#fbfffb 0%,#eafaec 24%,#d6f1dc 54%,#bfe8ca 100%)}
+.pl-scene{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}
+.pl-scene.on{opacity:1}
+.pl-s1{background:linear-gradient(178deg,#fbfffb 0%,#eafaec 24%,#d6f1dc 54%,#bfe8ca 100%)}
+.pl-s2{background:linear-gradient(178deg,#f6fdf7 0%,#e3f7e7 26%,#cbedd4 58%,#b2e2c2 100%)}
+.pl-s3{background:linear-gradient(178deg,#f0fbf2 0%,#d9f2df 28%,#bde6c8 60%,#a2d9b6 100%)}
+.pl-s4{background:linear-gradient(178deg,#e9f8ec 0%,#cdedd6 30%,#addcbe 62%,#8ecdaa 100%)}
+
+/* water cinematics */
+.pl-water{position:absolute;inset:-14% -10%;pointer-events:none;transition:opacity 1.2s ease}
+.pl-wl{position:absolute;inset:0;will-change:transform}
+.pl-wl .sv{width:100%;height:100%}
+.pl-wl-a{mix-blend-mode:soft-light;opacity:1;animation:pl-drift-a 34s linear infinite}
+.pl-wl-a .sv{filter:contrast(1.25)}
+.pl-wl-b{mix-blend-mode:overlay;opacity:.66;animation:pl-drift-b 23s linear infinite}
+.pl-wl-c{mix-blend-mode:overlay;opacity:.6;animation:pl-shaft 19s ease-in-out infinite}
+.pl-wl-s{mix-blend-mode:overlay;opacity:.72;animation:pl-surface 11s ease-in-out infinite;transform-origin:50% 0}
+
+@keyframes pl-drift-a{
+  0%{transform:translate3d(-3%,0,0) scale(1.06)}
+  50%{transform:translate3d(3%,-1.6%,0) scale(1.13)}
+  100%{transform:translate3d(-3%,0,0) scale(1.06)}
+}
+@keyframes pl-drift-b{
+  0%{transform:translate3d(4%,1%,0) scale(1.1)}
+  50%{transform:translate3d(-4%,-1%,0) scale(1.04)}
+  100%{transform:translate3d(4%,1%,0) scale(1.1)}
+}
+@keyframes pl-shaft{
+  0%{transform:translate3d(-2%,0,0) skewX(0deg);opacity:.34}
+  50%{transform:translate3d(2%,0,0) skewX(2.4deg);opacity:.6}
+  100%{transform:translate3d(-2%,0,0) skewX(0deg);opacity:.34}
+}
+@keyframes pl-surface{
+  0%{transform:translateY(0) scaleY(1);opacity:.55}
+  50%{transform:translateY(-1.4%) scaleY(1.14);opacity:.82}
+  100%{transform:translateY(0) scaleY(1);opacity:.55}
+}
+
+/* depth response */
+.pl-scenes[data-d="1"] .pl-water{opacity:1}
+.pl-scenes[data-d="2"] .pl-water{opacity:.9}
+.pl-scenes[data-d="3"] .pl-water{opacity:.76}
+.pl-scenes[data-d="4"] .pl-water{opacity:.58}
+.pl-scenes[data-d="1"] .pl-wl-s{opacity:.72}
+.pl-scenes[data-d="2"] .pl-wl-s,.pl-scenes[data-d="3"] .pl-wl-s,.pl-scenes[data-d="4"] .pl-wl-s{opacity:0}
+
+/* bubbles */
+.pl-bub{position:absolute;inset:0;overflow:hidden}
+.pl-bub span{position:absolute;bottom:-6%;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;
+  border:1px solid rgba(75,58,143,.26);background:radial-gradient(circle at 34% 30%,rgba(255,255,255,.9),rgba(255,255,255,0) 64%);
+  animation:pl-rise var(--dur) linear infinite;animation-delay:var(--dly);opacity:0}
+@keyframes pl-rise{
+  0%{transform:translate3d(0,0,0);opacity:0}
+  12%{opacity:.7}
+  88%{opacity:.5}
+  100%{transform:translate3d(var(--drift),-116vh,0);opacity:0}
+}
+
+/* vignette */
+.pl-vig{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(126% 88% at 50% 26%,transparent 42%,rgba(75,58,143,.07) 80%,rgba(0,80,74,.16) 100%),
+             linear-gradient(180deg,rgba(255,255,255,.40) 0%,transparent 20%,transparent 70%,rgba(0,84,78,.10) 100%)}
+
+/* reduce motion */
+@media(prefers-reduced-motion:reduce){
+  .pl-wl-a,.pl-wl-b,.pl-wl-c,.pl-wl-s,.pl-bub span{animation:none!important}
+  .pl-scene{transition:none}
+}
+</style>
+
+<!-- ═══ SCENES BACKGROUND ═══ -->
+<div class="pl-scenes" id="pl-scenes" data-d="1">
+  <div class="pl-scene pl-s1 on"></div>
+  <div class="pl-scene pl-s2"></div>
+  <div class="pl-scene pl-s3"></div>
+  <div class="pl-scene pl-s4"></div>
+
+  <div class="pl-water" id="pl-water">
+    <!-- Layer A: primary caustics -->
+    <div class="pl-wl pl-wl-a"><svg class="sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<linearGradient id="plcg" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#eafff4" stop-opacity="0"/>
+<stop offset=".18" stop-color="#f2fff8" stop-opacity=".95"/>
+<stop offset=".5" stop-color="#ffffff" stop-opacity="1"/>
+<stop offset=".82" stop-color="#e6fbef" stop-opacity=".9"/>
+<stop offset="1" stop-color="#eafff4" stop-opacity="0"/></linearGradient>
+<filter id="plwf" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.0022 0.019" numOctaves="3" seed="21" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="72" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs><g filter="url(#plwf)"><path d="M262 230 Q372 261 482 238 Q592 247 702 250 Q812 210 923 235 Q1033 201 1143 213 Q1253 232 1363 215 Q1473 261 1583 238 Q1694 248 1804 250 Q1914 211 2024 236 Q2134 201 2244 214" stroke="url(#plcg)" stroke-width="1.7" fill="none" opacity="0.45" stroke-linecap="round"/><path d="M137 256 Q307 242 477 258 Q646 238 816 245 Q985 259 1155 247 Q1324 277 1494 262 Q1664 267 1833 269 Q2003 243 2172 259 Q2342 237 2512 245" stroke="url(#plcg)" stroke-width="5.1" fill="none" opacity="0.23" stroke-linecap="round"/><path d="M389 715 Q514 756 639 725 Q763 738 888 742 Q1013 688 1138 721 Q1262 674 1387 692 Q1512 716 1636 694 Q1761 756 1886 724 Q2010 739 2135 742 Q2260 689 2385 722" stroke="url(#plcg)" stroke-width="5.7" fill="none" opacity="0.37" stroke-linecap="round"/><path d="M140 308 Q297 310 454 302 Q611 321 769 312 Q926 314 1083 316 Q1240 298 1397 309 Q1555 295 1712 300 Q1869 309 2026 301 Q2184 321 2341 311" stroke="url(#plcg)" stroke-width="5.5" fill="none" opacity="0.47" stroke-linecap="round"/><path d="M570 422 Q687 462 805 437 Q922 436 1039 446 Q1156 391 1274 423 Q1391 388 1508 398 Q1625 432 1742 406 Q1860 462 1977 436 Q2094 438 2211 447 Q2329 391 2446 423 Q2563 387 2680 398 Q2798 430 2915 405" stroke="url(#plcg)" stroke-width="2.3" fill="none" opacity="0.25" stroke-linecap="round"/><path d="M-20 1118 Q114 1112 249 1129 Q384 1090 518 1109 Q653 1106 787 1101 Q922 1138 1056 1116 Q1191 1142 1325 1134 Q1460 1113 1594 1130 Q1729 1090 1863 1109" stroke="url(#plcg)" stroke-width="3.5" fill="none" opacity="0.37" stroke-linecap="round"/><path d="M564 653 Q704 686 843 651 Q983 691 1123 679 Q1263 644 1403 671 Q1542 609 1682 638 Q1822 634 1962 626 Q2102 685 2241 650 Q2381 691 2521 678 Q2661 645 2801 671" stroke="url(#plcg)" stroke-width="5.2" fill="none" opacity="0.23" stroke-linecap="round"/><path d="M229 990 Q390 1026 551 1018 Q712 974 873 1006 Q1034 944 1195 972 Q1356 977 1517 963 Q1678 1028 1839 991 Q2000 1027 2161 1018 Q2322 976 2483 1006" stroke="url(#plcg)" stroke-width="6.1" fill="none" opacity="0.36" stroke-linecap="round"/><path d="M51 390 Q154 420 258 394 Q361 414 465 411 Q568 376 672 400 Q776 357 879 376 Q983 384 1086 371 Q1190 419 1293 393 Q1397 415 1500 411 Q1604 377 1707 401 Q1811 357 1914 376 Q2018 383 2122 371" stroke="url(#plcg)" stroke-width="4.7" fill="none" opacity="0.42" stroke-linecap="round"/><path d="M108 333 Q262 355 416 346 Q570 331 724 344 Q879 309 1033 327 Q1187 320 1341 318 Q1495 348 1650 329 Q1804 355 1958 346 Q2112 332 2266 344 Q2421 309 2575 327" stroke="url(#plcg)" stroke-width="3.4" fill="none" opacity="0.39" stroke-linecap="round"/><path d="M297 164 Q449 165 600 176 Q752 143 904 160 Q1055 150 1207 150 Q1359 176 1510 159 Q1662 186 1814 175 Q1966 166 2117 176 Q2269 144 2421 161 Q2572 149 2724 150" stroke="url(#plcg)" stroke-width="2.3" fill="none" opacity="0.27" stroke-linecap="round"/><path d="M28 705 Q167 686 307 687 Q446 720 586 698 Q726 734 865 719 Q1005 709 1144 721 Q1284 679 1423 702 Q1563 685 1702 687 Q1842 719 1981 698 Q2121 734 2260 719" stroke="url(#plcg)" stroke-width="1.7" fill="none" opacity="0.20" stroke-linecap="round"/><path d="M124 765 Q223 775 322 791 Q421 725 520 761 Q619 730 718 736 Q816 782 915 750 Q1014 811 1113 784 Q1212 776 1311 792 Q1410 726 1508 762 Q1607 729 1706 736 Q1805 781 1904 749" stroke="url(#plcg)" stroke-width="3.6" fill="none" opacity="0.28" stroke-linecap="round"/></g></svg></div>
+
+    <!-- Layer B: secondary caustics -->
+    <div class="pl-wl pl-wl-b"><svg class="sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<filter id="plwf2" x="-12%" y="-12%" width="124%" height="124%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.005 0.031" numOctaves="2" seed="47" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="46" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs><g filter="url(#plwf2)"><path d="M355 217 Q442 234 529 234 Q616 202 703 222 Q790 190 877 203 Q964 215 1051 202 Q1138 242 1225 221 Q1312 235 1399 234 Q1486 202 1573 223" stroke="url(#plcg)" stroke-width="3.4" fill="none" opacity="0.17" stroke-linecap="round"/><path d="M160 723 Q278 720 396 713 Q514 738 633 725 Q751 735 869 734 Q987 715 1105 728 Q1223 706 1341 715 Q1459 720 1577 713" stroke="url(#plcg)" stroke-width="1.1" fill="none" opacity="0.17" stroke-linecap="round"/><path d="M315 17 Q425 -1 536 5 Q647 22 758 9 Q869 37 980 24 Q1090 25 1201 30 Q1312 2 1423 18 Q1534 -1 1645 5 Q1755 21 1866 8" stroke="url(#plcg)" stroke-width="2.1" fill="none" opacity="0.26" stroke-linecap="round"/><path d="M167 54 Q314 77 461 71 Q608 46 755 64 Q901 26 1048 44 Q1195 44 1342 37 Q1488 75 1635 53 Q1782 77 1929 70 Q2076 47 2222 65" stroke="url(#plcg)" stroke-width="1.5" fill="none" opacity="0.24" stroke-linecap="round"/><path d="M-181 317 Q-61 299 59 317 Q180 299 300 304 Q420 323 540 308 Q660 339 781 325 Q901 325 1021 330 Q1141 300 1261 317 Q1382 298 1502 304 Q1622 322 1742 308 Q1862 339 1983 324" stroke="url(#plcg)" stroke-width="3.3" fill="none" opacity="0.24" stroke-linecap="round"/><path d="M608 213 Q735 220 862 210 Q989 227 1116 220 Q1243 214 1370 220 Q1497 200 1624 211 Q1751 203 1878 204 Q2005 220 2132 209 Q2259 227 2386 220" stroke="url(#plcg)" stroke-width="3.0" fill="none" opacity="0.23" stroke-linecap="round"/></g></svg></div>
+
+    <!-- Layer C: light shafts -->
+    <div class="pl-wl pl-wl-c"><svg class="sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<linearGradient id="plsg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#f4fff9" stop-opacity=".85"/>
+<stop offset=".38" stop-color="#dcf6e7" stop-opacity=".28"/>
+<stop offset="1" stop-color="#d4f2e2" stop-opacity="0"/></linearGradient>
+</defs><g><polygon points="95,-80 152,-80 517,1180 439,1180" fill="url(#plsg)" opacity="0.26"/><polygon points="433,-80 491,-80 885,1180 807,1180" fill="url(#plsg)" opacity="0.41"/><polygon points="751,-80 919,-80 1180,1180 953,1180" fill="url(#plsg)" opacity="0.31"/><polygon points="1048,-80 1135,-80 1400,1180 1282,1180" fill="url(#plsg)" opacity="0.28"/><polygon points="1366,-80 1520,-80 1898,1180 1690,1180" fill="url(#plsg)" opacity="0.28"/><polygon points="1695,-80 1808,-80 2067,1180 1914,1180" fill="url(#plsg)" opacity="0.35"/></g></svg></div>
+
+    <!-- Layer S: surface shimmer -->
+    <div class="pl-wl pl-wl-s"><svg class="sv" viewBox="0 0 1800 1100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<linearGradient id="plsf" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+<stop offset=".55" stop-color="#e8fff2" stop-opacity=".16"/>
+<stop offset="1" stop-color="#e8fff2" stop-opacity="0"/></linearGradient>
+<filter id="plsfw" x="-10%" y="-40%" width="120%" height="180%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.004 0.05" numOctaves="2" seed="9" result="n"/>
+<feDisplacementMap in="SourceGraphic" in2="n" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+</defs><g filter="url(#plsfw)"><rect x="-100" y="-40" width="2000" height="150" fill="url(#plsf)"/><rect x="-100" y="60" width="2000" height="60" fill="url(#plsf)" opacity=".5"/></g></svg></div>
+
+    <!-- Bubbles -->
+    <div class="pl-bub"><span style="--x:91.9%;--s:6.7px;--dur:21.5s;--dly:19.0s;--drift:-11px"></span><span style="--x:43.4%;--s:5.7px;--dur:26.8s;--dly:16.1s;--drift:-11px"></span><span style="--x:96.6%;--s:6.2px;--dur:13.7s;--dly:10.3s;--drift:38px"></span><span style="--x:6.0%;--s:3.6px;--dur:24.4s;--dly:10.6s;--drift:3px"></span><span style="--x:70.3%;--s:3.3px;--dur:20.9s;--dly:9.2s;--drift:-39px"></span><span style="--x:67.7%;--s:4.0px;--dur:27.0s;--dly:16.5s;--drift:-5px"></span><span style="--x:2.1%;--s:7.1px;--dur:22.0s;--dly:3.1s;--drift:-37px"></span><span style="--x:69.4%;--s:8.1px;--dur:21.9s;--dly:10.7s;--drift:-24px"></span><span style="--x:64.1%;--s:8.2px;--dur:17.3s;--dly:9.0s;--drift:2px"></span><span style="--x:21.8%;--s:7.1px;--dur:15.7s;--dly:18.4s;--drift:-13px"></span><span style="--x:61.9%;--s:6.6px;--dur:26.3s;--dly:7.2s;--drift:-23px"></span><span style="--x:45.9%;--s:8.9px;--dur:24.3s;--dly:7.2s;--drift:20px"></span></div>
+  </div>
+
+  <div class="pl-vig"></div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  /* scene crossfade – driven by data-scene attributes on sections */
+  var scenes = document.querySelectorAll('#pl-scenes .pl-scene');
+  var zones  = document.querySelectorAll('[data-scene]');
+  var stage  = document.getElementById('pl-scenes');
+  var current = 0;
+
+  function setScene(n) {
+    if (n === current) return;
+    current = n;
+    scenes.forEach(function(s, i) { s.classList.toggle('on', i + 1 === n); });
+    if (stage) stage.setAttribute('data-d', String(n));
+  }
+
+  function pickScene() {
+    var focus = window.scrollY + window.innerHeight * 0.5, n = 1;
+    for (var i = 0; i < zones.length; i++) {
+      var z = zones[i], top = 0, el = z;
+      while (el) { top += el.offsetTop; el = el.offsetParent; }
+      if (top <= focus) n = parseInt(z.getAttribute('data-scene'), 10) || n;
+    }
+    setScene(n);
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) { requestAnimationFrame(function() { pickScene(); ticking = false; }); ticking = true; }
+  }, { passive: true });
+  pickScene();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Purelane Scenes BG",
+  "tag": "section",
+  "class": "pl-scenes-section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Purelane Scenes BG"
+    }
+  ]
+}
+{% endschema %}

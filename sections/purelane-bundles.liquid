@@ -1,0 +1,348 @@
+<style>
+#purelane-bundles-{{ section.id }} {
+  /* VERSION 2 — LIGHT MODE */
+  --ink:#f4f0fb;
+  --deep:#e2daf3;
+  --brand:#4b3a8f;
+  --brand-lt:#6b55b8;
+  --paper:#241a3d;
+  --paper-2:rgba(36,26,61,.78);
+  --paper-3:rgba(36,26,61,.56);
+  --accent:#b8701c;
+  --accent-2:#c9761d;
+  --surface:#17102b;
+  --g-bg:linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line:rgba(75,58,143,.16);
+  --g-shadow:0 22px 54px rgba(58,44,112,.13);
+  --g-inset:inset 0 1px 0 rgba(255,255,255,.92);
+  --r:26px;
+  --r-sm:16px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 clamp(40px,6vw,80px);
+
+  /* product SVGs */
+  --p-combo2:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjAgNDA5IiB3aWR0aD0iNDYwIiBoZWlnaHQ9IjQwOSI+PHJlY3QgeD0iMzQuMSIgeT0iMTM0LjYiIHdpZHRoPSI3OC45IiBoZWlnaHQ9IjI3NC40IiByeD0iMTIuNiIgZmlsbD0iIzZiNTViOCIgb3BhY2l0eT0iMC43MiIvPjxyZWN0IHg9IjQ1LjIiIHk9IjIyNy45IiB3aWR0aD0iNTYuOCIgaGVpZ2h0PSI4Mi4zIiByeD0iMyIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg1Ii8+PHJlY3QgeD0iMTUxLjgiIHk9IjU3LjMiIHdpZHRoPSIxMDEuMiIgaGVpZ2h0PSIzNTEuNyIgcng9IjE2LjIiIGZpbGw9IiM2YjU1YjgiIG9wYWNpdHk9IjAuOTUiLz48cmVjdCB4PSIxNjYuMCIgeT0iMTc2LjkiIHdpZHRoPSI3Mi45IiBoZWlnaHQ9IjEwNS41IiByeD0iMyIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg1Ii8+PHJlY3QgeD0iMjk0LjgiIHk9IjE1NS43IiB3aWR0aD0iNzIuOSIgaGVpZ2h0PSIyNTMuMyIgcng9IjExLjciIGZpbGw9IiM2YjU1YjgiIG9wYWNpdHk9IjAuNzIiLz48cmVjdCB4PSIzMDUuMCIgeT0iMjQxLjkiIHdpZHRoPSI1Mi41IiBoZWlnaHQ9Ijc2LjAiIHJ4PSIzIiBmaWxsPSIjZmFmN2ZkIiBvcGFjaXR5PSIuODUiLz48L3N2Zz4=");
+  --p-kitchen:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNTk1IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjU5NSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM2YjU1YjgiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNmI1NWI4IiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjU5LjUiIHJ4PSIxNy42IiBmaWxsPSIjNmI1NWI4IiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjUzLjYiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQxLjciIGZpbGw9IiM2YjU1YjgiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjExOS4wIiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDc2LjAiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjEuOCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2MS44IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMDkuNCIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjQiIHJ4PSIyIiBmaWxsPSIjNmI1NWI4IiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Mi4yIiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi43IiByeD0iMiIgZmlsbD0iIzZiNTViOCIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-tap:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNTk1IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjU5NSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM2MjUwYWQiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjI1MGFkIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjU5LjUiIHJ4PSIxNy42IiBmaWxsPSIjNjI1MGFkIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjUzLjYiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQxLjciIGZpbGw9IiM2MjUwYWQiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjExOS4wIiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDc2LjAiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjEuOCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2MS44IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMDkuNCIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjQiIHJ4PSIyIiBmaWxsPSIjNjI1MGFkIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Mi4yIiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi43IiByeD0iMiIgZmlsbD0iIzYyNTBhZCIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-dish:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjA5IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYwOSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM0YjNhOGYiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNGIzYThmIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYwLjkiIHJ4PSIxNy42IiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU0LjgiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQyLjYiIGZpbGw9IiM0YjNhOGYiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMS44IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDg3LjIiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjguMCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2NS42IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMTYuNyIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjkiIHJ4PSIyIiBmaWxsPSIjNGIzYThmIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM2MC41IiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNy4xIiByeD0iMiIgZmlsbD0iIzRiM2E4ZiIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-floor:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjAyIiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYwMiI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM4MTY4YzkiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODE2OGM5IiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYwLjIiIHJ4PSIxNy42IiBmaWxsPSIjODE2OGM5IiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU0LjIiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQyLjEiIGZpbGw9IiM4MTY4YzkiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMC40IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDgxLjYiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjQuOSIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2My43IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMTMuMCIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjciIHJ4PSIyIiBmaWxsPSIjODE2OGM5IiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Ni40IiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi45IiByeD0iMiIgZmlsbD0iIzgxNjhjOSIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-toilet:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjE5IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYxOSI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM3YTYyYzIiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN2E2MmMyIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYxLjkiIHJ4PSIxNy42IiBmaWxsPSIjN2E2MmMyIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU1LjciIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQzLjMiIGZpbGw9IiM3YTYyYzIiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMy44IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDk1LjIiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNzIuNCIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2OC40IiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMjEuOSIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIyLjMiIHJ4PSIyIiBmaWxsPSIjN2E2MmMyIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM2Ni40IiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNy4zIiByeD0iMiIgZmlsbD0iIzdhNjJjMiIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+  --p-laundry:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzODAgNjAzIiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjYwMyI+CjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgo8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM1YTQ2YTMiIHN0b3Atb3BhY2l0eT0iLjk1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNWE0NmEzIiBzdG9wLW9wYWNpdHk9Ii42MiIvPgo8L2xpbmVhckdyYWRpZW50PjwvZGVmcz4KPHJlY3QgeD0iMTQ5LjkiIHk9IjAiIHdpZHRoPSI4MC4xIiBoZWlnaHQ9IjYwLjMiIHJ4PSIxNy42IiBmaWxsPSIjNWE0NmEzIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTYxLjIiIHk9IjU0LjMiIHdpZHRoPSI1Ny43IiBoZWlnaHQ9IjQyLjIiIGZpbGw9IiM1YTQ2YTMiIG9wYWNpdHk9Ii43Ii8+CjxyZWN0IHg9IjcyLjIiIHk9IjEyMC42IiB3aWR0aD0iMjM1LjYiIGhlaWdodD0iNDgyLjQiIHJ4PSIzNy43IiBmaWxsPSJ1cmwoI2cpIi8+CjxyZWN0IHg9IjEwMC41IiB5PSIyNjUuMyIgd2lkdGg9IjE3OS4xIiBoZWlnaHQ9IjE2NC4wIiByeD0iMTEuOCIgZmlsbD0iI2ZhZjdmZCIgb3BhY2l0eT0iLjg4Ii8+CjxyZWN0IHg9IjEyOC43IiB5PSIzMTMuNiIgd2lkdGg9IjEyMi41IiBoZWlnaHQ9IjIxLjciIHJ4PSIyIiBmaWxsPSIjNWE0NmEzIiBvcGFjaXR5PSIuNTUiLz4KPHJlY3QgeD0iMTQyLjkiIHk9IjM1Ny4wIiB3aWR0aD0iOTQuMiIgaGVpZ2h0PSIxNi45IiByeD0iMiIgZmlsbD0iIzVhNDZhMyIgb3BhY2l0eT0iLjM1Ii8+Cjwvc3ZnPg==");
+}
+
+#purelane-bundles-{{ section.id }} a{text-decoration:none}
+#purelane-bundles-{{ section.id }} p,#purelane-bundles-{{ section.id }} h2,#purelane-bundles-{{ section.id }} h3{margin:0}
+#purelane-bundles-{{ section.id }} .wrap{max-width:var(--maxw);margin:0 auto;padding:0 18px}
+
+/* typography */
+#purelane-bundles-{{ section.id }} .d2{font-family:'Outfit',system-ui,sans-serif;text-transform:uppercase;letter-spacing:-.018em;font-weight:800;line-height:.94;color:var(--surface);font-size:clamp(30px,4.6vw,54px)}
+#purelane-bundles-{{ section.id }} .lede{font-size:clamp(15px,1.35vw,17.5px);color:var(--paper-2);max-width:44ch}
+#purelane-bundles-{{ section.id }} .kicker{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--paper-3)}
+#purelane-bundles-{{ section.id }} .body-s{font-size:14.5px;color:var(--paper-2);line-height:1.66}
+
+/* glass */
+#purelane-bundles-{{ section.id }} .glass{
+  background:var(--g-bg);
+  backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);
+  border:1px solid var(--g-line);border-radius:var(--r);
+  box-shadow:var(--g-shadow),var(--g-inset);position:relative;overflow:hidden;
+}
+#purelane-bundles-{{ section.id }} .glass::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(115deg,rgba(255,255,255,.55),transparent 32%,transparent 74%,rgba(201,118,29,.06))}
+
+/* buttons */
+#purelane-bundles-{{ section.id }} .btn{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 22px;border-radius:999px;
+  font-size:12.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;transition:.35s var(--ease);white-space:nowrap}
+#purelane-bundles-{{ section.id }} .btn svg{width:15px;height:15px;flex:0 0 auto}
+#purelane-bundles-{{ section.id }} .btn-primary{background:linear-gradient(135deg,#00706a,#004b46);color:#f4fdf6;
+  box-shadow:0 12px 26px rgba(0,80,74,.26),inset 0 1px 0 rgba(255,255,255,.22)}
+#purelane-bundles-{{ section.id }} .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 36px rgba(0,80,74,.32),inset 0 1px 0 rgba(255,255,255,.28)}
+#purelane-bundles-{{ section.id }} .btn-ghost{background:rgba(255,255,255,.66);border:1px solid rgba(75,58,143,.22);color:#01423b}
+#purelane-bundles-{{ section.id }} .btn-ghost:hover{background:rgba(255,255,255,.9);transform:translateY(-2px)}
+
+/* header panel */
+#purelane-bundles-{{ section.id }} .sec-pad{padding:clamp(26px,3.4vw,40px)}
+#purelane-bundles-{{ section.id }} .panel-head{text-align:center}
+#purelane-bundles-{{ section.id }} .panel-head .lede{margin:0 auto}
+
+/* pimg */
+#purelane-bundles-{{ section.id }} .pimg{display:block;background-repeat:no-repeat;background-position:center bottom;background-size:contain;flex:0 0 auto}
+#purelane-bundles-{{ section.id }} .p-combo2{background-image:var(--p-combo2);aspect-ratio:1.1247}
+#purelane-bundles-{{ section.id }} .p-kitchen{background-image:var(--p-kitchen);aspect-ratio:0.6387}
+#purelane-bundles-{{ section.id }} .p-tap{background-image:var(--p-tap);aspect-ratio:0.6387}
+#purelane-bundles-{{ section.id }} .p-dish{background-image:var(--p-dish);aspect-ratio:0.624}
+#purelane-bundles-{{ section.id }} .p-floor{background-image:var(--p-floor);aspect-ratio:0.6312}
+#purelane-bundles-{{ section.id }} .p-toilet{background-image:var(--p-toilet);aspect-ratio:0.6139}
+#purelane-bundles-{{ section.id }} .p-laundry{background-image:var(--p-laundry);aspect-ratio:0.6302}
+
+/* tiers grid */
+#purelane-bundles-{{ section.id }} .tiers{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:760px){
+  #purelane-bundles-{{ section.id }} .tiers{grid-template-columns:repeat(3,1fr)}
+}
+
+/* tier card */
+#purelane-bundles-{{ section.id }} .tier{padding:24px 22px;transition:.4s var(--ease)}
+#purelane-bundles-{{ section.id }} .tier:hover{transform:translateY(-5px)}
+#purelane-bundles-{{ section.id }} .tier.best{border-color:rgba(201,118,29,.46);
+  box-shadow:0 22px 54px rgba(58,44,112,.14),0 0 0 1px rgba(201,118,29,.24),var(--g-inset)}
+
+/* tag pill */
+#purelane-bundles-{{ section.id }} .tier .tag{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  padding:5px 11px;border-radius:999px;margin-bottom:14px;
+  background:rgba(201,118,29,.14);border:1px solid rgba(201,118,29,.34);color:#4f7d10}
+
+/* tierpix row */
+#purelane-bundles-{{ section.id }} .tierpix{display:flex;align-items:flex-end;justify-content:center;gap:2px;height:78px;margin:-4px 0 16px;
+  padding:8px 6px;border-radius:14px;
+  background:linear-gradient(162deg,rgba(255,255,255,.54),rgba(236,230,247,.34));
+  border:1px solid rgba(75,58,143,.11)}
+#purelane-bundles-{{ section.id }} .tierpix .pimg{height:62px;filter:drop-shadow(0 5px 8px rgba(0,74,66,.13))}
+#purelane-bundles-{{ section.id }} .tierpix.five .pimg{height:54px}
+
+/* qty */
+#purelane-bundles-{{ section.id }} .tier .qty{font-family:'Outfit',sans-serif;font-weight:800;font-size:52px;line-height:.9;color:var(--surface);letter-spacing:-.03em}
+#purelane-bundles-{{ section.id }} .tier .qty small{font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--paper-3);display:block;margin-top:6px}
+
+/* price */
+#purelane-bundles-{{ section.id }} .tier .price{font-family:'Outfit',sans-serif;font-weight:700;font-size:27px;color:var(--accent);margin:16px 0 4px}
+#purelane-bundles-{{ section.id }} .tier .price s{font-size:14px;color:var(--paper-3);font-weight:500;margin-left:8px}
+
+/* features list */
+#purelane-bundles-{{ section.id }} .tier ul{list-style:none;margin:16px 0 20px;display:grid;gap:8px;padding:0}
+#purelane-bundles-{{ section.id }} .tier li{display:flex;gap:9px;font-size:13px;color:var(--paper-2)}
+#purelane-bundles-{{ section.id }} .tier li svg{width:14px;height:14px;color:#4f7d10;flex:0 0 auto;margin-top:4px}
+
+/* button full width */
+#purelane-bundles-{{ section.id }} .tier .btn{width:100%;justify-content:center}
+
+@media(max-width:759px){
+  #purelane-bundles-{{ section.id }} .sec-pad{padding:22px 18px}
+  #purelane-bundles-{{ section.id }} .tier .qty{font-size:44px}
+  #purelane-bundles-{{ section.id }} .tierpix{height:70px}
+  #purelane-bundles-{{ section.id }} .tierpix .pimg{height:54px}
+  #purelane-bundles-{{ section.id }} .tierpix.five .pimg{height:46px}
+}
+</style>
+
+<section class="sec" id="purelane-bundles-{{ section.id }}" data-scene="3" style="position:relative">
+  <span id="bundles" style="position:absolute;top:-80px"></span>
+  <div class="wrap">
+    <div class="glass sec-pad" style="margin-bottom:16px">
+      <div class="panel-head" style="margin-bottom:0">
+        <span class="kicker">{{ section.settings.kicker }}</span>
+        <h2 class="d2" style="margin-top:12px">{{ section.settings.title }}</h2>
+        <p class="lede" style="margin:0 auto">{{ section.settings.description }}</p>
+      </div>
+    </div>
+
+    <div class="tiers">
+      {%- for block in section.blocks -%}
+      <article class="glass tier {% if block.settings.is_featured %}best{% endif %}" {{ block.shopify_attributes }}>
+        <span class="tag">{{ block.settings.tag_label }}</span>
+
+        <div class="tierpix {% if block.settings.product_count == '5' %}five{% endif %}" aria-hidden="true">
+          {%- if block.settings.tp1_class != blank and block.settings.tp1_class != 'none' -%}
+            <span class="pimg {{ block.settings.tp1_class }}" role="img" aria-label="{{ block.settings.tp1_label | escape }}"></span>
+          {%- endif -%}
+          {%- if block.settings.tp2_class != blank and block.settings.tp2_class != 'none' -%}
+            <span class="pimg {{ block.settings.tp2_class }}" role="img" aria-label="{{ block.settings.tp2_label | escape }}"></span>
+          {%- endif -%}
+          {%- if block.settings.tp3_class != blank and block.settings.tp3_class != 'none' -%}
+            <span class="pimg {{ block.settings.tp3_class }}" role="img" aria-label="{{ block.settings.tp3_label | escape }}"></span>
+          {%- endif -%}
+          {%- if block.settings.tp4_class != blank and block.settings.tp4_class != 'none' -%}
+            <span class="pimg {{ block.settings.tp4_class }}" role="img" aria-label="{{ block.settings.tp4_label | escape }}"></span>
+          {%- endif -%}
+          {%- if block.settings.tp5_class != blank and block.settings.tp5_class != 'none' -%}
+            <span class="pimg {{ block.settings.tp5_class }}" role="img" aria-label="{{ block.settings.tp5_label | escape }}"></span>
+          {%- endif -%}
+        </div>
+
+        <div class="qty">{{ block.settings.product_count }}<small>Products</small></div>
+        <div class="price">{{ block.settings.price }} <s>{{ block.settings.compare_price }}</s></div>
+        <p class="body-s" style="font-size:12px">{{ block.settings.per_product_text }}</p>
+
+        <ul>
+          {%- if block.settings.feature_1 != blank -%}
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>{{ block.settings.feature_1 }}</li>
+          {%- endif -%}
+          {%- if block.settings.feature_2 != blank -%}
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>{{ block.settings.feature_2 }}</li>
+          {%- endif -%}
+          {%- if block.settings.feature_3 != blank -%}
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>{{ block.settings.feature_3 }}</li>
+          {%- endif -%}
+        </ul>
+
+        <a class="btn {% if block.settings.is_featured %}btn-primary{% else %}btn-ghost{% endif %}" href="{{ block.settings.button_link | default: '#' }}">
+          {{ block.settings.button_label }}
+          {%- if block.settings.is_featured -%}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+          {%- endif -%}
+        </a>
+      </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Build Your Bundle",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker text", "default": "Build your bundle" },
+    { "type": "text", "id": "title", "label": "Section heading", "default": "One box. Every room." },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Mix and match across kitchen, laundry, home and skin. One flat price, no code needed, free shipping either way." }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Tier card",
+      "settings": [
+        { "type": "text", "id": "tag_label", "label": "Tag label", "default": "Starter" },
+        { "type": "checkbox", "id": "is_featured", "label": "Featured tier (primary button + gold border)", "default": false },
+        { "type": "text", "id": "product_count", "label": "Product count number", "default": "2" },
+        { "type": "text", "id": "price", "label": "Bundle price", "default": "₹349" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at price", "default": "₹598" },
+        { "type": "text", "id": "per_product_text", "label": "Per-product text", "default": "Flat ₹174 per product" },
+        { "type": "text", "id": "feature_1", "label": "Feature 1", "default": "Pick any two products" },
+        { "type": "text", "id": "feature_2", "label": "Feature 2", "default": "Free shipping across India" },
+        { "type": "text", "id": "feature_3", "label": "Feature 3" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Build this box" },
+        { "type": "url", "id": "button_link", "label": "Button link" },
+        { "type": "header", "content": "Product illustrations" },
+        { "type": "select", "id": "tp1_class", "label": "Product 1 icon", "default": "p-combo2", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "p-combo2", "label": "Combo pack" },
+          { "value": "p-kitchen", "label": "Kitchen cleaner" },
+          { "value": "p-dish", "label": "Dishwash" },
+          { "value": "p-tap", "label": "Tap cleaner" },
+          { "value": "p-floor", "label": "Floor cleaner" },
+          { "value": "p-toilet", "label": "Toilet cleaner" },
+          { "value": "p-laundry", "label": "Laundry detergent" }
+        ]},
+        { "type": "text", "id": "tp1_label", "label": "Product 1 label" },
+        { "type": "select", "id": "tp2_class", "label": "Product 2 icon", "default": "none", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "p-combo2", "label": "Combo pack" },
+          { "value": "p-kitchen", "label": "Kitchen cleaner" },
+          { "value": "p-dish", "label": "Dishwash" },
+          { "value": "p-tap", "label": "Tap cleaner" },
+          { "value": "p-floor", "label": "Floor cleaner" },
+          { "value": "p-toilet", "label": "Toilet cleaner" },
+          { "value": "p-laundry", "label": "Laundry detergent" }
+        ]},
+        { "type": "text", "id": "tp2_label", "label": "Product 2 label" },
+        { "type": "select", "id": "tp3_class", "label": "Product 3 icon", "default": "none", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "p-combo2", "label": "Combo pack" },
+          { "value": "p-kitchen", "label": "Kitchen cleaner" },
+          { "value": "p-dish", "label": "Dishwash" },
+          { "value": "p-tap", "label": "Tap cleaner" },
+          { "value": "p-floor", "label": "Floor cleaner" },
+          { "value": "p-toilet", "label": "Toilet cleaner" },
+          { "value": "p-laundry", "label": "Laundry detergent" }
+        ]},
+        { "type": "text", "id": "tp3_label", "label": "Product 3 label" },
+        { "type": "select", "id": "tp4_class", "label": "Product 4 icon", "default": "none", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "p-combo2", "label": "Combo pack" },
+          { "value": "p-kitchen", "label": "Kitchen cleaner" },
+          { "value": "p-dish", "label": "Dishwash" },
+          { "value": "p-tap", "label": "Tap cleaner" },
+          { "value": "p-floor", "label": "Floor cleaner" },
+          { "value": "p-toilet", "label": "Toilet cleaner" },
+          { "value": "p-laundry", "label": "Laundry detergent" }
+        ]},
+        { "type": "text", "id": "tp4_label", "label": "Product 4 label" },
+        { "type": "select", "id": "tp5_class", "label": "Product 5 icon", "default": "none", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "p-combo2", "label": "Combo pack" },
+          { "value": "p-kitchen", "label": "Kitchen cleaner" },
+          { "value": "p-dish", "label": "Dishwash" },
+          { "value": "p-tap", "label": "Tap cleaner" },
+          { "value": "p-floor", "label": "Floor cleaner" },
+          { "value": "p-toilet", "label": "Toilet cleaner" },
+          { "value": "p-laundry", "label": "Laundry detergent" }
+        ]},
+        { "type": "text", "id": "tp5_label", "label": "Product 5 label" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Build Your Bundle",
+      "blocks": [
+        {
+          "type": "tier",
+          "settings": {
+            "tag_label": "Starter",
+            "is_featured": false,
+            "product_count": "2",
+            "price": "₹349",
+            "compare_price": "₹598",
+            "per_product_text": "Flat ₹174 per product",
+            "feature_1": "Pick any two products",
+            "feature_2": "Free shipping across India",
+            "button_label": "Build this box",
+            "tp1_class": "p-combo2",
+            "tp1_label": "Combo pack"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "tag_label": "Most popular",
+            "is_featured": true,
+            "product_count": "3",
+            "price": "₹499",
+            "compare_price": "₹897",
+            "per_product_text": "Flat ₹166 per product",
+            "feature_1": "Pick any three products",
+            "feature_2": "Covers kitchen and laundry",
+            "feature_3": "Free shipping across India",
+            "button_label": "Build this box",
+            "tp1_class": "p-kitchen",
+            "tp1_label": "Kitchen cleaner",
+            "tp2_class": "p-tap",
+            "tp2_label": "Tap cleaner",
+            "tp3_class": "p-dish",
+            "tp3_label": "Dishwash"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "tag_label": "Whole home",
+            "is_featured": false,
+            "product_count": "5",
+            "price": "₹799",
+            "compare_price": "₹1495",
+            "per_product_text": "Flat ₹160 per product",
+            "feature_1": "Pick any five products",
+            "feature_2": "Every room in one order",
+            "feature_3": "Free shipping across India",
+            "button_label": "Build this box",
+            "tp1_class": "p-kitchen",
+            "tp1_label": "Kitchen cleaner",
+            "tp2_class": "p-tap",
+            "tp2_label": "Tap cleaner",
+            "tp3_class": "p-floor",
+            "tp3_label": "Floor cleaner",
+            "tp4_class": "p-toilet",
+            "tp4_label": "Toilet cleaner",
+            "tp5_class": "p-laundry",
+            "tp5_label": "Laundry detergent"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

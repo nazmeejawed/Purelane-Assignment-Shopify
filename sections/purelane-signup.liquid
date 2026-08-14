@@ -1,0 +1,246 @@
+<style>
+#purelane-signup-{{ section.id }} {
+  /* VERSION 2 — LIGHT MODE (from prototype) */
+  --ink:#f4f0fb;
+  --deep:#e2daf3;
+  --brand:#4b3a8f;
+  --brand-lt:#6b55b8;
+  --paper:#241a3d;
+  --paper-2:rgba(36,26,61,.78);
+  --paper-3:rgba(36,26,61,.56);
+  --accent:#b8701c;
+  --accent-2:#c9761d;
+  --surface:#17102b;
+  --g-bg:linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line:rgba(75,58,143,.16);
+  --g-shadow:0 22px 54px rgba(58,44,112,.13);
+  --g-inset:inset 0 1px 0 rgba(255,255,255,.92);
+  --r:26px;
+  --r-sm:16px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 clamp(40px,6vw,80px);
+}
+
+#purelane-signup-{{ section.id }} a { text-decoration: none; color: inherit; }
+#purelane-signup-{{ section.id }} p, #purelane-signup-{{ section.id }} h2 { margin: 0; }
+#purelane-signup-{{ section.id }} .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 18px; }
+
+/* Glass Box */
+#purelane-signup-{{ section.id }} .glass {
+  background: var(--g-bg);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--g-line);
+  border-radius: var(--r);
+  box-shadow: var(--g-shadow), var(--g-inset);
+  position: relative;
+  overflow: hidden;
+}
+#purelane-signup-{{ section.id }} .glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .55), transparent 32%, transparent 74%, rgba(201, 118, 29, .06));
+}
+
+#purelane-signup-{{ section.id }} .signup {
+  padding: clamp(28px, 4vw, 46px);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+#purelane-signup-{{ section.id }} .kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--paper-3);
+  display: block;
+}
+#purelane-signup-{{ section.id }} .d2 {
+  font-family: 'Outfit', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -.018em;
+  font-weight: 800;
+  line-height: .94;
+  color: var(--surface);
+  font-size: clamp(28px, 4.2vw, 50px);
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+#purelane-signup-{{ section.id }} .lede {
+  font-size: clamp(14px, 1.2vw, 16.5px);
+  color: var(--paper-2);
+  max-width: 44ch;
+  margin: 0 auto;
+}
+
+#purelane-signup-{{ section.id }} form {
+  display: flex;
+  gap: 9px;
+  max-width: 440px;
+  margin: 22px auto 0;
+  flex-wrap: wrap;
+}
+#purelane-signup-{{ section.id }} input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  height: 46px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #01423b;
+  background: rgba(255, 255, 255, .72);
+  border: 1px solid rgba(75, 58, 143, .20);
+  transition: .3s var(--ease);
+}
+#purelane-signup-{{ section.id }} input[type="email"]::placeholder {
+  color: var(--paper-3);
+}
+#purelane-signup-{{ section.id }} input[type="email"]:focus {
+  outline: none;
+  border-color: #b8701c;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(184, 112, 28, .15);
+}
+
+#purelane-signup-{{ section.id }} .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  transition: .35s var(--ease);
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, #00706a, #004b46);
+  color: #f4fdf6;
+  box-shadow: 0 12px 26px rgba(0, 80, 74, .26), inset 0 1px 0 rgba(255, 255, 255, .22);
+}
+#purelane-signup-{{ section.id }} .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(0, 80, 74, .32), inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+#purelane-signup-{{ section.id }} .form-status-message {
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #00706a;
+}
+
+@media(max-width: 600px) {
+  #purelane-signup-{{ section.id }} form {
+    flex-direction: column;
+  }
+  #purelane-signup-{{ section.id }} .btn-primary {
+    width: 100%;
+  }
+}
+</style>
+
+<section class="sec" id="purelane-signup-{{ section.id }}" data-scene="4" style="position:relative">
+  <span id="signup" style="position:absolute;top:-80px"></span>
+  <div class="wrap">
+    <div class="glass signup">
+      {%- if section.settings.kicker != blank -%}
+        <span class="kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="d2">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="lede">{{ section.settings.description }}</p>
+      {%- endif -%}
+
+      {%- form 'customer', class: 'purelane-signup-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if form.posted_successfully? -%}
+          <p class="form-status-message" tabindex="-1" autofocus>
+            {{ section.settings.success_message | default: 'Thank you for subscribing! Your discount code is on its way.' }}
+          </p>
+        {%- else -%}
+          <input 
+            type="email" 
+            name="contact[email]" 
+            value="{{ form.email }}" 
+            placeholder="{{ section.settings.placeholder | default: 'your@email.com' }}" 
+            aria-label="Email address" 
+            required
+            autocomplete="email"
+          >
+          <button class="btn btn-primary" type="submit">
+            {{ section.settings.button_label | default: 'Get my ₹100 off' }}
+          </button>
+          {%- if form.errors -%}
+            <p class="form-status-message" style="color:#c9761d;">
+              {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+            </p>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Club Signup Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Eyebrow Text",
+      "default": "Join the Purelane Club"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Get ₹100 off your first bundle"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Plus first access to new launches and restocks."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email Placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Get my ₹100 off"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Thank you for subscribing! Your discount code is on its way."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Club Signup Banner"
+    }
+  ]
+}
+{% endschema %}

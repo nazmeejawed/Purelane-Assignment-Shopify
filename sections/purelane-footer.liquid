@@ -1,0 +1,361 @@
+<style>
+#purelane-footer-{{ section.id }} {
+  /* VERSION 2 — LIGHT MODE (from prototype) */
+  --ink:#f4f0fb;
+  --deep:#e2daf3;
+  --brand:#4b3a8f;
+  --brand-lt:#6b55b8;
+  --paper:#241a3d;
+  --paper-2:rgba(36,26,61,.78);
+  --paper-3:rgba(36,26,61,.56);
+  --accent:#b8701c;
+  --accent-2:#c9761d;
+  --surface:#17102b;
+  --g-bg:linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line:rgba(75,58,143,.16);
+  --g-shadow:0 22px 54px rgba(58,44,112,.13);
+  --g-inset:inset 0 1px 0 rgba(255,255,255,.92);
+  --maxw:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+#purelane-footer-{{ section.id }} footer {
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+  padding: 50px 0 34px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .50), rgba(214, 241, 221, .85));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(75, 58, 143, .13);
+}
+
+#purelane-footer-{{ section.id }} .wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+#purelane-footer-{{ section.id }} .fgrid {
+  display: grid;
+  gap: 32px 24px;
+  grid-template-columns: 1fr;
+}
+@media(min-width: 760px) {
+  #purelane-footer-{{ section.id }} .fgrid {
+    grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
+  }
+}
+
+#purelane-footer-{{ section.id }} .fcol h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4f7d10;
+  margin: 0 0 16px;
+}
+#purelane-footer-{{ section.id }} .fcol a,
+#purelane-footer-{{ section.id }} .fcol p {
+  display: block;
+  font-size: 13.5px;
+  color: var(--paper-2);
+  margin: 0 0 10px;
+  transition: .25s var(--ease);
+  text-decoration: none;
+  line-height: 1.5;
+}
+#purelane-footer-{{ section.id }} .fcol a:hover {
+  color: var(--surface);
+  transform: translateX(3px);
+}
+
+/* Brand - Stacked Mark on Top */
+#purelane-footer-{{ section.id }} .fcol .brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 16px;
+}
+#purelane-footer-{{ section.id }} .fcol .brand .mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(150deg, rgba(201, 118, 29, .20), rgba(75, 58, 143, .14));
+  border: 1px solid rgba(75, 58, 143, .18);
+}
+#purelane-footer-{{ section.id }} .fcol .brand .mark svg {
+  width: 22px;
+  height: 22px;
+  color: #b8701c;
+}
+#purelane-footer-{{ section.id }} .fcol .brand .txt {
+  display: flex;
+  flex-direction: column;
+}
+#purelane-footer-{{ section.id }} .fcol .brand .n1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  letter-spacing: .08em;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--surface);
+  line-height: 1.1;
+}
+#purelane-footer-{{ section.id }} .fcol .brand .n2 {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--paper-3);
+  margin-top: 4px;
+}
+
+/* Bottom bar */
+#purelane-footer-{{ section.id }} .fbot {
+  border-top: 1px solid rgba(75, 58, 143, .11);
+  margin-top: 44px;
+  padding-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--paper-3);
+}
+#purelane-footer-{{ section.id }} .fbot a {
+  color: inherit;
+  text-decoration: none;
+}
+#purelane-footer-{{ section.id }} .fbot a:hover {
+  color: var(--surface);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var footer = document.getElementById('purelane-footer-{{ section.id }}');
+  if (!footer) return;
+  footer.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+
+<div id="purelane-footer-{{ section.id }}">
+  <footer data-scene="4">
+    <div class="wrap">
+      <div class="fgrid">
+        <!-- Brand Column -->
+        <div class="fcol">
+          <a class="brand" href="#top">
+            <span class="mark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/>
+                <path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/>
+                <path d="M12 21v-6"/>
+              </svg>
+            </span>
+            <span class="txt">
+              <span class="n1">{{ section.settings.brand_name | default: 'Purelane' }}</span>
+              <span class="n2">{{ section.settings.brand_tagline | default: 'Clean, simply' }}</span>
+            </span>
+          </a>
+          <p style="max-width:30ch">{{ section.settings.bio | default: 'Effective cleaning, powered by nature. Made for Indian homes since day one.' }}</p>
+        </div>
+
+        <!-- Shop Menu Column -->
+        <div class="fcol">
+          <h5>{{ section.settings.col1_heading | default: 'Shop' }}</h5>
+          {%- if section.settings.col1_menu != blank -%}
+            {%- for link in linklists[section.settings.col1_menu].links -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- endfor -%}
+          {%- else -%}
+            <a href="#shop">Bestsellers</a>
+            <a href="#shop">Kitchen</a>
+            <a href="#shop">Laundry</a>
+            <a href="#shop">Home</a>
+            <a href="#shop">Skin</a>
+            <a href="#bundles">Starter kits</a>
+          {%- endif -%}
+        </div>
+
+        <!-- About Menu Column -->
+        <div class="fcol">
+          <h5>{{ section.settings.col2_heading | default: 'About' }}</h5>
+          {%- if section.settings.col2_menu != blank -%}
+            {%- for link in linklists[section.settings.col2_menu].links -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- endfor -%}
+          {%- else -%}
+            <a href="#how">How it works</a>
+            <a href="#ingredients">Sustainability</a>
+            <a href="#proof">FAQs</a>
+            <a href="#reviews">Reviews</a>
+          {%- endif -%}
+        </div>
+
+        <!-- Contact Column -->
+        <div class="fcol">
+          <h5>{{ section.settings.col3_heading | default: 'Get in touch' }}</h5>
+          {%- if section.settings.email != blank -%}
+            <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+          {%- endif -%}
+          {%- if section.settings.phone != blank -%}
+            <a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a>
+          {%- endif -%}
+          {%- if section.settings.company_name != blank -%}
+            <p style="font-size:12px;color:var(--paper-3)">{{ section.settings.company_name }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="fbot">
+        <span>{{ section.settings.copyright | default: '© 2026 Purelane Eco Products Private Limited' }}</span>
+        <span>
+          {%- if section.settings.legal_links != blank -%}
+            {{ section.settings.legal_links }}
+          {%- else -%}
+            <a href="/policies/privacy-policy">Privacy</a> · 
+            <a href="/policies/terms-of-service">Terms</a> · 
+            <a href="/policies/refund-policy">Refunds</a> · 
+            <a href="/pages/contact">Contact</a>
+          {%- endif -%}
+        </span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+{% schema %}
+{
+  "name": "Purelane Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand Info"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "Purelane"
+    },
+    {
+      "type": "text",
+      "id": "brand_tagline",
+      "label": "Brand Tagline",
+      "default": "Clean, simply"
+    },
+    {
+      "type": "textarea",
+      "id": "bio",
+      "label": "Bio Text",
+      "default": "Effective cleaning, powered by nature. Made for Indian homes since day one."
+    },
+    {
+      "type": "header",
+      "content": "Column 1 (Shop)"
+    },
+    {
+      "type": "text",
+      "id": "col1_heading",
+      "label": "Column 1 Heading",
+      "default": "Shop"
+    },
+    {
+      "type": "link_list",
+      "id": "col1_menu",
+      "label": "Column 1 Menu (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Column 2 (About)"
+    },
+    {
+      "type": "text",
+      "id": "col2_heading",
+      "label": "Column 2 Heading",
+      "default": "About"
+    },
+    {
+      "type": "link_list",
+      "id": "col2_menu",
+      "label": "Column 2 Menu (optional)"
+    },
+    {
+      "type": "header",
+      "content": "Column 3 (Contact)"
+    },
+    {
+      "type": "text",
+      "id": "col3_heading",
+      "label": "Column 3 Heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email Address",
+      "default": "hello@purelane.com"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone Number",
+      "default": "+91 9930 123 234"
+    },
+    {
+      "type": "text",
+      "id": "company_name",
+      "label": "Company Subtitle",
+      "default": "Purelane Eco Products Pvt Ltd"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright Text",
+      "default": "© 2026 Purelane Eco Products Private Limited"
+    },
+    {
+      "type": "text",
+      "id": "legal_links",
+      "label": "Legal Links Text",
+      "default": "Privacy · Terms · Refunds · Contact"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Footer"
+    }
+  ]
+}
+{% endschema %}
