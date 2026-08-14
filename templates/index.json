@@ -637,6 +637,70 @@
         "title": "Loved by 30,000 homes",
         "show_rule": true
       }
+    },
+    "purelane_range_new": {
+      "type": "purelane-range",
+      "blocks": {
+        "b1": { "type": "bottle", "settings": { "icon": "p-floor", "label": "Floor cleaner" } },
+        "b2": { "type": "bottle", "settings": { "icon": "p-tap", "label": "Tap cleaner" } },
+        "b3": { "type": "bottle", "settings": { "icon": "p-kitchen", "label": "Kitchen cleaner" } },
+        "b4": { "type": "bottle", "settings": { "icon": "p-toilet", "label": "Toilet cleaner" } },
+        "b5": { "type": "bottle", "settings": { "icon": "p-laundry", "label": "Laundry detergent" } },
+        "b6": { "type": "bottle", "settings": { "icon": "p-dish", "label": "Dishwash gel" } },
+        "b7": { "type": "bottle", "settings": { "icon": "p-metal", "label": "Metal cleaner" } },
+        "b8": { "type": "bottle", "settings": { "icon": "p-wm", "label": "Washing machine cleaner" } },
+        "b9": { "type": "bottle", "settings": { "icon": "p-handwash", "label": "Handwash" } },
+        "b10": { "type": "bottle", "settings": { "icon": "p-eraser", "label": "Magic eraser" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6", "b7", "b8", "b9", "b10"],
+      "settings": {
+        "kicker": "The full range",
+        "title": "Every room, one shelf",
+        "description": "Floors, taps, kitchen, laundry, bathroom and hands. Fourteen plant-based formulas that replace every harsh bottle under your sink.",
+        "hint": "Swipe to see the full shelf"
+      }
+    },
+    "purelane_whybundles_new": {
+      "type": "purelane-whybundles",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "discount",
+            "title": "Save up to 45%",
+            "description": "Versus buying the same products separately"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "check",
+            "title": "One flat price",
+            "description": "No calculators, no comparing carts"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "star",
+            "title": "Curated by experts",
+            "description": "Products picked to work well together"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping always",
+            "description": "Included on every bundle, all India"
+          }
+        }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"],
+      "settings": {
+        "kicker": "The smarter way to shop",
+        "title": "Why bundles beat buying single"
+      }
     }
   },
   "order": [
@@ -648,6 +712,8 @@
     "purelane_proof_new",
     "purelane_combos_new",
     "purelane_bundles_new",
-    "purelane_shop_new"
+    "purelane_shop_new",
+    "purelane_range_new",
+    "purelane_whybundles_new"
   ]
 }

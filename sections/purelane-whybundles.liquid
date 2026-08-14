@@ -1,0 +1,305 @@
+<style>
+#purelane-whybundles-{{ section.id }} {
+  /* VERSION 2 — LIGHT MODE (from prototype) */
+  --ink:#f4f0fb;
+  --deep:#e2daf3;
+  --brand:#4b3a8f;
+  --brand-lt:#6b55b8;
+  --paper:#241a3d;
+  --paper-2:rgba(36,26,61,.78);
+  --paper-3:rgba(36,26,61,.56);
+  --accent:#b8701c;
+  --accent-2:#c9761d;
+  --surface:#17102b;
+  --g-bg:linear-gradient(158deg,rgba(255,255,255,.80),rgba(236,230,247,.56) 58%,rgba(222,212,240,.50));
+  --g-line:rgba(75,58,143,.16);
+  --g-shadow:0 22px 54px rgba(58,44,112,.13);
+  --g-inset:inset 0 1px 0 rgba(255,255,255,.92);
+  --r:26px;
+  --r-sm:16px;
+  --maxw:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  color:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding:0 0 clamp(40px,6vw,80px);
+}
+
+#purelane-whybundles-{{ section.id }} a { text-decoration: none; color: inherit; }
+#purelane-whybundles-{{ section.id }} p, #purelane-whybundles-{{ section.id }} h2, #purelane-whybundles-{{ section.id }} h4 { margin: 0; }
+#purelane-whybundles-{{ section.id }} .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 18px; }
+
+/* Glass Box */
+#purelane-whybundles-{{ section.id }} .glass {
+  background: var(--g-bg);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--g-line);
+  border-radius: var(--r);
+  box-shadow: var(--g-shadow), var(--g-inset);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(26px, 3.4vw, 40px);
+}
+#purelane-whybundles-{{ section.id }} .glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .55), transparent 32%, transparent 74%, rgba(201, 118, 29, .06));
+}
+
+/* Header */
+#purelane-whybundles-{{ section.id }} .panel-head {
+  text-align: center;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+}
+#purelane-whybundles-{{ section.id }} .kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--paper-3);
+}
+#purelane-whybundles-{{ section.id }} .d2 {
+  font-family: 'Outfit', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -.018em;
+  font-weight: 800;
+  line-height: .94;
+  color: var(--surface);
+  font-size: clamp(26px, 3.8vw, 46px);
+  margin-top: 12px;
+}
+
+/* 4 Column Value Props */
+#purelane-whybundles-{{ section.id }} .wb {
+  display: grid;
+  gap: 20px 16px;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  z-index: 2;
+}
+@media(min-width: 880px) {
+  #purelane-whybundles-{{ section.id }} .wb {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+#purelane-whybundles-{{ section.id }} .wb-i {
+  text-align: center;
+  padding: 4px 8px;
+}
+#purelane-whybundles-{{ section.id }} .wb-i .ci {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 36% 28%, rgba(201, 118, 29, .20), rgba(75, 58, 143, .12));
+  border: 1px solid rgba(75, 58, 143, .16);
+  color: #4f7d10;
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+#purelane-whybundles-{{ section.id }} .wb-i:hover .ci {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(79, 125, 16, .16);
+}
+#purelane-whybundles-{{ section.id }} .wb-i .ci svg {
+  width: 25px;
+  height: 25px;
+}
+#purelane-whybundles-{{ section.id }} .wb-i h4 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--surface);
+  margin-bottom: 7px;
+}
+#purelane-whybundles-{{ section.id }} .wb-i p {
+  font-size: 12.2px;
+  color: var(--paper-2);
+  line-height: 1.5;
+}
+
+@media(max-width: 760px) {
+  #purelane-whybundles-{{ section.id }} .glass {
+    padding: 22px 16px;
+  }
+  #purelane-whybundles-{{ section.id }} .wb-i .ci {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+  }
+  #purelane-whybundles-{{ section.id }} .wb-i .ci svg {
+    width: 21px;
+    height: 21px;
+  }
+  #purelane-whybundles-{{ section.id }} .wb-i h4 {
+    font-size: 12.5px;
+  }
+}
+</style>
+
+<section class="sec" id="purelane-whybundles-{{ section.id }}" data-scene="4">
+  <div class="wrap">
+    <div class="glass sec-pad">
+      <div class="panel-head">
+        {%- if section.settings.kicker != blank -%}
+          <span class="kicker">{{ section.settings.kicker }}</span>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="d2">{{ section.settings.title }}</h2>
+        {%- endif -%}
+      </div>
+
+      <div class="wb">
+        {%- for block in section.blocks -%}
+          <div class="wb-i" {{ block.shopify_attributes }}>
+            <span class="ci">
+              {%- case block.settings.icon -%}
+                {%- when 'discount' or 'dollar' or 'rupee' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v18"/>
+                    <path d="M16.5 7.2C15.6 6 14 5.4 12 5.4c-2.4 0-4 1.1-4 2.9 0 2 1.7 2.7 4.2 3.3 2.7.6 4.3 1.4 4.3 3.4 0 1.9-1.7 3.1-4.5 3.1-2.2 0-3.8-.7-4.8-2"/>
+                  </svg>
+                {%- when 'check' or 'box' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="3.4"/>
+                    <path d="m8.4 12.2 2.4 2.4 4.8-5"/>
+                  </svg>
+                {%- when 'star' or 'expert' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 3.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8L3.6 9.7l5.8-.8Z"/>
+                  </svg>
+                {%- when 'truck' or 'shipping' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2.6 16.4V7.2h10.2v9.2"/>
+                    <path d="M12.8 10.4h4l3.6 3.2v2.8h-7.6"/>
+                    <circle cx="6.6" cy="18" r="1.9"/>
+                    <circle cx="16.6" cy="18" r="1.9"/>
+                  </svg>
+                {%- when 'leaf' or 'plant' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/>
+                    <path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/>
+                  </svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v18"/>
+                    <path d="M16.5 7.2C15.6 6 14 5.4 12 5.4c-2.4 0-4 1.1-4 2.9 0 2 1.7 2.7 4.2 3.3 2.7.6 4.3 1.4 4.3 3.4 0 1.9-1.7 3.1-4.5 3.1-2.2 0-3.8-.7-4.8-2"/>
+                  </svg>
+              {%- endcase -%}
+            </span>
+            <h4>{{ block.settings.title }}</h4>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Bundles Beat Single",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Eyebrow Text",
+      "default": "The smarter way to shop"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why bundles beat buying single"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Value Prop Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Feature Icon",
+          "default": "discount",
+          "options": [
+            { "value": "discount", "label": "Discount / Currency ($)" },
+            { "value": "check", "label": "Checkmark Box" },
+            { "value": "star", "label": "Star / Curated" },
+            { "value": "truck", "label": "Delivery Truck" },
+            { "value": "leaf", "label": "Leaf / Plant" },
+            { "value": "shield", "label": "Shield / Protection" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Title",
+          "default": "Save up to 45%"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "Versus buying the same products separately"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Bundles Beat Single",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "discount",
+            "title": "Save up to 45%",
+            "description": "Versus buying the same products separately"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "check",
+            "title": "One flat price",
+            "description": "No calculators, no comparing carts"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "star",
+            "title": "Curated by experts",
+            "description": "Products picked to work well together"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Free shipping always",
+            "description": "Included on every bundle, all India"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
