@@ -209,6 +209,10 @@
     "purelane_ingredients_QEtB80": {
       "type": "purelane-ingredients",
       "settings": {}
+    },
+    "purelane_proof_new": {
+      "type": "purelane-proof",
+      "settings": {}
     }
   },
   "order": [
@@ -216,6 +220,7 @@
     "featured_collection",
     "purelane_hero_GJUahh",
     "purelane_reviews_7piJX4",
-    "purelane_ingredients_QEtB80"
+    "purelane_ingredients_QEtB80",
+    "purelane_proof_new"
   ]
 }
