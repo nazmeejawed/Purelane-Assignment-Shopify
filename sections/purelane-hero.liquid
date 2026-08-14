@@ -120,13 +120,16 @@
   /* --- 4. FOREGROUND UI --- */
   #PurelaneHero-{{ section.id }} .hero-content-layer {
     position: relative; z-index: 2; min-height: 100svh;
-    display: flex; align-items: flex-end; padding: 150px 0 var(--sec-y);
+    display: flex; align-items: center; padding: 110px 0 50px;
   }
   #PurelaneHero-{{ section.id }} .hero-content-layer::before {
     content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background: linear-gradient(102deg, rgba(255,255,255,.80) 0%, rgba(255,255,255,.50) 30%, rgba(255,255,255,.12) 54%, transparent 68%);
   }
   @media(max-width:900px) {
+    #PurelaneHero-{{ section.id }} .hero-content-layer {
+      align-items: flex-end; padding-top: 110px;
+    }
     #PurelaneHero-{{ section.id }} .hero-content-layer::before {
       background: linear-gradient(180deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.34) 36%, rgba(255,255,255,.66) 100%);
     }
