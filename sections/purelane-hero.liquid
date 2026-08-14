@@ -373,7 +373,7 @@
         <p class="lede rv rv-d2">{{ section.settings.paragraph | escape }}</p>
 
         <div class="hero-cta rv rv-d3">
-          <a class="btn btn-primary" href="{{ section.settings.primary_cta_link | default: '#' }}">
+          <a class="btn btn-primary" href="#shop" onclick="event.preventDefault();document.getElementById('shop')&&document.getElementById('shop').scrollIntoView({behavior:'smooth',block:'start'})">
             {{ section.settings.primary_cta_label | escape }}
             <svg
               viewBox="0 0 24 24"
@@ -387,7 +387,7 @@
             </svg>
           </a>
           {%- if section.settings.secondary_cta_label != blank -%}
-            <a class="btn btn-ghost" href="{{ section.settings.secondary_cta_link | default: '#' }}">
+            <a class="btn btn-ghost" href="#proof" onclick="event.preventDefault();document.getElementById('proof')&&document.getElementById('proof').scrollIntoView({behavior:'smooth',block:'start'})">
               {{- section.settings.secondary_cta_label | escape -}}
             </a>
           {%- endif -%}

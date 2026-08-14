@@ -342,17 +342,24 @@
       </style>
     {%- endif -%}
 
-    <style>
-      /* ---------- reveal on scroll ---------- */
-      .rv { opacity: 0; transform: translateY(30px); filter: blur(7px); transition: opacity .95s cubic-bezier(.2,.7,.2,1), transform .95s cubic-bezier(.2,.7,.2,1), filter .95s cubic-bezier(.2,.7,.2,1); }
-      .rv.in { opacity: 1; transform: none; filter: none; }
-      .rv-d1 { transition-delay: .09s; }
-      .rv-d2 { transition-delay: .18s; }
-      .rv-d3 { transition-delay: .27s; }
-      .rv-d4 { transition-delay: .36s; }
-      .rv-d5 { transition-delay: .45s; }
+      /* ---------- fast & smooth reveal on scroll ---------- */
+      .rv {
+        opacity: 0;
+        transform: translate3d(0, 16px, 0);
+        will-change: opacity, transform;
+        transition: opacity .38s cubic-bezier(.16, 1, .3, 1), transform .38s cubic-bezier(.16, 1, .3, 1);
+      }
+      .rv.in {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+      .rv-d1 { transition-delay: .03s; }
+      .rv-d2 { transition-delay: .06s; }
+      .rv-d3 { transition-delay: .09s; }
+      .rv-d4 { transition-delay: .12s; }
+      .rv-d5 { transition-delay: .15s; }
       @media (prefers-reduced-motion: reduce) {
-        .rv { opacity: 1; transform: none; filter: none; transition: none; }
+        .rv { opacity: 1; transform: none; transition: none; }
       }
 
       /* ---------- scenes background layering ---------- */
@@ -495,7 +502,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       
-      /* reveal on scroll */
+      /* eager reveal on scroll - fast and responsive */
       var revs = document.querySelectorAll('.rv');
       if ('IntersectionObserver' in window && !reduce) {
         var ro = new IntersectionObserver(function (es) {
@@ -505,7 +512,7 @@
               ro.unobserve(e.target);
             }
           });
-        }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+        }, { rootMargin: '0px 0px 80px 0px', threshold: 0.01 });
         revs.forEach(function (el) { ro.observe(el); });
       } else {
         revs.forEach(function (el) { el.classList.add('in'); });
